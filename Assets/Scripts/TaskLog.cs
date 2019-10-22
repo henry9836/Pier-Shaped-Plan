@@ -60,7 +60,7 @@ public class TaskLog : NetworkBehaviour
             return;
         }
 
-        for (int i = 0; i < (System.Enum.GetValues(typeof(TASKS)).Length - 1) - numberoftasks; i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length - numberoftasks; i++)
         {
             bool added = true;
             while (added == true)
@@ -73,15 +73,22 @@ public class TaskLog : NetworkBehaviour
                         added = false;
                     }
                 }
+
                 if (added == true)
                 {
                     ExcludedTasks.Add(rand);
+                    added = false;
                 }
+                else
+                {
+                    added = true;
+                }
+
             }
 
         }
 
-        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length - 1; i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length; i++)
         {
             bool Exculded = false;
             for (int j = 0; j < ExcludedTasks.Count; j++)
@@ -96,6 +103,34 @@ public class TaskLog : NetworkBehaviour
                 TaskStates.Add(new TaskState((TASKS)i, false));
             }
         }
+
+
+
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    Debug.Log("run x3"); //correct
+        //    bool added = true;
+        //    while (added == true)
+        //    {
+        //        int rand = Random.Range(0, 5);
+        //        for (int j = 0; j < ExcludedTasks.Count; j++)
+        //        {
+        //            if (rand == ExcludedTasks[j])
+        //            {
+        //                added = false;
+        //            }
+        //        }
+
+        //        if (added == true)
+        //        {
+        //            Debug.Log("added rand x4"); // not correct should be x3
+        //        }
+        //    }
+        //}
+
+
     }
+
+
 }
 
