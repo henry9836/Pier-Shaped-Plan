@@ -8,6 +8,8 @@ public class PlayerLook : MonoBehaviour {
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private Transform YRotRef;
 
+    public float maxVerticalRotation = 60f;
+    public float minVerticalRotation = 50f;
     private float xAxisClamp;
 
     private void Awake()
@@ -38,17 +40,17 @@ public class PlayerLook : MonoBehaviour {
 
         xAxisClamp += mouseY;
 
-        if (xAxisClamp > 90f)
+        if (xAxisClamp > minVerticalRotation)
         {
-            xAxisClamp = 90f;
+            xAxisClamp = minVerticalRotation;
             mouseY = 0f;
-            ClampXaxisRotationToValue(270f);
+            ClampXaxisRotationToValue(360f - minVerticalRotation);
         }
-        else if (xAxisClamp < -90f)
+        else if (xAxisClamp < -maxVerticalRotation)
         {
-            xAxisClamp = -90f;
+            xAxisClamp = -maxVerticalRotation;
             mouseY = 0f;
-            ClampXaxisRotationToValue(90f);
+            ClampXaxisRotationToValue(maxVerticalRotation);
         }
 
         //transform.RotateAround(transform.position, -transform.right, mouseY);
