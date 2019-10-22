@@ -87,6 +87,10 @@ public class PlayerController : NetworkBehaviour
             }
         }
 
+        // Draw line in player look direction
+        Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             CmdPing();
