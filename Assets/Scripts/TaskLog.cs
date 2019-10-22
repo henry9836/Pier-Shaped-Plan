@@ -36,6 +36,13 @@ public class TaskLog : NetworkBehaviour
 
 
 
+    
+    [Command]
+    public void CmdTestPing()
+    {
+        Debug.Log("Pong");
+    }
+
     void Start()
     {
         if (!isServer)
