@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour {
 
     [SerializeField] private string mouseXInputName, mouseYInputName;
     [SerializeField] private float mouseSensitivity;
-    [SerializeField] private Transform playerBody;
+    [SerializeField] private Transform YRotRef;
 
     private float xAxisClamp;
 
@@ -53,7 +53,7 @@ public class PlayerLook : MonoBehaviour {
 
         //transform.RotateAround(transform.position, -transform.right, mouseY);
         transform.Rotate(Vector3.left * mouseY);
-        playerBody.Rotate(Vector3.up * mouseX);
+        YRotRef.Rotate(Vector3.up * mouseX);
     }
 
     private void ClampXaxisRotationToValue(float value)
