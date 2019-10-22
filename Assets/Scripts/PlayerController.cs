@@ -19,13 +19,13 @@ public class PlayerController : NetworkBehaviour
         RpcPing();
     }
 
-    //[Command]
-    //public void CmdFireBullet()
-    //{
-    //    GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-    //    tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
-    //    NetworkServer.Spawn(tmpBullet);
-    //}
+    [Command]
+    public void CmdFireBullet()
+    {
+        GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+        NetworkServer.Spawn(tmpBullet);
+    }
 
     [ClientRpc]
     public void RpcPing()
@@ -82,7 +82,7 @@ public class PlayerController : NetworkBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)) {
-            //CmdFireBullet();
+            CmdFireBullet();
         }
 
 
