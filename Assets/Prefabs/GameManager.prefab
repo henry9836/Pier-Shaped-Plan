@@ -77,3 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7962cced521d7646aab3565ee701d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberoftasks: 3
+  TaskStates: []
+  ExcludedTasks: 

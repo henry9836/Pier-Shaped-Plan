@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class TaskLog : NetworkBehaviour
 {
-    public int numberoftasks = 5;
+    public int numberoftasks = 3;
 
     public enum TASKS
     {
@@ -21,9 +21,9 @@ public class TaskLog : NetworkBehaviour
     [System.Serializable]
     public struct TaskState
     {
-        public int id; //enum
+        public TASKS id; //enum
         public bool completed;
-        public TaskState(int id, bool completed)
+        public TaskState(TASKS id, bool completed)
         {
             this.id = id;
             this.completed = completed;
@@ -33,10 +33,20 @@ public class TaskLog : NetworkBehaviour
     public List<TaskState> TaskStates = new List<TaskState>();
     public List<int> ExcludedTasks = new List<int>();
 
+    [Command]
+    public void CmdCompletedTask(TASKS _id)
+    {
+        for (int i = 0; i < TaskStates.Count; i++)
+        {
+            if (TaskStates[i].id == _id)
+            {
+                TaskStates.RemoveAt(i);
+                TaskStates.Add(new TaskState(_id, true));
+            }
+        }
+        Debug.Log("Changed a value");
+    }
 
-
-
-    
     [Command]
     public void CmdTestPing()
     {
@@ -50,12 +60,12 @@ public class TaskLog : NetworkBehaviour
             return;
         }
 
-        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length - numberoftasks; i++)
+        for (int i = 0; i < (System.Enum.GetValues(typeof(TASKS)).Length - 1) - numberoftasks; i++)
         {
             bool added = true;
             while (added == true)
             {
-                int rand = Random.Range(0, System.Enum.GetValues(typeof(TASKS)).Length);
+                int rand = Random.Range(0, System.Enum.GetValues(typeof(TASKS)).Length - 1);
                 for (int j = 0; j < ExcludedTasks.Count; j++)
                 {
                     if (rand == ExcludedTasks[j])
@@ -71,7 +81,7 @@ public class TaskLog : NetworkBehaviour
 
         }
 
-        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length; i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length - 1; i++)
         {
             bool Exculded = false;
             for (int j = 0; j < ExcludedTasks.Count; j++)
@@ -83,7 +93,7 @@ public class TaskLog : NetworkBehaviour
             }
             if (Exculded == false)
             {
-                TaskStates.Add(new TaskState(i, false));
+                TaskStates.Add(new TaskState((TASKS)i, false));
             }
         }
     }

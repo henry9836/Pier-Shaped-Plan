@@ -93,7 +93,7 @@ public class PlayerController : NetworkBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject.Find("GameManger").GetComponent<TaskLog>().CmdTestPing();
+            GameObject.Find("GameManager").GetComponent<TaskLog>().CmdCompletedTask(0);
         }
 
         if (Input.GetMouseButtonDown(0)) {
