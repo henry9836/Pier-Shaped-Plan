@@ -8,9 +8,11 @@ public class PlayerController : NetworkBehaviour
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
 
+    private Transform moveReference;
+
     public GameObject camPrefab;
     public GameObject bullet;
-    public Transform camRoot;
+    //public Transform camRoot;
 
     [Command]
     public void CmdPing()
@@ -42,9 +44,12 @@ public class PlayerController : NetworkBehaviour
 
         //Spawn camera
         GameObject camRefer = Instantiate(camPrefab, transform.position, Quaternion.identity);
-        camRefer.transform.parent = camRoot;
+        //camRefer.transform.parent = camRoot;
+        camRefer.GetComponent<PlayerCamera>().cameraTarget = this.transform;
         camRefer.transform.localPosition = Vector3.zero;
         camRefer.transform.localRotation = Quaternion.identity;
+
+        moveReference = camRefer.transform;
     }
 
     // Update is called once per frame
@@ -60,20 +65,26 @@ public class PlayerController : NetworkBehaviour
         //Movement
 
         Vector3 moveDir = Vector3.zero;
+        Vector3 moveCamRelative = moveReference.transform.rotation.eulerAngles;
 
         if (Input.GetAxis("Horizontal") != 0)
         {
-            moveDir += (transform.right * Input.GetAxis("Horizontal"));
+            moveDir += (moveReference.transform.right * Input.GetAxis("Horizontal"));
         }
 
         if (Input.GetAxis("Vertical") != 0)
         {
-            moveDir += (transform.forward * Input.GetAxis("Vertical"));
+            moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
         }
 
-        if (GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
+        if (moveDir != Vector3.zero)
         {
-            GetComponent<Rigidbody>().AddForce(moveDir.normalized * speed);
+            transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
+
+            if (GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
+            {
+                GetComponent<Rigidbody>().AddForce(transform.forward * speed * Time.deltaTime);
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
