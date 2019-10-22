@@ -313,7 +313,7 @@ MonoBehaviour:
   priority: -1
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 0904b06389a0ca142ae72fe1effad808, type: 2}
+  sharedProfile: {fileID: 11400000, guid: f135f62d7311d7f489a030a22e758229, type: 2}
 --- !u!4 &341813978
 Transform:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 2
+  antialiasing: 3
   SMAAQuality: 2
   dithering: 1
   stopNaNs: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 966865089}
   - component: {fileID: 966865088}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
