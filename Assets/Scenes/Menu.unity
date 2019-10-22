@@ -375,7 +375,9 @@ PrefabInstance:
       propertyPath: m_OfflineScene
       value: Menu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8372027796124000760, guid: 9b2ddaed8bedb3a43b691e1c346b40b2, type: 3}
+    - {fileID: -5043630851724864534, guid: 9b2ddaed8bedb3a43b691e1c346b40b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b2ddaed8bedb3a43b691e1c346b40b2, type: 3}
 --- !u!1 &517386601
 GameObject:

@@ -9,7 +9,29 @@ public class PlayerController : NetworkBehaviour
     public float maxSpeed = 10.0f;
 
     public GameObject camPrefab;
+    public GameObject bullet;
     public Transform camRoot;
+
+    [Command]
+    public void CmdPing()
+    {
+        Debug.Log("SERVER PING");
+        RpcPing();
+    }
+
+    //[Command]
+    //public void CmdFireBullet()
+    //{
+    //    GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+    //    tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+    //    NetworkServer.Spawn(tmpBullet);
+    //}
+
+    [ClientRpc]
+    public void RpcPing()
+    {
+        Debug.Log("CLIENT PING");
+    }
 
     private void Start()
     {
@@ -54,5 +76,18 @@ public class PlayerController : NetworkBehaviour
             GetComponent<Rigidbody>().AddForce(moveDir.normalized * speed);
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CmdPing();
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            //CmdFireBullet();
+        }
+
+
     }
+
+
+
 }
