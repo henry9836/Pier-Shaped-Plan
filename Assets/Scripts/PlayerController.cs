@@ -18,8 +18,10 @@ public class PlayerController : NetworkBehaviour
 
     private Transform moveReference;
     private GameObject playerCanvasReference;
+    [SyncVar]
     private bool gameStarted;
-
+    [SyncVar]
+    private bool canEscape;
     //public Transform camRoot;
 
     [Command]
@@ -33,12 +35,35 @@ public class PlayerController : NetworkBehaviour
     [ClientRpc]
     public void RpcSetHitman()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         amHitman = true;
+    }
+
+    [ClientRpc]
+    public void RpcCanEscape()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+        canEscape = true;
     }
 
     [ClientRpc]
     public void RpcUpdatePlayerNumUI(int playerCount)
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+        if (playerCanvasReference == null)
+        {
+            playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
+            playerCanvasReference.transform.GetChild(0).gameObject.SetActive(true);
+        }
         playerCanvasReference.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Text>().text = "WAITING FOR PLAYERS\n" + playerCount + " CONNECTED";
     }
 
@@ -66,7 +91,7 @@ public class PlayerController : NetworkBehaviour
         }
 
         gameStarted = false;
-
+        canEscape = false;
         //Spawn camera
         GameObject camRefer = Instantiate(camPrefab, transform.position, Quaternion.identity);
         camRefer.GetComponent<PlayerCamera>().cameraTarget = this.transform;

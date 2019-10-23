@@ -78,3 +78,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitmanReference: {fileID: 0}
+  lobbyThreshold: 2
+  gameover: 0
+  amountOfTasks: 5
+  completedTasks: 0
+  hitmanSelected: 0
+  gameStarted: 0
+  canEscape: 0

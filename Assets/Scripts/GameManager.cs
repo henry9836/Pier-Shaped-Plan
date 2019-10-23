@@ -16,6 +16,7 @@ public class GameManager : NetworkBehaviour
     public int completedTasks = 0;
     public bool hitmanSelected = false;
     public bool gameStarted = false;
+    public bool canEscape = false;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class GameManager : NetworkBehaviour
         hitmanSelected = false;
         gameStarted = false;
         gameover = false;
+        canEscape = false;
     }
 
     void SelectHitman()
@@ -63,6 +65,24 @@ public class GameManager : NetworkBehaviour
         if (!hitmanSelected && lobbyThreshold <= GameObject.FindGameObjectsWithTag("Player").Length)
         {
             SelectHitman();
+        }
+
+        //Game is running
+        else if (gameStarted)
+        {
+
+            Debug.Log((completedTasks / amountOfTasks) * 100);
+
+            //if we have enough tasks to escape
+            if (((completedTasks/amountOfTasks) * 100) >= 60)
+            {
+                canEscape = true;
+                //Update Player Escape States
+                for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+                {
+                    GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().RpcCanEscape();
+                }
+            }
         }
 
         //Game is not ready and has not started
