@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6152035136393145258}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1500
   maxSpeed: 10
+  amHitman: 0
   camPrefab: {fileID: 8867953112220475306, guid: b3fea41f94d0cb842b016599a4a4053a,
+    type: 3}
+  playerCanvas: {fileID: 6551497397439358893, guid: c043d84bf27c0a043a95a2ab6c0df430,
     type: 3}
   bullet: {fileID: 3284433405961617179, guid: 37936eb40a2d1ef49b08facf2e09e95b, type: 3}
 --- !u!136 &58066670537583972
@@ -213,7 +216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberoftasks: 3
-  TaskStates: []
   ExcludedTasks: 
 --- !u!1001 &4379499778778904397
 PrefabInstance:
@@ -222,11 +224,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
-        type: 3}
-      propertyPath: m_Name
-      value: Temporary Character test
-      objectReference: {fileID: 0}
     - target: {fileID: 1035047793798792796, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -296,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 14.635118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
+        type: 3}
+      propertyPath: m_Name
+      value: Temporary Character test
       objectReference: {fileID: 0}
     - target: {fileID: 6986010883980329503, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}

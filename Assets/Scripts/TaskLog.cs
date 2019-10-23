@@ -35,6 +35,7 @@ public class TaskLog : NetworkBehaviour
 
     public List<int> ExcludedTasks = new List<int>();
 
+    //When we complete a task
     [Command]
     public void CmdCompletedTask(TASKS _id)
     {
@@ -53,6 +54,10 @@ public class TaskLog : NetworkBehaviour
             log += " " + TaskStates[i].id + ":" + TaskStates[i].completed + " | ";
         }
         Debug.LogError(log);
+
+        //Update the gamemanger since we are server here
+        GameObject.Find("GameManager").GetComponent<GameManager>().completedTasks++;
+        
         RpcEcho();
     }
 
