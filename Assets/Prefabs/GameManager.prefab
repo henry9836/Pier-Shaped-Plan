@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 415940124687329021}
   - component: {fileID: 415940124687329022}
-  - component: {fileID: 415940124687329023}
+  - component: {fileID: 868872681954177590}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -63,9 +63,9 @@ MonoBehaviour:
     i13: 0
     i14: 0
     i15: 0
-  m_ServerOnly: 0
+  m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
---- !u!114 &415940124687329023
+--- !u!114 &868872681954177590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,9 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 415940124687329016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7962cced521d7646aab3565ee701d80, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b875e3e1ed58f54b9242f4b40cf8cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberoftasks: 2
-  TaskStates: []
-  ExcludedTasks: 
+  hitmanReference: {fileID: 0}

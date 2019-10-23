@@ -7,6 +7,8 @@ public class PlayerController : NetworkBehaviour
 
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
+    public bool amHitman = false;
+
 
     private Transform moveReference;
 
