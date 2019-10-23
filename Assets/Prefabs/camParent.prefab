@@ -185,6 +185,39 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  pitchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.00642254
+      value: 0.0023422241
+      inSlope: 5.6654873
+      outSlope: 5.6654873
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.070525505
+    - serializedVersion: 3
+      time: 0.49325815
+      value: 0.99791896
+      inSlope: -0.00041405417
+      outSlope: -0.00041405417
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1.0021324
+      value: 0.0046691895
+      inSlope: -6.1510434
+      outSlope: -6.1510434
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.042894192
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   maxDistance: 6
   maxPitchDown: 60
   maxPitchUp: 50
