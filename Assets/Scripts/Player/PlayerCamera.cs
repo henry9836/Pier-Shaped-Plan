@@ -8,8 +8,8 @@ public class PlayerCamera : MonoBehaviour {
     public Transform cameraTarget;
     [SerializeField] private float lerpSpeed = 12f;
 
-    [SerializeField] private string mouseXInputName, mouseYInputName;
-    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private string mouseXInputName = "Mouse X", mouseYInputName = "Mouse Y";
+    [SerializeField] private float mouseSensitivity = 180f;
     [SerializeField] private GameObject camPivot;
     [SerializeField] private GameObject camRoot;
 
@@ -21,19 +21,14 @@ public class PlayerCamera : MonoBehaviour {
     private float xAxisClamp;
 
     [SerializeField] LayerMask obstacleLayers;
-    private float distOffset;
-    private bool cameraIsColliding;
-    private bool playerBlocked;
+    private CameraCollision camCollision;
+
 
     private void Awake()
     {
         LockCursor();
         xAxisClamp = 0;
-    }
-
-    void Start()
-    {
-
+        camCollision = camRoot.GetComponent<CameraCollision>();
     }
 
     private void LockCursor()
@@ -52,15 +47,13 @@ public class PlayerCamera : MonoBehaviour {
         // Update camera distance
         if (camRoot != null)
         {
-            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -maxDistance * distCurve.Evaluate(pitchValue));
-
+            float zOffset = -maxDistance * distCurve.Evaluate(pitchValue) + camCollision.distOffset;
+            //zOffset = Mathf.Clamp(zOffset, 0.5f, maxDistance);
+            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, zOffset);
         }
 
         // Update camera rotation
         CameraRotation();
-
-        // Check camera for obstacles
-        ObstacleCheck();
     }
 
     private void FixedUpdate()
@@ -106,10 +99,6 @@ public class PlayerCamera : MonoBehaviour {
         camPivot.transform.eulerAngles = eulerRotation;
     }
 
-    private void ObstacleCheck()
-    {
-
-    }
 
     public void Shake()
     {
