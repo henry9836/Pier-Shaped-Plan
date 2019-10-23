@@ -80,7 +80,32 @@ MonoBehaviour:
   mouseSensitivity: 180
   YRotRef: {fileID: 4441205598404866747}
   camRoot: {fileID: 2356964734683165318}
-  maxDistance: 6
+  distCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  verticalRotationValue: 0
+  maxDistance: 5
   maxVerticalRotation: 60
   minVerticalRotation: 50
 --- !u!1 &8867953112220475306
@@ -128,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 0}
+  positionOffset: {x: 0, y: 0, z: 0}
   lerpSpeed: 12
 --- !u!1001 &1092061396137615794
 PrefabInstance:
@@ -136,11 +162,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9171845417845806162}
     m_Modifications:
-    - target: {fileID: 7438591813181372141, guid: 4dceb38ff08ad62449058fc4ae6a7c96,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
     - target: {fileID: 7438591813181372129, guid: 4dceb38ff08ad62449058fc4ae6a7c96,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -195,6 +216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438591813181372141, guid: 4dceb38ff08ad62449058fc4ae6a7c96,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dceb38ff08ad62449058fc4ae6a7c96, type: 3}
