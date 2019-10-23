@@ -79,6 +79,10 @@ MonoBehaviour:
   mouseYInputName: Mouse Y
   mouseSensitivity: 180
   YRotRef: {fileID: 4441205598404866747}
+  camRoot: {fileID: 2356964734683165318}
+  maxDistance: 6
+  maxVerticalRotation: 60
+  minVerticalRotation: 50
 --- !u!1 &8867953112220475306
 GameObject:
   m_ObjectHideFlags: 0

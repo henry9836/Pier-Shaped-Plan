@@ -16,6 +16,10 @@ public class PlayerCamera : MonoBehaviour {
 	void Update () 
     {
         //Vector3 a = cameraPivot.position;
+	}
+
+    private void FixedUpdate()
+    {
         if (cameraTarget != null)
         {
             Vector3 b = cameraTarget.position;
@@ -23,7 +27,8 @@ public class PlayerCamera : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, b, lerpSpeed * Time.smoothDeltaTime);
             //transform.DOLookAt(b, 1f, AxisConstraint.None, Vector3.up);
         }
-	}
+        
+    }
 
     public void Shake()
     {
