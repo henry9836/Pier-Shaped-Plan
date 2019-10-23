@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9171845417845806162}
+  - component: {fileID: 2741642809651476535}
   m_Layer: 0
   m_Name: camRoot
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 4587335789096729311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2741642809651476535
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356964734683165318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4529812465739953319
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +54,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587335789096729311}
-  - component: {fileID: 7672921582174729941}
   m_Layer: 0
   m_Name: camPivot
   m_TagString: Untagged
@@ -63,55 +76,6 @@ Transform:
   m_Father: {fileID: 4441205598404866747}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7672921582174729941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529812465739953319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b05a48e5e124e34c9cf7ee2c96c9c42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseXInputName: Mouse X
-  mouseYInputName: Mouse Y
-  mouseSensitivity: 180
-  YRotRef: {fileID: 4441205598404866747}
-  camRoot: {fileID: 2356964734683165318}
-  distCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pitchValue: 0
-  pitchValueAdj: 0
-  maxDistance: 5
-  maxPitchDown: 60
-  maxPitchUp: 50
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!1 &8867953112220475306
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +122,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 0}
   lerpSpeed: 12
+  mouseXInputName: Mouse X
+  mouseYInputName: Mouse Y
+  mouseSensitivity: 180
+  camPivot: {fileID: 4529812465739953319}
+  camRoot: {fileID: 2356964734683165318}
+  distCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxDistance: 6
+  maxPitchDown: 60
+  maxPitchUp: 50
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1001 &1092061396137615794
 PrefabInstance:
   m_ObjectHideFlags: 0
