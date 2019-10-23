@@ -14,11 +14,13 @@ public class PlayerCamera : MonoBehaviour {
     [SerializeField] private GameObject camRoot;
 
     public AnimationCurve distCurve;
+    public AnimationCurve pitchCurve;
     private float pitchValue, pitchValueAdj;
+    private Vector3 pitchLerpTarget;
     public float maxDistance = 6f;
     public float maxPitchDown = 60f;
     public float maxPitchUp = 50f;
-    private float xAxisClamp;
+    private float xAxisRot;
 
     [SerializeField] LayerMask obstacleLayers;
     private CameraCollision camCollision;
@@ -27,7 +29,7 @@ public class PlayerCamera : MonoBehaviour {
     private void Awake()
     {
         LockCursor();
-        xAxisClamp = 0;
+        xAxisRot = 0;
         camCollision = camRoot.GetComponent<CameraCollision>();
     }
 
@@ -73,21 +75,22 @@ public class PlayerCamera : MonoBehaviour {
         float mouseY = Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.deltaTime;
 
         // Clamp vertical rotation
-        xAxisClamp += mouseY;
+        xAxisRot += mouseY;
+        //xAxisRot = Mathf.LerpAngle(xAxisRot, xAxisRot + mouseY, Time.deltaTime);
 
-        if (xAxisClamp > maxPitchUp)
+        if (xAxisRot > maxPitchUp)
         {
-            xAxisClamp = maxPitchUp;
+            xAxisRot = Mathf.LerpAngle(xAxisRot, maxPitchUp, Time.deltaTime * 12f);
             mouseY = 0f;
             ClampXaxisRotationToValue(360f - maxPitchUp);
         }
-        else if (xAxisClamp < -maxPitchDown)
+        else if (xAxisRot < -maxPitchDown)
         {
-            xAxisClamp = -maxPitchDown;
+            xAxisRot = Mathf.LerpAngle(xAxisRot, -maxPitchDown, Time.deltaTime * 12f);
             mouseY = 0f;
             ClampXaxisRotationToValue(maxPitchDown);
         }
-
+        
         camPivot.transform.Rotate(Vector3.left * mouseY);
         transform.Rotate(Vector3.up * mouseX);
     }
@@ -95,7 +98,7 @@ public class PlayerCamera : MonoBehaviour {
     private void ClampXaxisRotationToValue(float value)
     {
         Vector3 eulerRotation = camPivot.transform.eulerAngles;
-        eulerRotation.x = value;
+        eulerRotation.x = Mathf.Lerp(eulerRotation.x, value, Time.deltaTime * 12f);
         camPivot.transform.eulerAngles = eulerRotation;
     }
 
