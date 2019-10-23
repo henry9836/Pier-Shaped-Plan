@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4248256390841951920}
   - component: {fileID: 4138909129826067081}
   - component: {fileID: 58066670537583972}
+  - component: {fileID: -7427282400714071719}
+  - component: {fileID: 6152035136393145258}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,6 +188,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7427282400714071719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac7449dba736c44c8d84b3dd41752b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6152035136393145258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7962cced521d7646aab3565ee701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberoftasks: 3
+  TaskStates: []
+  ExcludedTasks: 
 --- !u!1001 &4379499778778904397
 PrefabInstance:
   m_ObjectHideFlags: 0
