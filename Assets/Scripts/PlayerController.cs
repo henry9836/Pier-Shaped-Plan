@@ -15,24 +15,11 @@ public class PlayerController : NetworkBehaviour
     //public Transform camRoot;
 
     [Command]
-    public void CmdPing()
-    {
-        Debug.Log("SERVER PING");
-        RpcPing();
-    }
-
-    [Command]
     public void CmdFireBullet()
     {
         GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
         NetworkServer.Spawn(tmpBullet);
-    }
-
-    [ClientRpc]
-    public void RpcPing()
-    {
-        Debug.Log("CLIENT PING");
     }
 
     private void Start()
@@ -91,10 +78,12 @@ public class PlayerController : NetworkBehaviour
         Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
         Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject.Find("GameManager").GetComponent<TaskLog>().CmdCompletedTask(0);
+            //Debugging
+            GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
         }
+
 
         if (Input.GetMouseButtonDown(0)) {
             CmdFireBullet();

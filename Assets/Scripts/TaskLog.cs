@@ -29,8 +29,10 @@ public class TaskLog : NetworkBehaviour
             this.completed = completed;
         }
     }
+    public class TaskStatesClass : SyncListStruct<TaskState> { }
+    TaskStatesClass TaskStates = new TaskStatesClass();
 
-    public List<TaskState> TaskStates = new List<TaskState>();
+
     public List<int> ExcludedTasks = new List<int>();
 
     [Command]
@@ -45,13 +47,26 @@ public class TaskLog : NetworkBehaviour
             }
         }
         Debug.Log("Changed a value");
+        string log = "SERVER Values: ";
+        for (int i = 0; i < TaskStates.Count; i++)
+        {
+            log += " " + TaskStates[i].id + ":" + TaskStates[i].completed + " | ";
+        }
+        Debug.LogError(log);
+        RpcEcho();
     }
 
-    [Command]
-    public void CmdTestPing()
+    [ClientRpc]
+    public void RpcEcho()
     {
-        Debug.Log("Pong");
+        string log = "CLIENT Values: ";
+        for (int i = 0; i < TaskStates.Count; i++)
+        {
+            log += " " + TaskStates[i].id + ":" + TaskStates[i].completed + " | ";
+        }
+        Debug.LogError(log);
     }
+
 
     void Start()
     {
@@ -103,31 +118,6 @@ public class TaskLog : NetworkBehaviour
                 TaskStates.Add(new TaskState((TASKS)i, false));
             }
         }
-
-
-
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    Debug.Log("run x3"); //correct
-        //    bool added = true;
-        //    while (added == true)
-        //    {
-        //        int rand = Random.Range(0, 5);
-        //        for (int j = 0; j < ExcludedTasks.Count; j++)
-        //        {
-        //            if (rand == ExcludedTasks[j])
-        //            {
-        //                added = false;
-        //            }
-        //        }
-
-        //        if (added == true)
-        //        {
-        //            Debug.Log("added rand x4"); // not correct should be x3
-        //        }
-        //    }
-        //}
-
 
     }
 
