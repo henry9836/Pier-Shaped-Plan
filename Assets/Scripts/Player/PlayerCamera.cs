@@ -22,9 +22,6 @@ public class PlayerCamera : MonoBehaviour {
 
     [SerializeField] LayerMask obstacleLayers;
     private CameraCollision camCollision;
-    private float distOffset;
-    private int maxWhileIter = 128;
-    private int curWhileIter = 0;
 
 
     private void Awake()
@@ -50,16 +47,13 @@ public class PlayerCamera : MonoBehaviour {
         // Update camera distance
         if (camRoot != null)
         {
-            float zOffset = -maxDistance * distCurve.Evaluate(pitchValue) + distOffset;
+            float zOffset = -maxDistance * distCurve.Evaluate(pitchValue) + camCollision.distOffset;
             //zOffset = Mathf.Clamp(zOffset, 0.5f, maxDistance);
             camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, zOffset);
         }
 
         // Update camera rotation
         CameraRotation();
-
-        // Check camera for obstacles
-        ObstacleCheck();
     }
 
     private void FixedUpdate()
@@ -105,26 +99,6 @@ public class PlayerCamera : MonoBehaviour {
         camPivot.transform.eulerAngles = eulerRotation;
     }
 
-    private void ObstacleCheck()
-    {
-        if (camCollision.playerBlocked || camCollision.isColliding)
-        {
-            while ((camCollision.playerBlocked || camCollision.isColliding) && curWhileIter < maxWhileIter)
-            {
-                distOffset += Time.deltaTime;
-                curWhileIter += 1;
-            }
-        }
-        else if (camCollision.timeUnblocked > 0.1f)
-        {
-            distOffset = 0f;
-            if (curWhileIter > 0)
-            {
-                Debug.Log(curWhileIter + " Loops");
-                curWhileIter = 0;
-            }
-        }
-    }
 
     public void Shake()
     {
