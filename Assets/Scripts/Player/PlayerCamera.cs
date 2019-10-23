@@ -8,8 +8,8 @@ public class PlayerCamera : MonoBehaviour {
     public Transform cameraTarget;
     [SerializeField] private float lerpSpeed = 12f;
 
-    [SerializeField] private string mouseXInputName, mouseYInputName;
-    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private string mouseXInputName = "Mouse X", mouseYInputName = "Mouse Y";
+    [SerializeField] private float mouseSensitivity = 180f;
     [SerializeField] private GameObject camPivot;
     [SerializeField] private GameObject camRoot;
 
@@ -21,19 +21,17 @@ public class PlayerCamera : MonoBehaviour {
     private float xAxisClamp;
 
     [SerializeField] LayerMask obstacleLayers;
+    private CameraCollision camCollision;
     private float distOffset;
-    private bool cameraIsColliding;
-    private bool playerBlocked;
+    private int maxWhileIter = 128;
+    private int curWhileIter = 0;
+
 
     private void Awake()
     {
         LockCursor();
         xAxisClamp = 0;
-    }
-
-    void Start()
-    {
-
+        camCollision = camRoot.GetComponent<CameraCollision>();
     }
 
     private void LockCursor()
@@ -52,8 +50,9 @@ public class PlayerCamera : MonoBehaviour {
         // Update camera distance
         if (camRoot != null)
         {
-            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -maxDistance * distCurve.Evaluate(pitchValue));
-
+            float zOffset = -maxDistance * distCurve.Evaluate(pitchValue) + distOffset;
+            //zOffset = Mathf.Clamp(zOffset, 0.5f, maxDistance);
+            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, zOffset);
         }
 
         // Update camera rotation
@@ -108,7 +107,23 @@ public class PlayerCamera : MonoBehaviour {
 
     private void ObstacleCheck()
     {
-
+        if (camCollision.playerBlocked || camCollision.isColliding)
+        {
+            while ((camCollision.playerBlocked || camCollision.isColliding) && curWhileIter < maxWhileIter)
+            {
+                distOffset += Time.deltaTime;
+                curWhileIter += 1;
+            }
+        }
+        else if (camCollision.timeUnblocked > 0.1f)
+        {
+            distOffset = 0f;
+            if (curWhileIter > 0)
+            {
+                Debug.Log(curWhileIter + " Loops");
+                curWhileIter = 0;
+            }
+        }
     }
 
     public void Shake()
