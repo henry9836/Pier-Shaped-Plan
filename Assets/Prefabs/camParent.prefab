@@ -155,24 +155,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 0}
-  lerpSpeed: 12
   mouseXInputName: Mouse X
   mouseYInputName: Mouse Y
   mouseSensitivity: 180
-  camPivot: {fileID: 4529812465739953319}
-  camRoot: {fileID: 2356964734683165318}
+  lerpSpeed: 12
   distCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.6569158
+      outSlope: 0.6569158
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.083451204
     - serializedVersion: 3
       time: 1
       value: 1
@@ -185,42 +183,44 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  pitchCurve:
+  FOVCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.00642254
-      value: 0.0023422241
-      inSlope: 5.6654873
-      outSlope: 5.6654873
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.070525505
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.49325815
-      value: 0.99791896
-      inSlope: -0.00041405417
-      outSlope: -0.00041405417
+      time: 0.6786209
+      value: 0.31973085
+      inSlope: 1.2271149
+      outSlope: 1.2271149
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0021324
-      value: 0.0046691895
-      inSlope: -6.1510434
-      outSlope: -6.1510434
+      time: 1
+      value: 1
+      inSlope: 2.96351
+      outSlope: 2.96351
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042894192
+      inWeight: 0.10122561
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxDistance: 6
+  maxDistance: 5
   maxPitchDown: 60
   maxPitchUp: 50
+  minFOV: 60
+  maxFOV: 75
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 1
