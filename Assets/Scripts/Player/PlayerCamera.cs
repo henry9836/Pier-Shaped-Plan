@@ -6,7 +6,6 @@ using DG.Tweening;
 public class PlayerCamera : MonoBehaviour {
 
     public Transform cameraTarget;
-    public Vector3 positionOffset;
     [SerializeField] private float lerpSpeed = 12f;
 
     void Start () 

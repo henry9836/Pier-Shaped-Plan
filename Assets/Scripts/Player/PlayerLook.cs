@@ -10,12 +10,15 @@ public class PlayerLook : MonoBehaviour {
     [SerializeField] private GameObject camRoot;
 
     public AnimationCurve distCurve;
-    public float pitchValue;
-    public float pitchValueAdj;
+    private float pitchValue, pitchValueAdj;
     public float maxDistance = 6f;
     public float maxPitchDown = 60f;
     public float maxPitchUp = 50f;
     private float xAxisClamp;
+
+    [SerializeField] LayerMask obstacleLayers;
+    private bool cameraIsColliding;
+    private bool playerBlocked;
 
     private void Awake()
     {
@@ -51,6 +54,9 @@ public class PlayerLook : MonoBehaviour {
 
         // Update camera rotation
         CameraRotation();
+
+        // Check camera for obstacles
+        ObstacleCheck();
 	}
 
     private void CameraRotation()
@@ -84,5 +90,10 @@ public class PlayerLook : MonoBehaviour {
         Vector3 eulerRotation = transform.eulerAngles;
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
+    }
+
+    private void ObstacleCheck()
+    {
+
     }
 }

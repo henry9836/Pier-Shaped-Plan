@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2356964734683165318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -6}
+  m_LocalPosition: {x: 0.8, y: 1, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7502126004802869075}
@@ -104,10 +104,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  verticalRotationValue: 0
+  pitchValue: 0
+  pitchValueAdj: 0
   maxDistance: 5
-  maxVerticalRotation: 60
-  minVerticalRotation: 50
+  maxPitchDown: 60
+  maxPitchUp: 50
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &8867953112220475306
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 0}
-  positionOffset: {x: 0, y: 0, z: 0}
   lerpSpeed: 12
 --- !u!1001 &1092061396137615794
 PrefabInstance:
