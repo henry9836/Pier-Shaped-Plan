@@ -9,8 +9,13 @@ public class GameManager : NetworkBehaviour
 
     public GameObject hitmanReference;
     public int lobbyThreshold = 2;
+    public bool gameover = false;
 
-    private bool hitmanSelected = false;
+    //private these
+    public int amountOfTasks = 5;
+    public int completedTasks = 0;
+    public bool hitmanSelected = false;
+    public bool gameStarted = false;
 
     private void Start()
     {
@@ -19,16 +24,31 @@ public class GameManager : NetworkBehaviour
             Debug.LogError("SERVER SCRIPT [GameManager] RUN ON NON SERVER OBJECT");
             return;
         }
+        InitGame();
+    }
 
+    void InitGame()
+    {
         hitmanSelected = false;
-
+        gameStarted = false;
+        gameover = false;
     }
 
     void SelectHitman()
     {
+        //Get a random player
         hitmanReference = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
-
+        //Set random as hitman
+        hitmanReference.GetComponent<PlayerController>().RpcSetHitman();
         hitmanSelected = true;
+
+        //Unblind players
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().RpcUnblind();
+        }
+
+        gameStarted = true;
     }
 
     private void FixedUpdate()
@@ -39,11 +59,21 @@ public class GameManager : NetworkBehaviour
             return;
         }
         
+        //If we have not selected our hitman and the game has enough players then select the hitman
         if (!hitmanSelected && lobbyThreshold <= GameObject.FindGameObjectsWithTag("Player").Length)
         {
             SelectHitman();
         }
 
+        //Game is not ready and has not started
+        else if (!gameStarted)
+        {
+            //Update Player Count
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().RpcUpdatePlayerNumUI(GameObject.FindGameObjectsWithTag("Player").Length);
+            }
+        }
     }
 
 }

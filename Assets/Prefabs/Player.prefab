@@ -174,6 +174,8 @@ MonoBehaviour:
   amHitman: 0
   camPrefab: {fileID: 8867953112220475306, guid: b3fea41f94d0cb842b016599a4a4053a,
     type: 3}
+  playerCanvas: {fileID: 6551497397439358893, guid: c043d84bf27c0a043a95a2ab6c0df430,
+    type: 3}
   bullet: {fileID: 3284433405961617179, guid: 37936eb40a2d1ef49b08facf2e09e95b, type: 3}
 --- !u!136 &58066670537583972
 CapsuleCollider:
