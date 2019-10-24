@@ -39,9 +39,6 @@ public class PlayerCamera : MonoBehaviour
 
     void Update () 
     {
-        // Update camera FOV
-        mainCam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1 - pitchValueAdj));
-
         // Update camera rotation
         CameraRotation();
 
@@ -53,6 +50,9 @@ public class PlayerCamera : MonoBehaviour
         pitchValue = Mathf.DeltaAngle(eRot.x, 270f) / -180f;
         pitchValueAdj = Mathf.DeltaAngle(eRot.x, 360f - maxPitchUp) / -(maxPitchUp + maxPitchDown);
         pitchValue = Mathf.Clamp(pitchValue, 0.0f, 1.0f);
+
+        // Update camera FOV
+        mainCam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1 - pitchValueAdj));
 
         // Update camera distance
         if (camRoot != null)
@@ -79,7 +79,6 @@ public class PlayerCamera : MonoBehaviour
 
         // Clamp and smooth vertical rotation
         xAxisRot += mouseY;
-        xAxisRot = Mathf.LerpAngle(xAxisRot, xAxisRot + mouseY, Time.smoothDeltaTime * lerpSpeed);
 
         if (xAxisRot > maxPitchUp)
         {
