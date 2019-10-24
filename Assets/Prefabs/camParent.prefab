@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2356964734683165318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 1, z: -6}
+  m_LocalPosition: {x: 0.8, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7502126004802869075}
@@ -187,29 +187,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.41309503
+      outSlope: 0.41309503
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.09469685
     - serializedVersion: 3
-      time: 0.6786209
-      value: 0.31973085
-      inSlope: 1.2271149
-      outSlope: 1.2271149
+      time: 0.8285725
+      value: 0.56360537
+      inSlope: 1.3965292
+      outSlope: 1.3965292
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.049949046
+      outWeight: 0.38288367
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2.96351
-      outSlope: 2.96351
+      inSlope: 3.401961
+      outSlope: 3.401961
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.10122561
+      inWeight: 0.1743274
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -217,11 +217,13 @@ MonoBehaviour:
   maxDistance: 5
   maxPitchDown: 60
   maxPitchUp: 50
-  minFOV: 60
+  minFOV: 55
   maxFOV: 75
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 1
+  aimFOV: 55
+  aimDistance: 3
 --- !u!1001 &1092061396137615794
 PrefabInstance:
   m_ObjectHideFlags: 0
