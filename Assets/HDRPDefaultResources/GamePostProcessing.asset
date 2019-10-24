@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.33
     min: 0
     max: 1
   response:
@@ -30,6 +30,30 @@ MonoBehaviour:
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+--- !u!114 &-1523067755585496819
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51a78e223a2e504bb88a059b55229ea, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  temperature:
+    m_OverrideState: 1
+    m_Value: 8
+    min: -100
+    max: 100
+  tint:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -100
+    max: 100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,12 +68,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 2926520594555130314}
+  - {fileID: 6185953691703552876}
   - {fileID: 4291193248687608038}
+  - {fileID: 3573593482924043699}
+  - {fileID: 5624690095619977067}
   - {fileID: 1591912495330335307}
   - {fileID: 8368983091028154840}
   - {fileID: -7769356861912008253}
-  - {fileID: 5624690095619977067}
-  - {fileID: 6185953691703552876}
+  - {fileID: -1523067755585496819}
 --- !u!114 &1591912495330335307
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -78,7 +104,7 @@ MonoBehaviour:
     m_Value: 0
   compensation:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0
   limitMin:
     m_OverrideState: 0
     m_Value: -10
@@ -167,6 +193,33 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
     min: 0.001
+--- !u!114 &3573593482924043699
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  spectralLut:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.2
+    min: 0
+    max: 1
+  maxSamples:
+    m_OverrideState: 1
+    m_Value: 16
+    min: 3
+    max: 24
 --- !u!114 &4291193248687608038
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -187,12 +240,12 @@ MonoBehaviour:
     min: 0
     max: 1
   scatter:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.7
     min: 0
     max: 1
   tint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
@@ -270,7 +323,7 @@ MonoBehaviour:
   m_AdvancedMode: 1
   sampleCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 32
     min: 2
   intensity:
     m_OverrideState: 1
@@ -287,12 +340,12 @@ MonoBehaviour:
     min: 0
     max: 64
   cameraRotationVelocityClamp:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.03
     min: 0
     max: 0.2
   depthComparisonExtent:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0
     max: 20
