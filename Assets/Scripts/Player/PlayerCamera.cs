@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PlayerCamera : MonoBehaviour {
+public class PlayerCamera : MonoBehaviour 
+{
 
     public Transform cameraTarget;
     private GameObject camPivot;
@@ -14,7 +15,6 @@ public class PlayerCamera : MonoBehaviour {
     [SerializeField] private float mouseSensitivity = 180f;
 
     [SerializeField] private float lerpSpeed = 12f;
-    private float zPosLerp;
     public AnimationCurve distCurve;
     public AnimationCurve FOVCurve;
     private float pitchValue, pitchValueAdj, zOffset, hitDistance;
@@ -28,11 +28,9 @@ public class PlayerCamera : MonoBehaviour {
     [SerializeField] LayerMask obstacleLayers;
     private CameraCollision camCollision;
 
-
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        xAxisRot = 0;
         camPivot = transform.GetChild(0).gameObject;
         camRoot = transform.GetChild(0).GetChild(0).gameObject;
         mainCam = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Camera>();
@@ -41,6 +39,15 @@ public class PlayerCamera : MonoBehaviour {
 
     void Update () 
     {
+        // Update camera FOV
+        mainCam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1 - pitchValueAdj));
+
+        // Update camera rotation
+        CameraRotation();
+
+        // Maintain line of sight with centre point next to player
+        ObstacleCheck();
+
         // Calculate vertical rotation value (0-1 float) where 0 is pitch up and 1 is pitch down
         Vector3 eRot = camPivot.transform.localRotation.eulerAngles;
         pitchValue = Mathf.DeltaAngle(eRot.x, 270f) / -180f;
@@ -52,30 +59,17 @@ public class PlayerCamera : MonoBehaviour {
         {
             zOffset = Mathf.Lerp(1f, maxDistance, distCurve.Evaluate(pitchValueAdj)) + camCollision.distOffset;
             float zPos = Mathf.Clamp(zOffset, 1f, hitDistance);
-            zPosLerp = Mathf.Lerp(zPosLerp, zPos, Time.deltaTime * lerpSpeed * 1.75f);
-            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -zPosLerp);
+            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -zPos);
         }
-
-        // Update camera FOV
-        mainCam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1-pitchValueAdj));
-
-        // Update camera rotation
-        CameraRotation();
-
-        ObstacleCheck();
-
-
     }
 
     private void FixedUpdate()
     {
         if (cameraTarget != null)
         {
-            Vector3 b = cameraTarget.position;
             // Smooth camera follow target
-            transform.position = Vector3.Lerp(transform.position, b, Time.smoothDeltaTime * lerpSpeed);
+            transform.position = Vector3.Lerp(transform.position, cameraTarget.position, Time.smoothDeltaTime * lerpSpeed);
         }
-        
     }
 
     private void CameraRotation()
@@ -114,20 +108,18 @@ public class PlayerCamera : MonoBehaviour {
     private void ObstacleCheck()
     {
         Vector3 origin = camPivot.transform.position + camPivot.transform.right * 0.8f + camPivot.transform.up * 1f;
-        Vector3 direction = -camRoot.transform.forward;
+        Vector3 direction = -camPivot.transform.forward;
 
         RaycastHit hit;
         if (Physics.Raycast(origin, direction, out hit, zOffset, obstacleLayers))
         {
-            Debug.DrawRay(origin, direction * hit.distance, Color.yellow);
+            //Debug.DrawRay(origin, direction * hit.distance, Color.yellow);
             hitDistance = hit.distance;
         }
         else
         {
             hitDistance = zOffset;
         }
-
-        Debug.Log(hitDistance);
     }
 
     public void Shake()
