@@ -80,12 +80,12 @@ public class PlayerCamera : MonoBehaviour {
 
     private void CameraRotation()
     {
-        float mouseX = Input.GetAxisRaw(mouseXInputName) * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw(mouseXInputName) * mouseSensitivity * Time.smoothDeltaTime;
+        float mouseY = Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.smoothDeltaTime;
 
         // Clamp and smooth vertical rotation
         xAxisRot += mouseY;
-        xAxisRot = Mathf.LerpAngle(xAxisRot, xAxisRot + mouseY, Time.deltaTime * lerpSpeed);
+        xAxisRot = Mathf.LerpAngle(xAxisRot, xAxisRot + mouseY, Time.smoothDeltaTime * lerpSpeed);
 
         if (xAxisRot > maxPitchUp)
         {
@@ -107,7 +107,7 @@ public class PlayerCamera : MonoBehaviour {
     private void ClampXaxisRotationToValue(float value)
     {
         Vector3 eulerRotation = camPivot.transform.eulerAngles;
-        eulerRotation.x = Mathf.Lerp(eulerRotation.x, value, Time.deltaTime * lerpSpeed);
+        eulerRotation.x = Mathf.Lerp(eulerRotation.x, value, Time.smoothDeltaTime * lerpSpeed);
         camPivot.transform.eulerAngles = eulerRotation;
     }
 
