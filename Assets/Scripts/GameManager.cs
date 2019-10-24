@@ -26,6 +26,8 @@ public class GameManager : NetworkBehaviour
             return;
         }
         InitGame();
+
+        lobbyThreshold = 1;
     }
 
     void InitGame()

@@ -26,7 +26,11 @@ public class PlayerCamera : MonoBehaviour
     private float xAxisRot;
 
     [SerializeField] LayerMask obstacleLayers;
-    private CameraCollision camCollision;
+
+    private bool isAiming;
+    public float aimFOV = 55f;
+    public float aimDistance = 3f;
+    private float fovLerp, zOffsetLerp;
 
     private void Awake()
     {
@@ -34,11 +38,20 @@ public class PlayerCamera : MonoBehaviour
         camPivot = transform.GetChild(0).gameObject;
         camRoot = transform.GetChild(0).GetChild(0).gameObject;
         mainCam = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Camera>();
-        camCollision = camRoot.GetComponent<CameraCollision>();
     }
 
     void Update () 
     {
+        if (Input.GetAxis("Fire2") > 0.5f)
+        {
+            isAiming = true;
+        }
+        else
+        {
+            isAiming = false;
+        }
+
+
         // Update camera rotation
         CameraRotation();
 
@@ -52,14 +65,20 @@ public class PlayerCamera : MonoBehaviour
         pitchValue = Mathf.Clamp(pitchValue, 0.0f, 1.0f);
 
         // Update camera FOV
-        mainCam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1 - pitchValueAdj));
+        float fov = Mathf.Lerp(minFOV, maxFOV, FOVCurve.Evaluate(1 - pitchValueAdj));
+        float fovAim = isAiming ? aimFOV : fov;
+        fovLerp = Mathf.Lerp(fovLerp, fovAim, Time.smoothDeltaTime * lerpSpeed);
+        float fovFinal = isAiming ? fovLerp : fov;
+        mainCam.fieldOfView = fov;
 
         // Update camera distance
         if (camRoot != null)
         {
-            zOffset = Mathf.Lerp(1f, maxDistance, distCurve.Evaluate(pitchValueAdj)) + camCollision.distOffset;
-            float zPos = Mathf.Clamp(zOffset, 1f, hitDistance);
-            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -zPos);
+            zOffset = Mathf.Lerp(2f, maxDistance, distCurve.Evaluate(pitchValueAdj));
+            float zOffsetColl = Mathf.Clamp(zOffset, 1f, hitDistance);
+            float zOffsetAim = isAiming ? aimDistance : zOffsetColl;
+            zOffsetLerp = Mathf.Lerp(zOffsetLerp, zOffsetAim, Time.smoothDeltaTime * lerpSpeed);
+            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -zOffsetColl);
         }
     }
 
@@ -68,7 +87,7 @@ public class PlayerCamera : MonoBehaviour
         if (cameraTarget != null)
         {
             // Smooth camera follow target
-            transform.position = Vector3.Lerp(transform.position, cameraTarget.position, Time.smoothDeltaTime * lerpSpeed);
+            transform.position = Vector3.Lerp(transform.position, cameraTarget.position + cameraTarget.transform.up, Time.smoothDeltaTime * lerpSpeed);
         }
     }
 
@@ -106,7 +125,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void ObstacleCheck()
     {
-        Vector3 origin = camPivot.transform.position + camPivot.transform.right * 0.8f + camPivot.transform.up * 1f;
+        Vector3 origin = camPivot.transform.position + camPivot.transform.right * 0.0f + camPivot.transform.up * 0.0f;
         Vector3 direction = -camPivot.transform.forward;
 
         RaycastHit hit;
