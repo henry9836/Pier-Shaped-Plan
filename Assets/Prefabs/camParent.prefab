@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2741642809651476535}
   - component: {fileID: 6193078977153034918}
   - component: {fileID: 231917048509320015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: camRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,8 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 0}
-  mouseXInputName: Mouse X
-  mouseYInputName: Mouse Y
   mouseSensitivity: 180
   lerpSpeed: 12
   distCurve:

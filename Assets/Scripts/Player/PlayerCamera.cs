@@ -10,14 +10,14 @@ public class PlayerCamera : MonoBehaviour {
     private GameObject camRoot;
     private Camera mainCam;
 
-    [SerializeField] private string mouseXInputName = "Mouse X", mouseYInputName = "Mouse Y";
+    private string mouseXInputName = "Mouse X", mouseYInputName = "Mouse Y";
     [SerializeField] private float mouseSensitivity = 180f;
 
     [SerializeField] private float lerpSpeed = 12f;
+    private float zPosLerp;
     public AnimationCurve distCurve;
     public AnimationCurve FOVCurve;
-    private float pitchValue, pitchValueAdj;
-    private Vector3 pitchLerpTarget;
+    private float pitchValue, pitchValueAdj, zOffset, hitDistance;
     public float maxDistance = 5f;
     public float maxPitchDown = 60f;
     public float maxPitchUp = 50f;
@@ -50,8 +50,10 @@ public class PlayerCamera : MonoBehaviour {
         // Update camera distance
         if (camRoot != null)
         {
-            float zOffset = Mathf.Lerp(-1f, -maxDistance, distCurve.Evaluate(pitchValueAdj)) + camCollision.distOffset;
-            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, zOffset);
+            zOffset = Mathf.Lerp(1f, maxDistance, distCurve.Evaluate(pitchValueAdj)) + camCollision.distOffset;
+            float zPos = Mathf.Clamp(zOffset, 1f, hitDistance);
+            zPosLerp = Mathf.Lerp(zPosLerp, zPos, Time.deltaTime * lerpSpeed * 1.75f);
+            camRoot.transform.localPosition = new Vector3(camRoot.transform.localPosition.x, camRoot.transform.localPosition.y, -zPosLerp);
         }
 
         // Update camera FOV
@@ -59,6 +61,10 @@ public class PlayerCamera : MonoBehaviour {
 
         // Update camera rotation
         CameraRotation();
+
+        ObstacleCheck();
+
+
     }
 
     private void FixedUpdate()
@@ -67,7 +73,7 @@ public class PlayerCamera : MonoBehaviour {
         {
             Vector3 b = cameraTarget.position;
             // Smooth camera follow target
-            transform.position = Vector3.Lerp(transform.position, b, lerpSpeed * Time.smoothDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, b, Time.smoothDeltaTime * lerpSpeed);
         }
         
     }
@@ -105,11 +111,29 @@ public class PlayerCamera : MonoBehaviour {
         camPivot.transform.eulerAngles = eulerRotation;
     }
 
+    private void ObstacleCheck()
+    {
+        Vector3 origin = camPivot.transform.position + camPivot.transform.right * 0.8f + camPivot.transform.up * 1f;
+        Vector3 direction = -camRoot.transform.forward;
+
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, zOffset, obstacleLayers))
+        {
+            Debug.DrawRay(origin, direction * hit.distance, Color.yellow);
+            hitDistance = hit.distance;
+        }
+        else
+        {
+            hitDistance = zOffset;
+        }
+
+        Debug.Log(hitDistance);
+    }
 
     public void Shake()
     {
         Vector3 b = cameraTarget.position;
-        //transform.DOShakeRotation(3f, 15f, 7, 90f, true);
+        transform.DOShakeRotation(3f, 15f, 7, 90f, true);
     }
 
 }

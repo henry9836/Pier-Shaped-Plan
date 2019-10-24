@@ -36,19 +36,18 @@ public class CameraCollision : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ObstacleCheck();
+        //ObstacleCheck();
         
     }
 
     private void ObstacleCheck()
     {
+        float os = distOffset;
+
         if (playerBlocked || isColliding)
         {
-            while ((playerBlocked || isColliding) && (curWhileIter < maxWhileIter && distOffset < maxDistance - 3.5f))
-            {
-                distOffset += Time.deltaTime;
-                curWhileIter += 1;
-            }
+            distOffset += Time.deltaTime;
+            distOffset = Mathf.Clamp(distOffset, 0f, maxDistance - 1f);
         }
         else
         {
