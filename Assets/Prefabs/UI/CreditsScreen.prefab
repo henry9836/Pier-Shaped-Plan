@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dee17ca1183de04db57660379d56ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 0
+  activateDelay: 0.3
   screens: []
   titleText: {fileID: 0}
   buttons: []

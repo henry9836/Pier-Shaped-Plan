@@ -1151,6 +1151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenState: 0
+  isEnabled: 0
+  activateDelay: 0.3
   screens:
   - {fileID: 3536094332219877275}
   - {fileID: 0}
@@ -1158,6 +1160,8 @@ MonoBehaviour:
   titleText: {fileID: 0}
   buttons: []
   clickSound: {fileID: 8300000, guid: 0bd7a0eac6dba0248a409bf8338bafc1, type: 3}
+  fpsText: {fileID: 0}
+  deltaTime: 0
 --- !u!225 &3536094332219877273
 CanvasGroup:
   m_ObjectHideFlags: 0
