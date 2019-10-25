@@ -313,6 +313,11 @@ PrefabInstance:
       propertyPath: titleText
       value: 
       objectReference: {fileID: 1759942043}
+    - target: {fileID: 7625906930187755147, guid: be2fed74ee7fbb846ad9f672510e4cbd,
+        type: 3}
+      propertyPath: fpsText
+      value: 
+      objectReference: {fileID: 586064585}
     - target: {fileID: 3536094332219877273, guid: be2fed74ee7fbb846ad9f672510e4cbd,
         type: 3}
       propertyPath: m_Alpha
@@ -599,6 +604,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &586064583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586064584}
+  - component: {fileID: 586064586}
+  - component: {fileID: 586064585}
+  m_Layer: 5
+  m_Name: FPS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &586064584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586064583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1784271981}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -32, y: -32}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &586064585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586064583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.92, g: 0.90758, b: 0.8924, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f8da8dac6ee44c94ab00a638bcf0d5fc, type: 3}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'FPS
+
+'
+--- !u!222 &586064586
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586064583}
+  m_CullTransparentMesh: 0
 --- !u!1 &759919815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1666770496, guid: be2fed74ee7fbb846ad9f672510e4cbd,
@@ -1474,6 +1558,7 @@ RectTransform:
   - {fileID: 2283677600266873228}
   - {fileID: 290638398}
   - {fileID: 2070269496}
+  - {fileID: 586064584}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1690,6 +1775,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7773366821216743104, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonGraphics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773366821697130495, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773366820892171883, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553354281542479598, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonAudio
+      objectReference: {fileID: 0}
     - target: {fileID: 6553354281489305125, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1735,11 +1840,6 @@ PrefabInstance:
       propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6553354281542479598, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonAudio
-      objectReference: {fileID: 0}
     - target: {fileID: 6553354281542479592, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1750,11 +1850,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1538231413}
-    - target: {fileID: 7773366821216743104, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonGraphics
-      objectReference: {fileID: 0}
     - target: {fileID: 7773366821216742974, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1765,11 +1860,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1538231413}
-    - target: {fileID: 7773366821697130495, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonControls
-      objectReference: {fileID: 0}
     - target: {fileID: 7773366821697130493, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1780,11 +1870,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1538231413}
-    - target: {fileID: 7773366820892171883, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonBack
-      objectReference: {fileID: 0}
     - target: {fileID: 7773366820892171881, guid: 051bf6143fa7d7140b0fcdf3cae812fe,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
