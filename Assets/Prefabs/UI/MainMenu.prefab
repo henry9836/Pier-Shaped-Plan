@@ -901,8 +901,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 1
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'PIER-SHAPED
 
@@ -1150,12 +1150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b371b6f8e0e50244f9e4af187e7327ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: 0bd7a0eac6dba0248a409bf8338bafc1, type: 3}
   screenState: 0
   screens:
   - {fileID: 3536094332219877275}
   - {fileID: 0}
   - {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 0bd7a0eac6dba0248a409bf8338bafc1, type: 3}
 --- !u!225 &3536094332219877273
 CanvasGroup:
   m_ObjectHideFlags: 0

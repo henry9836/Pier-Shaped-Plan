@@ -73,8 +73,8 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 1
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: OPTIONS
 --- !u!1 &6553354280430927239
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28a26bec11d0714c9c42fdccd35ec59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beginDelay: 0.2
 --- !u!225 &6553354281489305126
 CanvasGroup:
   m_ObjectHideFlags: 0
