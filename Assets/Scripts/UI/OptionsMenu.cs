@@ -74,4 +74,5 @@ public class OptionsMenu : MonoBehaviour
             buttons[i].transform.DOLocalMoveX(buttonPos[i], 1.0f).SetEase(Ease.OutQuint);
         }
     }
+
 }

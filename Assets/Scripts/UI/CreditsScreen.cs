@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class CreditsScreen : MonoBehaviour
 {
+
     public GameObject[] screens;
     public GameObject titleText;
     public GameObject[] buttons;
@@ -73,4 +74,5 @@ public class CreditsScreen : MonoBehaviour
             buttons[i].transform.DOLocalMoveX(buttonPos[i], 1.0f).SetEase(Ease.OutQuint);
         }
     }
+
 }

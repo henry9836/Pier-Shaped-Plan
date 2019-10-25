@@ -13,6 +13,7 @@ public class DialogBox : MonoBehaviour
     void Start()
     {
         canvas = GetComponent<CanvasGroup>();
+        transform.DOScale(0f, 0f);
     }
 
     void Update()
@@ -32,6 +33,8 @@ public class DialogBox : MonoBehaviour
         canvas.interactable = false;
         canvas.blocksRaycasts = false;
 
+        transform.DOScale(0f, 0.5f).SetEase(Ease.InQuad);
+
     }
 
     private void BeginAnimation()
@@ -39,5 +42,8 @@ public class DialogBox : MonoBehaviour
         canvas.DOFade(1f, 0.3f);
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
+
+        transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
     }
+
 }
