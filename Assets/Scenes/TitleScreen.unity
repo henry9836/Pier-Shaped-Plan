@@ -249,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 1398650838, guid: be2fed74ee7fbb846ad9f672510e4cbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 175942773}
+      objectReference: {fileID: 1538231413}
     - target: {fileID: 1398650838, guid: be2fed74ee7fbb846ad9f672510e4cbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 586064584}
   - component: {fileID: 586064586}
   - component: {fileID: 586064585}
+  - component: {fileID: 586064587}
   m_Layer: 5
   m_Name: FPS
   m_TagString: Untagged
@@ -634,7 +635,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1784271981}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -683,6 +684,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586064583}
   m_CullTransparentMesh: 0
+--- !u!225 &586064587
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586064583}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &759919815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1666770496, guid: be2fed74ee7fbb846ad9f672510e4cbd,
@@ -1557,8 +1570,8 @@ RectTransform:
   - {fileID: 1170462939216695341}
   - {fileID: 2283677600266873228}
   - {fileID: 290638398}
-  - {fileID: 2070269496}
   - {fileID: 586064584}
+  - {fileID: 2070269496}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1598,7 +1611,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1784271981}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
