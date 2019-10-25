@@ -17,7 +17,7 @@ public class SceneSwitcher : MonoBehaviour {
     private bool isSwitching;
     private float fadeTimeCur;
 
-    //public AudioClip clickSound;
+    public AudioClip clickSound;
 
     void Awake()
     {
@@ -95,8 +95,8 @@ public class SceneSwitcher : MonoBehaviour {
             targetScene = scene;
             isSwitching = true;
 
-            //GetComponent<AudioSource>().clip = clickSound;
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().clip = clickSound;
+            GetComponent<AudioSource>().Play();
         }
     }
 
