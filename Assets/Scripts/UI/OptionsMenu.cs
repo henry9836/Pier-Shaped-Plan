@@ -30,7 +30,7 @@ public class OptionsMenu : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttonPos[i] = buttons[i].transform.localPosition.x;
-            buttonStartPos[i] = -180f - i * 50f;
+            buttonStartPos[i] = -200f - i * 50f;
             buttons[i].transform.DOKill(true);
             buttons[i].transform.DOLocalMoveX(buttonStartPos[i], 0f);
         }

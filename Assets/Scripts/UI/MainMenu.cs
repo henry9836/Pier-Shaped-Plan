@@ -11,12 +11,14 @@ public class MainMenu : MonoBehaviour
     {
         Main,
         Options,
-        Credits
+        Credits,
+        Quit
     }
 
     // 0 - Nain Menu
     // 1 - Options Menu
     // 2 - Credits Screen
+    // 3 - Quit Dialog
 
     public MenuState screenState;
     private int screenStateCur = -1;
@@ -50,7 +52,7 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttonPos[i] = buttons[i].transform.localPosition.x;
-            buttonStartPos[i] = -180f - i * 50f;
+            buttonStartPos[i] = -200f - i * 50f;
             buttons[i].transform.DOKill(true);
             buttons[i].transform.DOLocalMoveX(buttonStartPos[i], 0f);
         }
@@ -76,11 +78,15 @@ public class MainMenu : MonoBehaviour
                     break;
 
                 case 1:
-                    screens[1].GetComponent<OptionsMenu>().End();
+                    screens[screenStateCur].GetComponent<OptionsMenu>().End();
                     break;
 
                 case 2:
-                    screens[2].GetComponent<CreditsScreen>().End();
+                    screens[screenStateCur].GetComponent<CreditsScreen>().End();
+                    break;
+
+                case 3:
+                    screens[screenStateCur].GetComponent<DialogBox>().End();
                     break;
 
             }
@@ -99,6 +105,10 @@ public class MainMenu : MonoBehaviour
 
                 case MenuState.Credits:
                     screens[2].GetComponent<CreditsScreen>().Begin();
+                    break;
+
+                case MenuState.Quit:
+                    screens[3].GetComponent<DialogBox>().Begin();
                     break;
             }
 
