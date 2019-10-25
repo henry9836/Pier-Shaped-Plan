@@ -7,9 +7,6 @@ using DG.Tweening;
 public class CreditsScreen : MonoBehaviour
 {
     private CanvasGroup canvas;
-    public float beginDelay = 0.2f;
-    public float beginDelayTimer = 0f;
-    private bool beginStarted = false;
 
     void Awake()
     {
@@ -18,28 +15,12 @@ public class CreditsScreen : MonoBehaviour
 
     void Update()
     {
-        if (beginStarted)
-        {
-            beginDelayTimer = Mathf.MoveTowards(beginDelayTimer, beginDelay, Time.deltaTime);
-        }
-        else
-        {
-            beginDelayTimer = 0f;
-        }
 
-        if (beginDelayTimer >= beginDelay)
-        {
-            canvas.DOFade(1f, 0.25f);
-            canvas.interactable = true;
-            canvas.blocksRaycasts = true;
-
-            beginStarted = false;
-        }
     }
 
     public void Begin()
     {
-        beginStarted = true;
+        Invoke("BeginAnimation", 0.25f);
     }
 
     public void End()
@@ -47,7 +28,12 @@ public class CreditsScreen : MonoBehaviour
         canvas.DOFade(0f, 0.25f);
         canvas.interactable = false;
         canvas.blocksRaycasts = false;
+    }
 
-        beginStarted = false;
+    private void BeginAnimation()
+    {
+        canvas.DOFade(1f, 0.25f);
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
     }
 }

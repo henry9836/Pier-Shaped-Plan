@@ -6,9 +6,6 @@ using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
-    //public AudioClip winSound;
-
-    private CanvasGroup canvas;
 
     public enum MenuState
     {
@@ -25,6 +22,9 @@ public class MainMenu : MonoBehaviour
     private int screenStateCur = -1;
 
     public GameObject[] screens;
+
+    private CanvasGroup canvas;
+    public AudioClip clickSound;
 
     void Start()
     {
@@ -66,8 +66,7 @@ public class MainMenu : MonoBehaviour
 
                 case MenuState.Options:
                     screens[1].GetComponent<OptionsMenu>().Begin();
-                    //GetComponent<AudioSource>().clip = winSound;
-                    //GetComponent<AudioSource>().Play();
+
                     break;
 
                 case MenuState.Credits:
@@ -83,6 +82,8 @@ public class MainMenu : MonoBehaviour
     public void GoToScreen(int screen)
     {
         screenState = (MenuState)screen;
+        GetComponent<AudioSource>().clip = clickSound;
+        GetComponent<AudioSource>().Play();
     }
 
     public void Begin()
@@ -102,5 +103,10 @@ public class MainMenu : MonoBehaviour
         canvas.DOFade(1f, 0.25f);
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
