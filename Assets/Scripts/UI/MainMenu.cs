@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour
     public AudioClip clickSound;
 
     public Text fpsText;
-    public float deltaTime;
+    private float deltaTime;
 
     void Start()
     {
@@ -104,16 +104,16 @@ public class MainMenu : MonoBehaviour
                     break;
 
                 case MenuState.Options:
-                    screens[1].GetComponent<OptionsMenu>().isEnabled = true;
+                    screens[(int)screenState].GetComponent<OptionsMenu>().isEnabled = true;
 
                     break;
 
                 case MenuState.Credits:
-                    screens[2].GetComponent<CreditsScreen>().isEnabled = true;
+                    screens[(int)screenState].GetComponent<CreditsScreen>().isEnabled = true;
                     break;
 
                 case MenuState.Quit:
-                    screens[3].GetComponent<DialogBox>().isEnabled = true;
+                    screens[(int)screenState].GetComponent<DialogBox>().isEnabled = true;
                     break;
             }
 
