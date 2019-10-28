@@ -123,5 +123,6 @@ public class SceneSwitcher : MonoBehaviour {
     {
         StartFade();
         targetScene = "Quit";
+        Debug.Log("Silly human. You know you can't quit the game from the editor!");
     }
 }

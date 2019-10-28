@@ -7,6 +7,11 @@ using DG.Tweening;
 public class CreditsScreen : MonoBehaviour
 {
 
+    public bool isEnabled;
+    public float activateDelay = 0.5f;
+    private bool beginRequested;
+    private bool endRequested;
+
     public GameObject[] screens;
     public GameObject titleText;
     public GameObject[] buttons;
@@ -38,21 +43,33 @@ public class CreditsScreen : MonoBehaviour
 
     void Update()
     {
+        if (isEnabled && !beginRequested)
+        {
+            Begin();
 
+        }
+
+        if (!isEnabled && !endRequested)
+        {
+            End();
+        }
     }
 
-    public void Begin()
+    private void Begin()
     {
         Invoke("BeginAnimation", 0.2f);
+        beginRequested = true;
+        endRequested = false;
     }
 
-    public void End()
+    private void End()
     {
+        Deactivate();
+        beginRequested = false;
+        endRequested = true;
+
         canvas.DOKill(true);
         canvas.DOFade(0f, 0.2f).SetEase(Ease.OutQuint);
-        canvas.interactable = false;
-        canvas.blocksRaycasts = false;
-
         titleText.transform.DOLocalMoveX(-600f, 1.25f).SetEase(Ease.OutQuint);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -63,16 +80,30 @@ public class CreditsScreen : MonoBehaviour
 
     private void BeginAnimation()
     {
-        canvas.DOFade(1f, 0.5f).SetEase(Ease.InSine);
-        canvas.interactable = true;
-        canvas.blocksRaycasts = true;
+        Invoke("Activate", activateDelay);
 
+        canvas.DOFade(1f, 0.5f).SetEase(Ease.InSine);
         titleText.transform.DOLocalMoveX(titlePos, 1.25f).SetEase(Ease.OutQuint);
 
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].transform.DOLocalMoveX(buttonPos[i], 1.0f).SetEase(Ease.OutQuint);
         }
+    }
+
+    private void Activate()
+    {
+        if (isEnabled)
+        {
+            canvas.interactable = true;
+            canvas.blocksRaycasts = true;
+        }
+    }
+
+    private void Deactivate()
+    {
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
     }
 
 }
