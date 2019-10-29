@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 32}
+  m_AnchoredPosition: {x: 400, y: 41}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &314110277272512755
@@ -78,9 +78,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: 'Henry Oliver
 
-    Vaughan Webb
-
-    John Strange'
+    Vaughan Webb'
 --- !u!1 &314110278428711765
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 99.5}
+  m_AnchoredPosition: {x: 400, y: 108.5}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6077185183116272468
@@ -366,7 +364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 99.5}
+  m_AnchoredPosition: {x: 150, y: 108.5}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &339226784464026409
@@ -831,7 +829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 32}
+  m_AnchoredPosition: {x: 150, y: 41}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2462056540151706718
@@ -873,13 +871,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1.5
-  m_Text: 'David Morris
-
-    Matthew Moore
+  m_Text: 'Matthew Moore
 
     Xin Yin Lee
 
-    Ronaldo Chen'
+    Ronaldo Chen
+
+    David Morris'
 --- !u!1001 &1318729931968904277
 PrefabInstance:
   m_ObjectHideFlags: 0
