@@ -44,6 +44,13 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        // Network manager, get out!
+        GameObject netMan = GameObject.Find("NetworkManager");
+        if (netMan != null)
+        {
+            GameObject.Destroy(netMan);
+        }
+
         screenState = MenuState.Main;
         screenStateCur = (int)MenuState.Main;
         canvas = GetComponent<CanvasGroup>();
