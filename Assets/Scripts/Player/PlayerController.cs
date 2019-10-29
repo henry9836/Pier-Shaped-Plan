@@ -8,6 +8,8 @@ public class PlayerController : NetworkBehaviour
 
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
+    public int health = 1;
+    public float fireForce = 500;
 
     [SyncVar]
     public bool amHitman = false;
@@ -21,25 +23,23 @@ public class PlayerController : NetworkBehaviour
     [SyncVar]
     private bool gameStarted;
     [SyncVar]
-    private bool canEscape;
-    //public Transform camRoot;
-
+    public bool canEscape = false;
+    [SyncVar]
+    public bool escaped = false;
+    [SyncVar]
+    public bool gameOverState = false;
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+        GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward * 2), Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
     }
 
-    [ClientRpc]
-    public void RpcCanEscape()
+    [Command] 
+    void CmdAmGameOverState()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        canEscape = true;
+        gameOverState = true; //SyncVar
     }
 
     [ClientRpc]
@@ -73,6 +73,7 @@ public class PlayerController : NetworkBehaviour
         gameStarted = true;
     }
 
+    
     private void Start()
     {
         if (!isLocalPlayer)
@@ -98,6 +99,21 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    [Command]
+    void CmdHitByBullet()
+    {
+        health -= 1; //SyncVar
+    }
+
+    //Player was hit by bullet
+    public void HitByBullet() 
+    {
+        if (isLocalPlayer)
+        {
+            CmdHitByBullet();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -106,15 +122,14 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //Debug.Log("LOG: " + isLocalPlayer + ":" + isServer + ":" + localPlayerAuthority);
-
         if (gameStarted)
         {
             //Movement
 
             Vector3 moveDir = Vector3.zero;
             Vector3 moveCamRelative = moveReference.transform.rotation.eulerAngles;
-
+            
+            //Grab input
             if (Input.GetAxis("Horizontal") != 0)
             {
                 moveDir += (moveReference.transform.right * Input.GetAxis("Horizontal"));
@@ -125,6 +140,7 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
+            //move in direction of input
             if (moveDir != Vector3.zero)
             {
                 transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
@@ -138,6 +154,22 @@ public class PlayerController : NetworkBehaviour
             // Draw line in player look direction
             Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
             Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
+
+            //Shooting
+            if (Input.GetMouseButtonDown(0))
+            {
+                CmdFireBullet();
+            }
+
+            //Checking our state
+            if (health <= 0)
+            {
+                CmdAmGameOverState();
+            }
+            else if (escaped)
+            {
+                CmdAmGameOverState();
+            }
 
             //Debugging Keys
             if (Input.GetKeyDown(KeyCode.Space))
