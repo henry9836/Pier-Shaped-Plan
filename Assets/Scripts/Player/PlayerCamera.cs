@@ -93,8 +93,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void CameraRotation()
     {
-        float mouseX = Input.GetAxisRaw(mouseXInputName) * mouseSensitivity * Time.smoothDeltaTime;
-        float mouseY = Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.smoothDeltaTime;
+        float mouseX = Mathf.Clamp(Input.GetAxisRaw(mouseXInputName) * mouseSensitivity * Time.smoothDeltaTime, -50f, 50f);
+        float mouseY = Mathf.Clamp(Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.smoothDeltaTime, -50f, 50f);
 
         // Clamp and smooth vertical rotation
         xAxisRot += mouseY;
