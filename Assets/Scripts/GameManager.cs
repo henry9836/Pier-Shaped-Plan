@@ -71,10 +71,10 @@ public class GameManager : NetworkBehaviour
         else if (gameStarted)
         {
 
-            Debug.Log((completedTasks / amountOfTasks) * 100);
+            Debug.Log(((float)completedTasks / (float)amountOfTasks) * 100.0f);
 
             //if we have enough tasks to escape
-            if (((completedTasks/amountOfTasks) * 100) >= 60)
+            if ((((float)completedTasks / (float)amountOfTasks) * 100.0f) >= 60.0f)
             {
                 canEscape = true;
                 //Update Player Escape States
