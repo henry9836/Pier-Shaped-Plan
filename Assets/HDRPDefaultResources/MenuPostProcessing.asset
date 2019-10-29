@@ -49,7 +49,7 @@ MonoBehaviour:
     max: 8
   farSampleCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 10
     min: 3
     max: 16
   farMaxBlur:
@@ -59,7 +59,7 @@ MonoBehaviour:
     max: 16
   highQualityFiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   resolution:
     m_OverrideState: 1
     m_Value: 2
