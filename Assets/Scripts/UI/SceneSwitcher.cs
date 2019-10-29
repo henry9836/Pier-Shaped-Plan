@@ -11,17 +11,17 @@ public class SceneSwitcher : MonoBehaviour {
     public float fadeTime;
     private float fadeInDelay = 0.25f;
     private Image fadeImage;
-    private string targetScene;
+    public string targetScene;
     public string curScene;
     private bool isFading;
     private bool isSwitching;
     private float fadeTimeCur;
 
-    //public AudioClip clickSound;
+    public AudioClip clickSound;
 
     void Awake()
     {
-        //fadePanel = GameObject.Find("fadePanel");
+        //fadePanel = GameObject.Find("FadePanel");
 
         curScene = SceneManager.GetActiveScene().name;
         Debug.Log(curScene);
@@ -43,7 +43,6 @@ public class SceneSwitcher : MonoBehaviour {
         fadeImage = fadePanel.GetComponent<Image>();
 
         Invoke("ExitFade", fadeInDelay);
-        //ExitFade();
     }
 	
 	// Update is called once per frame
@@ -65,7 +64,11 @@ public class SceneSwitcher : MonoBehaviour {
             {
                 ExitFade();
             }
-            else
+            if (targetScene == "Quit")
+            {
+                Application.Quit();
+            }
+            else 
             {
                 SceneManager.LoadScene(targetScene);
             }
@@ -73,13 +76,13 @@ public class SceneSwitcher : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (curScene == "MainMenu")
+            if (curScene == "TitleScreen")
             {
-                Application.Quit();
+                QuitGame();
             }
             else
             {
-                SceneSwitch("MainMenu");
+                SceneSwitch("TitleScreen");
             }
         }
 
@@ -87,29 +90,24 @@ public class SceneSwitcher : MonoBehaviour {
 
     public void SceneSwitch(string scene)
     {
-        if (!isSwitching && !isFading)
-        {
-            Vector4 initialColor = fadeImage.color;
-            fadeImage.DOFade(1, fadeTime / 1.0f).SetEase(Ease.InOutSine);
-            fadeTimeCur = fadeTime;
-            targetScene = scene;
-            isSwitching = true;
-
-            //GetComponent<AudioSource>().clip = clickSound;
-            //GetComponent<AudioSource>().Play();
-        }
+        StartFade();
+        targetScene = scene;
     }
 
 
     public void StartFade()
     {
-        if (!isSwitching)
+        if (!isSwitching && !isFading)
         {
             Vector4 initialColor = fadeImage.color;
             fadeImage.DOFade(1, fadeTime / 1.0f).SetEase(Ease.InOutSine);
+
+            isSwitching = true;
+            fadeTimeCur = fadeTime;
+
+            GetComponent<AudioSource>().clip = clickSound;
+            GetComponent<AudioSource>().Play();
         }
-        isSwitching = true;
-        fadeTimeCur = fadeTime;
     }
 
     public void ExitFade()
@@ -121,9 +119,10 @@ public class SceneSwitcher : MonoBehaviour {
         fadeImage.DOFade(0, fadeTime).SetEase(Ease.InOutSine);
     }
 
-    public void EnterMainMenu()
+    public void QuitGame()
     {
         StartFade();
-        targetScene = "MainMenu";
+        targetScene = "Quit";
+        Debug.Log("Silly human. You know you can't quit the game from the editor!");
     }
 }

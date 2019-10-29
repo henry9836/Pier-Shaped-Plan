@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 58066670537583972}
   - component: {fileID: -7427282400714071719}
   - component: {fileID: 6152035136393145258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -224,6 +224,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
+    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
+        type: 3}
+      propertyPath: m_Name
+      value: Temporary Character test
+      objectReference: {fileID: 0}
     - target: {fileID: 1035047793798792796, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -293,11 +298,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 14.635118
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
-        type: 3}
-      propertyPath: m_Name
-      value: Temporary Character test
       objectReference: {fileID: 0}
     - target: {fileID: 6986010883980329503, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}
