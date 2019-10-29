@@ -145,11 +145,7 @@ public class PlayerController : NetworkBehaviour
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
             }
 
-            //Shooting
-            if (Input.GetMouseButtonDown(0))
-            {
-                CmdFireBullet();
-            }
+  
         }
 
         else

@@ -19,19 +19,31 @@ public class PewPewGun : NetworkBehaviour
         }
     }
 
-    void pew(RaycastHit Shot)
+    void pew()
     {
         if (Bullets <= 0)
         {
             Bullets = 0;
+
             //empty click sfx
         }
         else
         {
             //pew sfx
 
+            GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+            int hitmanno = 0;
+            for (int i = 0; i < Players.Length; i++)
+            {
+                if (Players[i].GetComponent<PlayerController>().amHitman == true)
+                {
+                    hitmanno = i;
+                }
+            }
+
+            Players[hitmanno].GetComponent<PlayerController>().CmdFireBullet();
+
             Bullets -= 1;
-            Debug.Log(Shot.collider.name);
             //find game manger and say that it hit Shot.collider.name
         }
     }
@@ -85,9 +97,10 @@ public class PewPewGun : NetworkBehaviour
 
                 CmddrawLine(Shot.point);
 
+
                 if (Input.GetMouseButtonDown(0))
                 {
-                    pew(Shot);
+                    pew();
                 }
             }
 
