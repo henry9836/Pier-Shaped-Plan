@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 
 public class GameManager : NetworkBehaviour
@@ -179,6 +180,8 @@ public class GameManager : NetworkBehaviour
         yield return new WaitForSeconds(5);
         NetworkServer.DisconnectAll();
         NetworkServer.Shutdown();
+        NetworkServer.Reset();
+        SceneManager.LoadScene("Menu");
     }
 
 }
