@@ -32,7 +32,7 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward * 2), Quaternion.identity);
+        GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward), Quaternion.identity);
         tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
     }

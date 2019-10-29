@@ -50,9 +50,9 @@ public class PewPewGun : NetworkBehaviour
     }
 
     [Command]
-    void CmddrawLine(Vector3 hitmanLaserPos)
+    void CmddrawLine(Vector3 hitmanLaserPos, Vector3 gunPos)
     {
-        this.gameObject.GetComponent<LineRenderer>().SetPosition(0, transform.position);
+        this.gameObject.GetComponent<LineRenderer>().SetPosition(0, gunPos);
         this.gameObject.GetComponent<LineRenderer>().SetPosition(1, hitmanLaserPos);
         RpcdrawLine(hitmanLaserPos);
     }
@@ -92,15 +92,15 @@ public class PewPewGun : NetworkBehaviour
         {
             RaycastHit Shot;
             Physics.Raycast(Camera.transform.position, Camera.transform.forward, out Shot, Mathf.Infinity);
-            Debug.DrawLine(Camera.transform.position, Shot.point);
+            //Debug.DrawLine(Camera.transform.position, Shot.point);
 
             if (this.gameObject.GetComponent<PlayerController>().amHitman == true)
             {
-                Debug.DrawLine(Shot.point, transform.position);
-                this.gameObject.GetComponent<LineRenderer>().SetPosition(0, transform.position);
+                //Debug.DrawLine(Shot.point, transform.position);
+                this.gameObject.GetComponent<LineRenderer>().SetPosition(0, Gun.transform.position);
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(1, Shot.point);
 
-                CmddrawLine(Shot.point);
+                CmddrawLine(Shot.point, Gun.transform.position);
 
 
                 if (Input.GetMouseButtonDown(0))
