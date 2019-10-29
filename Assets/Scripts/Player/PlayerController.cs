@@ -33,16 +33,6 @@ public class PlayerController : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcSetHitman()
-    {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        amHitman = true;
-    }
-
-    [ClientRpc]
     public void RpcCanEscape()
     {
         if (!isLocalPlayer)
