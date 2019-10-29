@@ -176,6 +176,8 @@ public class PlayerController : NetworkBehaviour
             {
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
             }
+
+  
         }
 
         else
