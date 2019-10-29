@@ -41,7 +41,7 @@ public class GameManager : NetworkBehaviour
         //Get a random player
         hitmanReference = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
         //Set random as hitman
-        hitmanReference.GetComponent<PlayerController>().RpcSetHitman();
+        hitmanReference.GetComponent<PlayerController>().amHitman = true;
         hitmanSelected = true;
 
         //Unblind players
@@ -57,7 +57,7 @@ public class GameManager : NetworkBehaviour
     {
         if (!isServer)
         {
-            Debug.LogError("SERVER SCRIPT [GameManager] RUN ON NON SERVER OBJECT");
+            Debug.LogError("SERVER SCRIPT [GameManager] RUN ON NON SERVER OBJECT!");
             return;
         }
         
