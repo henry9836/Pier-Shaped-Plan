@@ -8,6 +8,7 @@ public class PewPewGun : NetworkBehaviour
     public int Bullets = 1;
     public int maxBullets = 6;
     public GameObject Camera;
+    public GameObject Gun;
 
     //when picked up bullets
     void AddBullet(int shots)
@@ -82,6 +83,10 @@ public class PewPewGun : NetworkBehaviour
         if (this.Camera == null)
         {
             Camera = GameObject.Find("Main Camera");
+        }
+        else if (this.Gun == null)
+        {
+            Gun = GameObject.Find("Gun(Clone)");
         }
         else
         {
