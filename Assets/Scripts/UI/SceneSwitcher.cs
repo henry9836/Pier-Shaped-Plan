@@ -18,6 +18,8 @@ public class SceneSwitcher : MonoBehaviour {
     private bool isSwitching;
     private float fadeTimeCur;
 
+    private NetworkManager netman;
+
     public AudioClip clickSound;
 
     void Awake()
@@ -26,6 +28,8 @@ public class SceneSwitcher : MonoBehaviour {
 
         curScene = SceneManager.GetActiveScene().name;
         Debug.Log(curScene);
+
+        netman = FindObjectOfType<NetworkManager>();
     }
 
 	// Use this for initialization
@@ -72,7 +76,7 @@ public class SceneSwitcher : MonoBehaviour {
             }
             else if (targetScene == "HostGame")
             {
-                FindObjectOfType<NetworkManager>().StartHost();
+                netman.StartHost();
             }
             else 
             {
