@@ -52,19 +52,32 @@ public class PewPewGun : NetworkBehaviour
     [Command]
     void CmddrawLine(Vector3 hitmanLaserPos, Vector3 gunPos, Vector3 gunHitPos)
     {
+
         this.gameObject.GetComponent<LineRenderer>().SetPosition(0, gunPos);
         this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunHitPos);
 
         //Make gun look at its target
-        GameObject.Find("Gun(Clone)").transform.LookAt(hitmanLaserPos);
+        GameObject.FindGameObjectWithTag("Gun").transform.LookAt(hitmanLaserPos);
 
-        RpcdrawLine(gunHitPos, gunPos);
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (!players[i].GetComponent<PlayerController>().amHitman)
+            {
+                TargetdrawLine(players[i].GetComponent<NetworkIdentity>().connectionToClient, gunHitPos, gunPos);
+            }
+        }
+        
+        
     }
 
-    [ClientRpc]
-    void RpcdrawLine(Vector3 hitmanLaserPos, Vector3 gunPos)
+    [TargetRpc]
+    void TargetdrawLine(NetworkConnection connection, Vector3 hitmanLaserPos, Vector3 gunPos)
     {
         GameObject hitmanRefer;
+
+        GameObject.FindGameObjectWithTag("Gun").transform.LookAt(hitmanLaserPos);
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
@@ -75,6 +88,7 @@ public class PewPewGun : NetworkBehaviour
                 hitmanRefer.GetComponent<LineRenderer>().SetPosition(1, hitmanLaserPos);
             }
         }
+       
     }
 
     void Update()
@@ -90,7 +104,16 @@ public class PewPewGun : NetworkBehaviour
         }
         else if (this.Gun == null)
         {
-            Gun = GameObject.Find("Gun(Clone)");
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].GetComponent<PlayerController>().amHitman)
+                {
+                    players[i].transform.GetChild(1).transform.GetChild(0).tag = "Gun";
+                    players[i].transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+            }
+            Gun = GameObject.FindGameObjectWithTag("Gun");
         }
         else
         {
@@ -103,6 +126,9 @@ public class PewPewGun : NetworkBehaviour
             {
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(0, Gun.transform.position);
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunShot.point);
+
+                //Make gun look at its target
+                GameObject.FindGameObjectWithTag("Gun").transform.LookAt(Shot.point);
 
                 CmddrawLine(Shot.point, Gun.transform.position, gunShot.point);
 

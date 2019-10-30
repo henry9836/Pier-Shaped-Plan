@@ -21,6 +21,7 @@ public class PlayerController : NetworkBehaviour
 
     private Transform moveReference;
     private GameObject playerCanvasReference;
+    private GameObject gunReference;
     [SyncVar]
     private bool gameStarted;
     [SyncVar]
@@ -32,23 +33,10 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdFireBullet()
     {
-        GameObject gunReference = GameObject.Find("Gun(Clone)");
+        GameObject gunReference = GameObject.FindGameObjectWithTag("Gun");
         GameObject tmpBullet = Instantiate(bullet, gunReference.transform.position + (gunReference.transform.forward), Quaternion.identity);
         tmpBullet.GetComponent<Rigidbody>().AddForce(gunReference.transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
-    }
-
-    [Command]
-    void CmdGunSpawn()
-    {
-        //Sanity Check
-        if (GameObject.Find("Gun(Clone)") == null)
-        {
-            GameObject gunRefer = Instantiate(gunPrefab, Vector3.zero, Quaternion.identity);
-            gunRefer.transform.parent = transform.GetChild(1).transform;
-            gunRefer.transform.localPosition = Vector3.zero;
-            NetworkServer.Spawn(gunRefer);
-        }
     }
 
     [Command]
@@ -97,10 +85,14 @@ public class PlayerController : NetworkBehaviour
     
     private void Start()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
+
+        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
         canEscape = false;
@@ -141,9 +133,10 @@ public class PlayerController : NetworkBehaviour
         }
 
         //Spawn gun if hitman
-        if (amHitman && GameObject.Find("Gun(Clone)") == null)
+        if (amHitman && gunReference.tag != "Gun")
         {
-            CmdGunSpawn();
+            gunReference.tag = "Gun";
+            gunReference.GetComponent<MeshRenderer>().enabled = true;
         }
 
         if (gameStarted)
