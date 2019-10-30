@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using DG.Tweening;
 
 public class SceneSwitcher : MonoBehaviour {
@@ -17,6 +18,8 @@ public class SceneSwitcher : MonoBehaviour {
     private bool isSwitching;
     private float fadeTimeCur;
 
+    private NetworkManager netman;
+
     public AudioClip clickSound;
 
     void Awake()
@@ -24,7 +27,9 @@ public class SceneSwitcher : MonoBehaviour {
         //fadePanel = GameObject.Find("FadePanel");
 
         curScene = SceneManager.GetActiveScene().name;
-        Debug.Log(curScene);
+        Debug.Log("Current scene: " + curScene);
+
+        netman = FindObjectOfType<NetworkManager>();
     }
 
 	// Use this for initialization
@@ -64,14 +69,22 @@ public class SceneSwitcher : MonoBehaviour {
             {
                 ExitFade();
             }
+
             if (targetScene == "Quit")
             {
                 Application.Quit();
             }
+            else if (targetScene == "HostGame")
+            {
+                netman.StartHost();
+            }
             else 
             {
                 SceneManager.LoadScene(targetScene);
+                Debug.Log("Switched from " + curScene + " to " + targetScene);
             }
+
+            isSwitching = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -117,6 +130,26 @@ public class SceneSwitcher : MonoBehaviour {
         fadeTimeCur = fadeTime;
         Vector4 initialColor = fadeImage.color;
         fadeImage.DOFade(0, fadeTime).SetEase(Ease.InOutSine);
+    }
+
+    public void HostGame()
+    {
+        if (!netman.IsClientConnected() && !NetworkServer.active && netman.matchMaker == null)
+        {
+            StartFade();
+            targetScene = "HostGame";
+            Debug.Log("Hosting Game...");
+        }
+    }
+
+    public void ConnectClient()
+    {
+        if (!netman.IsClientConnected() && !NetworkServer.active && netman.matchMaker == null)
+        {
+            StartFade();
+            targetScene = "Connect";
+            Debug.Log("Attempting to connect to host...");
+        }
     }
 
     public void QuitGame()
