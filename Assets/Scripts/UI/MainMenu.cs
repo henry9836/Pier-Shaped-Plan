@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
             GameObject.Destroy(netMan);
         }
 
+        Cursor.lockState = CursorLockMode.None;
         screenState = MenuState.Main;
         screenStateCur = (int)MenuState.Main;
         canvas = GetComponent<CanvasGroup>();
