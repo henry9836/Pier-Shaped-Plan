@@ -11,15 +11,19 @@ public class PlayerController : NetworkBehaviour
     public int health = 1;
     public float fireForce = 500;
 
+    public bool tryingToInteract = false;
+
     [SyncVar]
     public bool amHitman = false;
 
     public GameObject camPrefab;
+    public GameObject gunPrefab;
     public GameObject playerCanvas;
     public GameObject bullet;
 
     private Transform moveReference;
     private GameObject playerCanvasReference;
+    private GameObject gunReference;
     [SyncVar]
     private bool gameStarted;
     [SyncVar]
@@ -31,9 +35,16 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward * 2), Quaternion.identity);
-        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * fireForce);
+        GameObject gunReference = GameObject.FindGameObjectWithTag("Gun");
+        GameObject tmpBullet = Instantiate(bullet, gunReference.transform.position + (gunReference.transform.forward), Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(gunReference.transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
+    }
+
+    [Command]
+    void CmdHitByBullet()
+    {
+        health -= 1; //SyncVar
     }
 
     [Command] 
@@ -76,10 +87,14 @@ public class PlayerController : NetworkBehaviour
     
     private void Start()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
+
+        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
         canEscape = false;
@@ -99,19 +114,16 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    [Command]
-    void CmdHitByBullet()
-    {
-        health -= 1; //SyncVar
-    }
+    
 
     //Player was hit by bullet
     public void HitByBullet() 
     {
-        if (isLocalPlayer)
-        {
-            CmdHitByBullet();
-        }
+        //if (isLocalPlayer)
+        //{
+        //    CmdHitByBullet();
+        //}
+        CmdHitByBullet();
     }
 
     // Update is called once per frame
@@ -120,6 +132,13 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+
+        //Spawn gun if hitman
+        if (amHitman && gunReference.tag != "Gun")
+        {
+            gunReference.tag = "Gun";
+            gunReference.GetComponent<MeshRenderer>().enabled = true;
         }
 
         if (gameStarted)
@@ -176,6 +195,18 @@ public class PlayerController : NetworkBehaviour
             {
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
             }
+
+            //interacting 
+            if (Input.GetKey("e"))
+            {
+                tryingToInteract = true;
+            }
+            else
+            {
+                tryingToInteract = false;
+            }
+
+  
         }
 
         else

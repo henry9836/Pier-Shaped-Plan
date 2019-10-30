@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1659324021323737292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3366142691416989399}
+  m_Layer: 0
+  m_Name: GunRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3366142691416989399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659324021323737292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.412, z: 0.735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4989873000483178465}
+  m_Father: {fileID: 3569225421776133037}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3569225421776133033
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,6 +70,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3646263838361874705}
+  - {fileID: 3366142691416989399}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,7 +189,7 @@ MonoBehaviour:
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_InterpolateRotation: 12
   m_InterpolateMovement: 1
 --- !u!114 &4138909129826067081
 MonoBehaviour:
@@ -173,12 +205,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1500
   maxSpeed: 10
+  health: 1
+  fireForce: 5000
   amHitman: 0
   camPrefab: {fileID: 8867953112220475306, guid: b3fea41f94d0cb842b016599a4a4053a,
+    type: 3}
+  gunPrefab: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
     type: 3}
   playerCanvas: {fileID: 6551497397439358893, guid: c043d84bf27c0a043a95a2ab6c0df430,
     type: 3}
   bullet: {fileID: 3284433405961617179, guid: 37936eb40a2d1ef49b08facf2e09e95b, type: 3}
+  canEscape: 0
+  escaped: 0
+  gameOverState: 0
 --- !u!136 &58066670537583972
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -234,6 +273,7 @@ MonoBehaviour:
   Bullets: 1
   maxBullets: 6
   Camera: {fileID: 0}
+  Gun: {fileID: 0}
 --- !u!120 &3218307719004842269
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -339,6 +379,81 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1001 &3252221600353099061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3366142691416989399}
+    m_Modifications:
+    - target: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
+--- !u!4 &4989873000483178465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
+    type: 3}
+  m_PrefabInstance: {fileID: 3252221600353099061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4379499778778904397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,6 +461,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
+    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
+        type: 3}
+      propertyPath: m_Name
+      value: Temporary Character test
+      objectReference: {fileID: 0}
     - target: {fileID: 1035047793798792796, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -415,11 +535,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 14.635118
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037023675860071503, guid: c560aae4f8151754b8218992cbd11ebb,
-        type: 3}
-      propertyPath: m_Name
-      value: Temporary Character test
       objectReference: {fileID: 0}
     - target: {fileID: 6986010883980329503, guid: c560aae4f8151754b8218992cbd11ebb,
         type: 3}
