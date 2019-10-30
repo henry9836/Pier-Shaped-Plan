@@ -8,38 +8,49 @@ public class PlayerController : NetworkBehaviour
 
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
+    public int health = 1;
+    public float fireForce = 500;
+
+    public bool tryingToInteract = false;
 
     [SyncVar]
     public bool amHitman = false;
 
     public GameObject camPrefab;
+    public GameObject gunPrefab;
     public GameObject playerCanvas;
     public GameObject bullet;
 
     private Transform moveReference;
     private GameObject playerCanvasReference;
+    private GameObject gunReference;
     [SyncVar]
     private bool gameStarted;
     [SyncVar]
-    private bool canEscape;
-    //public Transform camRoot;
-
+    public bool canEscape = false;
+    [SyncVar]
+    public bool escaped = false;
+    [SyncVar]
+    public bool gameOverState = false;
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+        GameObject gunReference = GameObject.FindGameObjectWithTag("Gun");
+        GameObject tmpBullet = Instantiate(bullet, gunReference.transform.position + (gunReference.transform.forward), Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(gunReference.transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
     }
 
-    [ClientRpc]
-    public void RpcCanEscape()
+    [Command]
+    void CmdHitByBullet()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        canEscape = true;
+        health -= 1; //SyncVar
+    }
+
+    [Command] 
+    void CmdAmGameOverState()
+    {
+        gameOverState = true; //SyncVar
     }
 
     [ClientRpc]
@@ -73,12 +84,17 @@ public class PlayerController : NetworkBehaviour
         gameStarted = true;
     }
 
+    
     private void Start()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
+
+        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
         canEscape = false;
@@ -98,6 +114,18 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    
+
+    //Player was hit by bullet
+    public void HitByBullet() 
+    {
+        //if (isLocalPlayer)
+        //{
+        //    CmdHitByBullet();
+        //}
+        CmdHitByBullet();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -106,7 +134,12 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //Debug.Log("LOG: " + isLocalPlayer + ":" + isServer + ":" + localPlayerAuthority);
+        //Spawn gun if hitman
+        if (amHitman && gunReference.tag != "Gun")
+        {
+            gunReference.tag = "Gun";
+            gunReference.GetComponent<MeshRenderer>().enabled = true;
+        }
 
         if (gameStarted)
         {
@@ -114,7 +147,8 @@ public class PlayerController : NetworkBehaviour
 
             Vector3 moveDir = Vector3.zero;
             Vector3 moveCamRelative = moveReference.transform.rotation.eulerAngles;
-
+            
+            //Grab input
             if (Input.GetAxis("Horizontal") != 0)
             {
                 moveDir += (moveReference.transform.right * Input.GetAxis("Horizontal"));
@@ -125,6 +159,7 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
+            //move in direction of input
             if (moveDir != Vector3.zero)
             {
                 transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
@@ -139,17 +174,39 @@ public class PlayerController : NetworkBehaviour
             Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
             Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
+            //Shooting
+            if (Input.GetMouseButtonDown(0))
+            {
+                CmdFireBullet();
+            }
+
+            //Checking our state
+            if (health <= 0)
+            {
+                CmdAmGameOverState();
+            }
+            else if (escaped)
+            {
+                CmdAmGameOverState();
+            }
+
             //Debugging Keys
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
             }
 
-            //Shooting
-            if (Input.GetMouseButtonDown(0))
+            //interacting 
+            if (Input.GetKey("e"))
             {
-                CmdFireBullet();
+                tryingToInteract = true;
             }
+            else
+            {
+                tryingToInteract = false;
+            }
+
+  
         }
 
         else
