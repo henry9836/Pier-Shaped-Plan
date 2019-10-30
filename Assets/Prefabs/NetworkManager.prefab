@@ -57,7 +57,7 @@ MonoBehaviour:
     type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
+  m_OfflineScene: Menu
   m_OnlineScene: Game
   m_SpawnPrefabs:
   - {fileID: 3569225421776133033, guid: a32b0d5f5bec61e41857fdbb5b1a702a, type: 3}
@@ -106,7 +106,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
