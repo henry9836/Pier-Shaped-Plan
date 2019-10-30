@@ -134,9 +134,22 @@ public class SceneSwitcher : MonoBehaviour {
 
     public void HostGame()
     {
-        StartFade();
-        targetScene = "HostGame";
-        Debug.Log("Hosting Game...");
+        if (!netman.IsClientConnected() && !NetworkServer.active && netman.matchMaker == null)
+        {
+            StartFade();
+            targetScene = "HostGame";
+            Debug.Log("Hosting Game...");
+        }
+    }
+
+    public void ConnectClient()
+    {
+        if (!netman.IsClientConnected() && !NetworkServer.active && netman.matchMaker == null)
+        {
+            StartFade();
+            targetScene = "Connect";
+            Debug.Log("Attempting to connect to host...");
+        }
     }
 
     public void QuitGame()

@@ -8,7 +8,7 @@ public class UIMove : MonoBehaviour
 
     [SerializeField] private float movePeriod = 2f;
     [SerializeField] private float beatOffset = 0f;
-    [SerializeField] private float beatYAmount;
+    [SerializeField] private float beatYAmount = 0f;
     [SerializeField] private float tweenDuration;
 
     private bool atNewPos = false;
