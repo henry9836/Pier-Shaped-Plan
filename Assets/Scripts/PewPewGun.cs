@@ -50,15 +50,19 @@ public class PewPewGun : NetworkBehaviour
     }
 
     [Command]
-    void CmddrawLine(Vector3 hitmanLaserPos, Vector3 gunPos)
+    void CmddrawLine(Vector3 hitmanLaserPos, Vector3 gunPos, Vector3 gunHitPos)
     {
         this.gameObject.GetComponent<LineRenderer>().SetPosition(0, gunPos);
-        this.gameObject.GetComponent<LineRenderer>().SetPosition(1, hitmanLaserPos);
-        RpcdrawLine(hitmanLaserPos);
+        this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunHitPos);
+
+        //Make gun look at its target
+        GameObject.Find("Gun(Clone)").transform.LookAt(hitmanLaserPos);
+
+        RpcdrawLine(gunHitPos, gunPos);
     }
 
     [ClientRpc]
-    void RpcdrawLine(Vector3 hitmanLaserPos)
+    void RpcdrawLine(Vector3 hitmanLaserPos, Vector3 gunPos)
     {
         GameObject hitmanRefer;
 
@@ -67,7 +71,7 @@ public class PewPewGun : NetworkBehaviour
             if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().amHitman)
             {
                 hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
-                hitmanRefer.GetComponent<LineRenderer>().SetPosition(0, hitmanRefer.transform.position);
+                hitmanRefer.GetComponent<LineRenderer>().SetPosition(0, gunPos);
                 hitmanRefer.GetComponent<LineRenderer>().SetPosition(1, hitmanLaserPos);
             }
         }
@@ -91,16 +95,16 @@ public class PewPewGun : NetworkBehaviour
         else
         {
             RaycastHit Shot;
+            RaycastHit gunShot;
             Physics.Raycast(Camera.transform.position, Camera.transform.forward, out Shot, Mathf.Infinity);
-            //Debug.DrawLine(Camera.transform.position, Shot.point);
+            Physics.Raycast(Gun.transform.position, Gun.transform.forward, out gunShot, Mathf.Infinity);
 
             if (this.gameObject.GetComponent<PlayerController>().amHitman == true)
             {
-                //Debug.DrawLine(Shot.point, transform.position);
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(0, Gun.transform.position);
-                this.gameObject.GetComponent<LineRenderer>().SetPosition(1, Shot.point);
+                this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunShot.point);
 
-                CmddrawLine(Shot.point, Gun.transform.position);
+                CmddrawLine(Shot.point, Gun.transform.position, gunShot.point);
 
 
                 if (Input.GetMouseButtonDown(0))

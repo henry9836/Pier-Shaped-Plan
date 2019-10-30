@@ -205,7 +205,7 @@ MonoBehaviour:
   speed: 1500
   maxSpeed: 10
   health: 1
-  fireForce: 500
+  fireForce: 5000
   amHitman: 0
   camPrefab: {fileID: 8867953112220475306, guid: b3fea41f94d0cb842b016599a4a4053a,
     type: 3}

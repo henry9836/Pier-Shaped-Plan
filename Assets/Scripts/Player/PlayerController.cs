@@ -32,8 +32,9 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward), Quaternion.identity);
-        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * fireForce);
+        GameObject gunReference = GameObject.Find("Gun(Clone)");
+        GameObject tmpBullet = Instantiate(bullet, gunReference.transform.position + (gunReference.transform.forward), Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(gunReference.transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
     }
 
@@ -124,10 +125,11 @@ public class PlayerController : NetworkBehaviour
     //Player was hit by bullet
     public void HitByBullet() 
     {
-        if (isLocalPlayer)
-        {
-            CmdHitByBullet();
-        }
+        //if (isLocalPlayer)
+        //{
+        //    CmdHitByBullet();
+        //}
+        CmdHitByBullet();
     }
 
     // Update is called once per frame
