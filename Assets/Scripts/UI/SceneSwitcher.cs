@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using DG.Tweening;
 
 public class SceneSwitcher : MonoBehaviour {
@@ -64,9 +65,14 @@ public class SceneSwitcher : MonoBehaviour {
             {
                 ExitFade();
             }
+
             if (targetScene == "Quit")
             {
                 Application.Quit();
+            }
+            else if (targetScene == "HostGame")
+            {
+                FindObjectOfType<NetworkManager>().StartHost();
             }
             else 
             {
@@ -117,6 +123,13 @@ public class SceneSwitcher : MonoBehaviour {
         fadeTimeCur = fadeTime;
         Vector4 initialColor = fadeImage.color;
         fadeImage.DOFade(0, fadeTime).SetEase(Ease.InOutSine);
+    }
+
+    public void HostGame()
+    {
+        StartFade();
+        targetScene = "HostGame";
+        Debug.Log("Hosting Game...");
     }
 
     public void QuitGame()

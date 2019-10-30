@@ -12,8 +12,10 @@ public class LobbyScreen : MonoBehaviour
         Host
     }
     public TabState screenState;
+    private int screenStateCur = -1;
 
     public GameObject[] screens;
+    public InputField inputField;
     public Text addressField;
     public Text hostIPText;
 
@@ -25,9 +27,12 @@ public class LobbyScreen : MonoBehaviour
 
     void Start()
     {
+        screenState = TabState.Join;
+        screenStateCur = (int)TabState.Join;
         canvas = GetComponent<CanvasGroup>();
         manager = FindObjectOfType<NetworkManager>();
         manager.networkAddress = "localhost";
+        inputField.text = manager.networkAddress;
         hostAddress = IPManager.GetIP(ADDRESSFAM.IPv4);
         hostIPText.text = hostAddress;
         //Debug.Log(hostAddress);
@@ -35,15 +40,46 @@ public class LobbyScreen : MonoBehaviour
 
     void Update()
     {
+        // Game screens
+        if ((int)screenState != screenStateCur)
+        {
+            // Deactivate old screen
+            switch (screenStateCur)
+            {
+                case 0:
+                    screens[screenStateCur].GetComponent<TabScreen>().isEnabled = false;
+                    break;
+
+                case 1:
+                    screens[screenStateCur].GetComponent<TabScreen>().isEnabled = false;
+                    break;
+
+            }
+
+            // Activate new screen
+            switch (screenState)
+            {
+                case TabState.Join:
+                    screens[(int)screenState].GetComponent<TabScreen>().isEnabled = true;
+                    break;
+
+                case TabState.Host:
+                    screens[(int)screenState].GetComponent<TabScreen>().isEnabled = true;
+                    break;
+            }
+
+            screenStateCur = (int)screenState;
+        }
+
     }
 
     public void Connect()
     {
         if (!manager.IsClientConnected() && !NetworkServer.active && manager.matchMaker == null)
         {
-            manager.StartClient();
             manager.networkAddress = addressField.text;
-
+            manager.StartClient();
+            Debug.Log(manager.networkAddress);
         }
     }
 
@@ -53,5 +89,12 @@ public class LobbyScreen : MonoBehaviour
         {
             manager.StartHost();
         }
+    }
+
+    public void GoToScreen(int screen)
+    {
+        screenState = (TabState)screen;
+        //GetComponent<AudioSource>().clip = clickSound;
+        //GetComponent<AudioSource>().Play();
     }
 }
