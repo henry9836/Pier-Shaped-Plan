@@ -80,6 +80,8 @@ MonoBehaviour:
   hitmanReference: {fileID: 0}
   lobbyThreshold: 2
   gameover: 0
+  hitmanWin: 0
+  survivorWin: 1
   amountOfTasks: 5
   completedTasks: 0
   hitmanSelected: 0
