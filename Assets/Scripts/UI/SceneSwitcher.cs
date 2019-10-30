@@ -27,7 +27,7 @@ public class SceneSwitcher : MonoBehaviour {
         //fadePanel = GameObject.Find("FadePanel");
 
         curScene = SceneManager.GetActiveScene().name;
-        Debug.Log(curScene);
+        Debug.Log("Current scene: " + curScene);
 
         netman = FindObjectOfType<NetworkManager>();
     }
@@ -81,7 +81,10 @@ public class SceneSwitcher : MonoBehaviour {
             else 
             {
                 SceneManager.LoadScene(targetScene);
+                Debug.Log("Switched from " + curScene + " to " + targetScene);
             }
+
+            isSwitching = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
