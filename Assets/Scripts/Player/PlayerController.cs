@@ -175,10 +175,10 @@ public class PlayerController : NetworkBehaviour
             Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
             //Shooting
-            if (Input.GetMouseButtonDown(0))
-            {
-                CmdFireBullet();
-            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    CmdFireBullet();
+            //}
 
             //Checking our state
             if (health <= 0)
