@@ -451,8 +451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18e15ed5495c434d969378156376a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 4542384472942932902}
-  m_ParameterSendBits: 1
+  m_Animator: {fileID: 7035931559996578777}
+  m_ParameterSendBits: 3
   param0: 
   param1: 
   param2: 
