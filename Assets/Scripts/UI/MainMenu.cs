@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour
         GameObject netMan = GameObject.Find("NetworkManager");
         if (netMan != null)
         {
-            GameObject.Destroy(netMan);
+            //GameObject.Destroy(netMan);
         }
 
         Cursor.lockState = CursorLockMode.None;
