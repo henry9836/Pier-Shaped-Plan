@@ -11,6 +11,8 @@ public class PlayerController : NetworkBehaviour
     public int health = 1;
     public float fireForce = 500;
 
+    public bool tryingToInteract = false;
+
     [SyncVar]
     public bool amHitman = false;
 
@@ -199,6 +201,16 @@ public class PlayerController : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
+            }
+
+            //interacting 
+            if (Input.GetKey("e"))
+            {
+                tryingToInteract = true;
+            }
+            else
+            {
+                tryingToInteract = false;
             }
 
   
