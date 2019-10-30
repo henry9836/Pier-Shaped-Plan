@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
     public bool amHitman = false;
 
     public GameObject camPrefab;
+    public GameObject gunPrefab;
     public GameObject playerCanvas;
     public GameObject bullet;
 
@@ -34,6 +35,25 @@ public class PlayerController : NetworkBehaviour
         GameObject tmpBullet = Instantiate(bullet, transform.position + (transform.forward * 2), Quaternion.identity);
         tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
+    }
+
+    [Command]
+    void CmdGunSpawn()
+    {
+        //Sanity Check
+        if (GameObject.Find("Gun(Clone)") == null)
+        {
+            GameObject gunRefer = Instantiate(gunPrefab, Vector3.zero, Quaternion.identity);
+            gunRefer.transform.parent = transform.GetChild(1).transform;
+            gunRefer.transform.localPosition = Vector3.zero;
+            NetworkServer.Spawn(gunRefer);
+        }
+    }
+
+    [Command]
+    void CmdHitByBullet()
+    {
+        health -= 1; //SyncVar
     }
 
     [Command] 
@@ -99,11 +119,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    [Command]
-    void CmdHitByBullet()
-    {
-        health -= 1; //SyncVar
-    }
+    
 
     //Player was hit by bullet
     public void HitByBullet() 
@@ -120,6 +136,12 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+
+        //Spawn gun if hitman
+        if (amHitman && GameObject.Find("Gun(Clone)") == null)
+        {
+            CmdGunSpawn();
         }
 
         if (gameStarted)
@@ -176,6 +198,8 @@ public class PlayerController : NetworkBehaviour
             {
                 GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
             }
+
+  
         }
 
         else
