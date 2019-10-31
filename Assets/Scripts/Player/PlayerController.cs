@@ -47,7 +47,7 @@ public class PlayerController : NetworkBehaviour
         health -= 1; //SyncVar
     }
 
-    [Command] 
+    [Command]
     void CmdAmGameOverState()
     {
         gameOverState = true; //SyncVar
@@ -83,8 +83,7 @@ public class PlayerController : NetworkBehaviour
         playerCanvasReference.transform.GetChild(0).gameObject.SetActive(false);
         gameStarted = true;
     }
-
-    
+  
     private void Start()
     {
 
@@ -168,6 +167,14 @@ public class PlayerController : NetworkBehaviour
                 {
                     GetComponent<Rigidbody>().AddForce(transform.forward * speed * Time.deltaTime);
                 }
+
+                //Walk animation
+                GetComponent<Animator>().SetBool("Walk", true);
+            }
+            else
+            {
+                //Idle animation
+                GetComponent<Animator>().SetBool("Walk", false);
             }
 
             // Draw line in player look direction
@@ -183,6 +190,8 @@ public class PlayerController : NetworkBehaviour
             //Checking our state
             if (health <= 0)
             {
+                //Death animation
+                GetComponent<Animator>().SetTrigger("Death");
                 CmdAmGameOverState();
             }
             else if (escaped)

@@ -27,6 +27,7 @@ public class LobbyScreen : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         screenState = TabState.Join;
         screenStateCur = (int)TabState.Join;
         canvas = GetComponent<CanvasGroup>();
