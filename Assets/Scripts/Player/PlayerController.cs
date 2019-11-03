@@ -42,6 +42,18 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
+    void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
+    {
+        if (!isServer)
+        {
+            return;
+        }
+
+        GameObject.Find("GameManager").GetComponent<TaskLog>().CmdCompletedTask(taskID);
+
+    }
+
+    [Command]
     void CmdHitByBullet()
     {
         health -= 1; //SyncVar
@@ -133,6 +145,23 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        //DEBUGGING CHUNK
+
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+        string log = "VALS: ";
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
+                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            }
+        }
+
+        Debug.LogError(log);
+
+        //END DEBUGGIN CHUNK
+
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
@@ -202,7 +231,7 @@ public class PlayerController : NetworkBehaviour
             //Debugging Keys
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
+                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
             }
 
             //interacting 
@@ -215,7 +244,6 @@ public class PlayerController : NetworkBehaviour
                 tryingToInteract = false;
             }
 
-  
         }
 
         else
