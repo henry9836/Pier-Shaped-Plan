@@ -95,7 +95,9 @@ public class UITaskLog : NetworkBehaviour
                 taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
                 // Initialize task strings
-                // here
+                int taskID = i;
+
+                taskItemText[i].text = tasks[taskID];
             }
         }
     }
@@ -107,7 +109,12 @@ public class UITaskLog : NetworkBehaviour
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
-            bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            bool isComplete = true;
+
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
+            {
+                isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            }
 
             if (isComplete)
             {
