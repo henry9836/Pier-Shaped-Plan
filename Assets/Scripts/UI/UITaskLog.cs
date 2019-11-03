@@ -96,18 +96,33 @@ public class UITaskLog : NetworkBehaviour
 
                 // Initialize task strings
                 // here
+                nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+                int taskID = 0;
+                taskID = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
+
+                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+                {
+                }
+
+                taskItemText[i].text = tasks[taskID];
             }
         }
     }
 
     private void UpdateTaskLog()
     {
-        nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+        
 
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
-            bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            bool isComplete = true;
+            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
+            {
+            }
 
             if (isComplete)
             {
