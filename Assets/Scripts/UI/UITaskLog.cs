@@ -24,6 +24,7 @@ public class UITaskLog : NetworkBehaviour
     public string[] tasks;
 
     private GameObject[] nodes;
+    private int[] taskID;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
     private Text[] taskItemText;
@@ -80,12 +81,20 @@ public class UITaskLog : NetworkBehaviour
 
             // Instantiate task list items
             //taskCount = taskManager.numberoftasks;
+            taskID = new int[taskCount];
             taskItem = new GameObject[taskCount];
             taskItemCheckbox = new Image[taskCount];
             taskItemText = new Text[taskCount];
 
             for (int i = 0; i < taskCount; i++)
             {
+                nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+                {
+                    taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
+                }
+
                 taskItem[i] = Instantiate(taskItemPrefab);
                 taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
                 taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
@@ -96,16 +105,11 @@ public class UITaskLog : NetworkBehaviour
 
                 // Initialize task strings
                 // here
-                nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
 
-                int taskID = 0;
-                taskID = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
 
-                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
-                {
-                }
+                Debug.Log(i + " task wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
 
-                taskItemText[i].text = tasks[taskID];
+                taskItemText[i].text = tasks[taskID[i]];
             }
         }
     }
@@ -118,10 +122,10 @@ public class UITaskLog : NetworkBehaviour
         for (int i = 0; i < taskCount; i++)
         {
             bool isComplete = true;
-            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
 
             if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
             {
+                isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
             }
 
             if (isComplete)
