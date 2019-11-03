@@ -57,12 +57,25 @@ public class Encoder : NetworkBehaviour
 
         if (node != null)
         {
+            value = (value + 1) * -1; //+1 to avoid 0s and inverted to not go above level
             node.transform.position = new Vector3(node.transform.position.x, value, node.transform.position.z);
         }
         else
         {
-            Debug.LogWarning("Could not find node to modify | [Req] ID: " + (int)id + " ELEMENT: " + element);
+            Debug.LogWarning("Could not find node to modify | [Req] ID: " + (int)id + " ELEMENT: " + (int)element);
         }
 
+    }
+
+    public void Modify(TheGrandExchange.NODEID id, TheGrandExchange.TASKIDS element, bool value)
+    {
+        if (value)
+        {
+            Modify(id, (int)element, 1);
+        }
+        else
+        {
+            Modify(id, (int)element, 0);
+        }
     }
 }

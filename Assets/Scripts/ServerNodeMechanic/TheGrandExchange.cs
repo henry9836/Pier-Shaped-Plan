@@ -6,14 +6,18 @@ public class TheGrandExchange : MonoBehaviour
 {
     public enum NODEID{ 
         ERRORNOTYPE,
-        TASKLOG
+        TASKLOG,
+        TASKLOGCOMPLETESTATE
     };
 
     public enum TASKIDS
     {
-        FISH,
-        THING,
-        THING2
+        EATFISH,
+        GREETFISHERMAN,
+        USEPAYPHONE,
+        BUYNEWSPAPER,
+        TIEUPBOAT,
+        DROPTHEPACKAGE,
     };
 
 }

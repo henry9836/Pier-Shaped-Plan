@@ -59,4 +59,18 @@ public class Decoder : MonoBehaviour
 
         return result;
     }
+
+    public bool DecodeBool(TheGrandExchange.NODEID id, int element)
+    {
+        bool result = false;
+
+        int resultInt = Decode(id, element);
+
+        if (resultInt == 1)
+        {
+            result = true;
+        }
+
+        return result;
+    }
 }
