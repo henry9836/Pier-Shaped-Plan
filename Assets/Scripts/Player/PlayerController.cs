@@ -133,6 +133,9 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 0));
+        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 1));
+        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 2));
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
