@@ -42,12 +42,6 @@ public class GameManager : NetworkBehaviour
         gameStarted = false;
         canEscape = false;
         ending = false;
-
-        //Testing
-
-        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOG, 0, (int)TheGrandExchange.TASKIDS.THING2);
-        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOG, 1, (int)TheGrandExchange.TASKIDS.FISH);
-        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOG, 2, (int)TheGrandExchange.TASKIDS.THING);
     }
 
     void SelectHitman()
