@@ -130,10 +130,6 @@ public class PlayerController : NetworkBehaviour
     //Player was hit by bullet
     public void HitByBullet() 
     {
-        //if (isLocalPlayer)
-        //{
-        //    CmdHitByBullet();
-        //}
         CmdHitByBullet();
     }
 
@@ -209,12 +205,6 @@ public class PlayerController : NetworkBehaviour
             // Draw line in player look direction
             Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
             Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
-
-            //Shooting
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    CmdFireBullet();
-            //}
 
             //Checking our state
             if (health <= 0)
