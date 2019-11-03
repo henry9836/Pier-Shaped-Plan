@@ -184,6 +184,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 6551497397239170170}
+  - {fileID: 1570535754296340109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,7 +205,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -226,11 +227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 300
+  m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -252,3 +253,53 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &797968857973991821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6551497397439358929}
+    m_Modifications:
+    - target: {fileID: 2222910696977270559, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_Name
+      value: TaskLog
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3362812a886229441ad751cccf1818dd, type: 3}
+--- !u!224 &1570535754296340109 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2222910696977270528, guid: 3362812a886229441ad751cccf1818dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 797968857973991821}
+  m_PrefabAsset: {fileID: 0}

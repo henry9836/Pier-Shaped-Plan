@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 2222910696977270528}
   - component: {fileID: 2222910696977270530}
   - component: {fileID: 2222910696977270529}
-  - component: {fileID: 2222910696977270556}
   - component: {fileID: 2222910696977270532}
   m_Layer: 5
   m_Name: TaskLog
@@ -159,26 +158,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2222910696977270556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2222910696977270559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef94529fa78933a48b72c05b56a9aa1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenState: 0
-  screens:
-  - {fileID: 0}
-  - {fileID: 0}
-  inputField: {fileID: 0}
-  addressField: {fileID: 0}
-  hostIPText: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!225 &2222910696977270532
 CanvasGroup:
   m_ObjectHideFlags: 0
