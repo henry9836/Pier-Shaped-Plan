@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1546.7443, g: 2180.7847, b: 3457.941, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1101,7 +1101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadePanel: {fileID: 3667132}
   fadeTime: 1
+  targetScene: 
   curScene: 
+  clickSound: {fileID: 0}
 --- !u!4 &1810441904
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,6 +1129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536094332219877275, guid: be2fed74ee7fbb846ad9f672510e4cbd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3536094332219877274, guid: be2fed74ee7fbb846ad9f672510e4cbd,
         type: 3}
