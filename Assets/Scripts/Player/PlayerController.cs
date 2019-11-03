@@ -42,6 +42,18 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
+    void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
+    {
+        if (!isServer)
+        {
+            return;
+        }
+
+        GameObject.Find("GameManager").GetComponent<TaskLog>().CmdCompletedTask(taskID);
+
+    }
+
+    [Command]
     void CmdHitByBullet()
     {
         health -= 1; //SyncVar
@@ -205,7 +217,7 @@ public class PlayerController : NetworkBehaviour
             //Debugging Keys
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
+                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
             }
 
             //interacting 
@@ -218,7 +230,6 @@ public class PlayerController : NetworkBehaviour
                 tryingToInteract = false;
             }
 
-  
         }
 
         else
