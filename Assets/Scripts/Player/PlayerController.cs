@@ -145,9 +145,23 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 0));
-        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 1));
-        Debug.LogError("GOT VAL: " + GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.TASKLOG, 2));
+        //DEBUGGING CHUNK
+
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+        string log = "VALS: ";
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
+                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            }
+        }
+
+        Debug.LogError(log);
+
+        //END DEBUGGIN CHUNK
+
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
