@@ -317,6 +317,7 @@ MonoBehaviour:
   taskItemPrefab: {fileID: 2106618203696115439, guid: a3b585c5a56c7cc4bbccc2c23dacc648,
     type: 3}
   checkboxOn: {fileID: 21300000, guid: f67f56513d2e5414a96f76115db0cb1d, type: 3}
+  checkboxCross: {fileID: 21300000, guid: c34536da824ddb54085ccf5f99a5300d, type: 3}
   checkboxOff: {fileID: 21300000, guid: 7543602c100bfd04db042440d0b16f22, type: 3}
   tasks:
   - Eat fish at the market

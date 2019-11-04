@@ -24,10 +24,12 @@ public class UITaskLog : NetworkBehaviour
 
     private GameObject taskPopup;
     private CanvasGroup taskPopupCanvas;
+    private Image taskPopupCheckbox;
     private Text taskPopupDescription;
 
     public GameObject taskItemPrefab;
     public Sprite checkboxOn;
+    public Sprite checkboxCross;
     public Sprite checkboxOff;
     public string[] tasks;
     public string hitmanDescription;
@@ -110,6 +112,7 @@ public class UITaskLog : NetworkBehaviour
             taskPopup = playerCanvas.transform.Find("TaskPopup").gameObject;
             taskPopup.transform.DOScale(0f, 0f);
             taskPopupCanvas = taskPopup.GetComponent<CanvasGroup>();
+            taskPopupCheckbox = taskPopup.transform.Find("Text/Check").GetComponent<Image>();
             taskPopupDescription = taskPopup.transform.Find("Text").GetComponent<Text>();
 
             // Instantiate task list items
@@ -180,7 +183,7 @@ public class UITaskLog : NetworkBehaviour
             // Update checkboxes
             if (taskComplete[i])
             {
-                taskItemCheckbox[i].sprite = checkboxOn;
+                taskItemCheckbox[i].sprite = player.amHitman ? checkboxCross : checkboxOn;
                 tasksCompleted++;
             }
             else
@@ -194,6 +197,7 @@ public class UITaskLog : NetworkBehaviour
 
         // Change description of task log depending on whether the player is a hitman
         taskDescription.text = player.amHitman ? hitmanDescription : victimDescription;
+        taskPopupCheckbox.sprite = player.amHitman ? checkboxCross : checkboxOn;
     }
 
     private void Begin()
