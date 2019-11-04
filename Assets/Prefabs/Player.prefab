@@ -318,7 +318,7 @@ MonoBehaviour:
     type: 3}
   checkboxOn: {fileID: 21300000, guid: f67f56513d2e5414a96f76115db0cb1d, type: 3}
   checkboxOff: {fileID: 21300000, guid: 7543602c100bfd04db042440d0b16f22, type: 3}
-  taskCount: 3
+  taskCount: 5
   tasks:
   - Eat fish at the market
   - Greet the fisherman
@@ -585,6 +585,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle Animation
       objectReference: {fileID: 0}
+    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+        type: 3}
+      propertyPath: m_Name
+      value: Igor Mesh
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -654,11 +659,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
-        type: 3}
-      propertyPath: m_Name
-      value: Igor Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 361002e07b108764cba3266140377bc2, type: 3}
