@@ -145,19 +145,11 @@ public class UITaskLog : NetworkBehaviour
             }
         }
 
-        // Change description of task log depending on whether the player is a hitman
-        bool isHitman = player.amHitman;
-        if (isHitman)
-        {
-            taskDescription.text = hitmanDescription;
-        }
-        else
-        {
-            taskDescription.text = victimDescription;
-        }
-
         // Update tasks completed counter
         tasksCompletedCounter.text = tasksCompleted + "/" + taskCount + " tasks completed";
+
+        // Change description of task log depending on whether the player is a hitman
+        taskDescription.text = player.amHitman ? hitmanDescription : victimDescription;
     }
 
     private void Begin()
