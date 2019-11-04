@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2262535905115639749}
   - component: {fileID: 7078852483311941107}
   - component: {fileID: 3531292420903323914}
-  - component: {fileID: -6435765165771687903}
   m_Layer: 0
   m_Name: Hanging_Sign
   m_TagString: Untagged
@@ -79,16 +78,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &-6435765165771687903
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971669541121883606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.042159386, y: 0.009952401, z: 0.0017728633}
-  m_Center: {x: 0.0000000027939677, y: 0, z: 2.910383e-11}
