@@ -7,19 +7,29 @@ using DG.Tweening;
 
 public class UITaskLog : NetworkBehaviour
 {
-    public bool isEnabled;
+    public bool showTaskLog;
     private bool beginRequested;
     private bool endRequested;
+
+    public float popupShowTime = 5f;
+    private float popupTimer;
+    private bool showingPopup;
 
     private PlayerController player;
     private GameObject playerCanvas;
     private GameObject taskLog;
-    private CanvasGroup canvas;
+    private CanvasGroup taskLogCanvas;
     private Text taskDescription;
     private Text tasksCompletedCounter;
 
+    private GameObject taskPopup;
+    private CanvasGroup taskPopupCanvas;
+    private Image taskPopupCheckbox;
+    private Text taskPopupDescription;
+
     public GameObject taskItemPrefab;
     public Sprite checkboxOn;
+    public Sprite checkboxCross;
     public Sprite checkboxOff;
     public string[] tasks;
     public string hitmanDescription;
@@ -27,8 +37,8 @@ public class UITaskLog : NetworkBehaviour
 
     private int taskCount = 5;
     private bool[] taskComplete;
-    private GameObject[] nodes;
     private int[] taskID;
+    private GameObject[] nodes;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
     private Text[] taskItemText;
@@ -54,19 +64,33 @@ public class UITaskLog : NetworkBehaviour
         // Toggle task log display with TAB
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isEnabled = !isEnabled;
+            showTaskLog = !showTaskLog;
         }
 
         // Play open or close animation based on state of isEnabled
-        if (isEnabled && !beginRequested)
+        if (showTaskLog && !beginRequested)
         {
             Begin();
 
         }
 
-        if (!isEnabled && !endRequested)
+        if (!showTaskLog && !endRequested)
         {
             End();
+        }
+
+        if (showingPopup)
+        {
+            popupTimer = Mathf.MoveTowards(popupTimer, 0f, Time.deltaTime);
+            if (popupTimer <= 0f)
+            {
+                hidePopup();
+                showingPopup = false;
+            }
+        }
+        else
+        {
+            popupTimer = popupShowTime;
         }
     }
 
@@ -81,10 +105,15 @@ public class UITaskLog : NetworkBehaviour
 
             taskLog = playerCanvas.transform.Find("TaskLog").gameObject;
             taskLog.transform.DOScale(0f, 0f);
-            canvas = taskLog.GetComponent<CanvasGroup>();
-
+            taskLogCanvas = taskLog.GetComponent<CanvasGroup>();
             taskDescription = taskLog.transform.Find("Description").GetComponent<Text>();
             tasksCompletedCounter = taskLog.transform.Find("TasksCompleted").GetComponent<Text>();
+
+            taskPopup = playerCanvas.transform.Find("TaskPopup").gameObject;
+            taskPopup.transform.DOScale(0f, 0f);
+            taskPopupCanvas = taskPopup.GetComponent<CanvasGroup>();
+            taskPopupCheckbox = taskPopup.transform.Find("Text/Check").GetComponent<Image>();
+            taskPopupDescription = taskPopup.transform.Find("Text").GetComponent<Text>();
 
             // Instantiate task list items
             InitializeTasks();
@@ -129,14 +158,32 @@ public class UITaskLog : NetworkBehaviour
     {
         int tasksCompleted = 0;
 
-        // Update checkboxes
+        // Update task complete state
         for (int i = 0; i < taskCount; i++)
         {
-            taskComplete[i] = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+            bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+            int lastTaskCompleted;
 
+            if (taskComplete[i] != isComplete)
+            {
+                // Show popup when a task is completed
+                lastTaskCompleted = i;
+                taskComplete[i] = isComplete;
+                taskPopupDescription.text = tasks[taskID[i]];
+
+                if (!showingPopup)
+                {
+                    showPopup();
+                    showingPopup = true;
+                }
+
+                Debug.Log("Completed task: " + tasks[taskID[i]]);
+            }
+
+            // Update checkboxes
             if (taskComplete[i])
             {
-                taskItemCheckbox[i].sprite = checkboxOn;
+                taskItemCheckbox[i].sprite = player.amHitman ? checkboxCross : checkboxOn;
                 tasksCompleted++;
             }
             else
@@ -145,19 +192,12 @@ public class UITaskLog : NetworkBehaviour
             }
         }
 
-        // Change description of task log depending on whether the player is a hitman
-        bool isHitman = player.amHitman;
-        if (isHitman)
-        {
-            taskDescription.text = hitmanDescription;
-        }
-        else
-        {
-            taskDescription.text = victimDescription;
-        }
-
         // Update tasks completed counter
         tasksCompletedCounter.text = tasksCompleted + "/" + taskCount + " tasks completed";
+
+        // Change description of task log depending on whether the player is a hitman
+        taskDescription.text = player.amHitman ? hitmanDescription : victimDescription;
+        taskPopupCheckbox.sprite = player.amHitman ? checkboxCross : checkboxOn;
     }
 
     private void Begin()
@@ -166,26 +206,41 @@ public class UITaskLog : NetworkBehaviour
         beginRequested = true;
         endRequested = false;
 
-        canvas.DOKill(true);
-        canvas.DOFade(1f, 0.3f);
+        taskLogCanvas.DOKill(true);
+        taskLogCanvas.DOFade(1f, 0.3f);
         taskLog.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
 
-        canvas.interactable = true;
-        canvas.blocksRaycasts = true;
+        // Move popup out of the way
+        taskPopup.transform.DOLocalMoveX(360f, 0.3f);
     }
 
     public void End()
     {
         // Play close animation
-        canvas.interactable = false;
-        canvas.blocksRaycasts = false;
-
         beginRequested = false;
         endRequested = true;
 
-        canvas.DOKill(true);
-        canvas.DOFade(0f, 0.25f);
+        taskLogCanvas.DOKill(true);
+        taskLogCanvas.DOFade(0f, 0.25f);
         taskLog.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
+
+        // Move popup back
+        taskPopup.transform.DOLocalMoveX(0f, 0.4f);
+    }
+
+
+    private void showPopup()
+    {
+        taskPopupCanvas.DOKill(true);
+        taskPopupCanvas.DOFade(1f, 0.3f);
+        taskPopup.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+    }
+
+    private void hidePopup()
+    {
+        taskPopupCanvas.DOKill(true);
+        taskPopupCanvas.DOFade(0f, 0.25f);
+        taskPopup.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
     }
 
 }

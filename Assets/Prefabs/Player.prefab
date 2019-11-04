@@ -46,7 +46,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.412, z: 0.735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3252221600353099173}
+  - {fileID: 3252221600353099177}
   m_Father: {fileID: 3569225421776133037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,10 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ebf0ca106cf8a46aaecc98000e1cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 0
+  showTaskLog: 0
+  popupShowTime: 5
   taskItemPrefab: {fileID: 2106618203696115439, guid: a3b585c5a56c7cc4bbccc2c23dacc648,
     type: 3}
   checkboxOn: {fileID: 21300000, guid: f67f56513d2e5414a96f76115db0cb1d, type: 3}
+  checkboxCross: {fileID: 21300000, guid: c34536da824ddb54085ccf5f99a5300d, type: 3}
   checkboxOff: {fileID: 21300000, guid: 7543602c100bfd04db042440d0b16f22, type: 3}
   tasks:
   - Eat fish at the market
@@ -569,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
---- !u!4 &3252221600353099173 stripped
+--- !u!4 &3252221600353099177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
     type: 3}
