@@ -11,6 +11,8 @@ public class UITaskLog : NetworkBehaviour
     private bool beginRequested;
     private bool endRequested;
 
+    public GameObject gameManager;
+    private TaskLog taskManager;
     private GameObject playerCanvas;
     private GameObject taskLog;
     private CanvasGroup canvas;
@@ -18,11 +20,10 @@ public class UITaskLog : NetworkBehaviour
     public GameObject taskItemPrefab;
     public Sprite checkboxOn;
     public Sprite checkboxOff;
-    private int taskCount = 5;
+    public int taskCount = 5;
     public string[] tasks;
 
     private GameObject[] nodes;
-    private int[] taskID;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
     private Text[] taskItemText;
@@ -75,50 +76,53 @@ public class UITaskLog : NetworkBehaviour
             canvas = taskLog.GetComponent<CanvasGroup>();
             taskLog.transform.DOScale(0f, 0f);
 
+            CmdGetLog();
+
             // Instantiate task list items
-            InitializeTasks();
-        }
-    }
+            //taskCount = taskManager.numberoftasks;
+            taskItem = new GameObject[taskCount];
+            taskItemCheckbox = new Image[taskCount];
+            taskItemText = new Text[taskCount];
 
-    private void InitializeTasks()
-    {
-        // Find cubes that are encoded with task log data
-        nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
-        taskCount = nodes.Length / 2;
-        Debug.Log("Number of tasks: " + taskCount);
+            for (int i = 0; i < taskCount; i++)
+            {
+                taskItem[i] = Instantiate(taskItemPrefab);
+                taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
+                taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
 
-        // Initialize arrays
-        taskID = new int[taskCount];                // Task type assigned to each task number
-        taskItem = new GameObject[taskCount];       // Task item prefab with checkbos and text
-        taskItemCheckbox = new Image[taskCount];    // Checkbox image for the task number
-        taskItemText = new Text[taskCount];         // Text for the task number
+                taskItem[i].transform.parent = taskLog.transform;
+                taskItem[i].transform.localPosition = new Vector3(0.0f, 170f - (i * 64f), 0);
+                taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-        for (int i = 0; i < taskCount; i++)
-        {
-            // Find chosen tasks and set them in taskID[]
-            taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, i);
+                // Initialize task strings
+                // here
+                nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
 
-            taskItem[i] = Instantiate(taskItemPrefab);
-            taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
-            taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
+                int taskID = 0;
+                taskID = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
 
-            taskItem[i].transform.parent = taskLog.transform;
-            taskItem[i].transform.localPosition = new Vector3(0.0f, 170f - (i * 64f), 0);
-            taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+                {
+                }
 
-            // Initialize task strings
-            taskItemText[i].text = tasks[taskID[i]];
-            Debug.Log(i + " task wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
+                taskItemText[i].text = tasks[taskID];
+            }
         }
     }
 
     private void UpdateTaskLog()
     {
+        
+
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
             bool isComplete = true;
-            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
+            {
+            }
 
             if (isComplete)
             {
@@ -129,6 +133,19 @@ public class UITaskLog : NetworkBehaviour
                 taskItemCheckbox[i].sprite = checkboxOff;
             }
         }
+    }
+
+    [Command]
+    void CmdGetLog()
+    {
+        if (!isServer)
+        {
+            return;
+        }
+
+        gameManager = GameObject.Find("GameManager");
+        taskManager = gameManager.GetComponent<TaskLog>();
+
     }
 
     private void Begin()

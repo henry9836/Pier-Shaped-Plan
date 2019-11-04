@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3044939080011392238}
   - component: {fileID: 6276554752499621592}
   - component: {fileID: 299001336891728417}
+  - component: {fileID: -2787923575682985904}
   m_Layer: 0
   m_Name: Fish_Market_Buildings
   m_TagString: Untagged
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-2787923575682985904
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025091704651929341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 5000803511603029546, guid: b320e7bfc6089a943b58c420aa6b2520, type: 3}
