@@ -22,7 +22,7 @@ MonoBehaviour:
   showUnityEditorReport: 0
   logBehaviour: 0
   drawGizmos: 0
-  defaultRecyclable: 0
+  defaultRecyclable: 1
   defaultAutoPlay: 3
   defaultUpdateType: 0
   defaultTimeScaleIndependent: 1

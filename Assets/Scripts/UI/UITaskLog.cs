@@ -11,16 +11,22 @@ public class UITaskLog : NetworkBehaviour
     private bool beginRequested;
     private bool endRequested;
 
+    private PlayerController player;
     private GameObject playerCanvas;
     private GameObject taskLog;
     private CanvasGroup canvas;
+    private Text taskDescription;
+    private Text tasksCompletedCounter;
 
     public GameObject taskItemPrefab;
     public Sprite checkboxOn;
     public Sprite checkboxOff;
-    private int taskCount = 5;
     public string[] tasks;
+    public string hitmanDescription;
+    public string victimDescription;
 
+    private int taskCount = 5;
+    private bool[] taskComplete;
     private GameObject[] nodes;
     private int[] taskID;
     private GameObject[] taskItem;
@@ -70,11 +76,15 @@ public class UITaskLog : NetworkBehaviour
 
         if (playerCanvas == null)
         {
+            player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
 
             taskLog = playerCanvas.transform.Find("TaskLog").gameObject;
-            canvas = taskLog.GetComponent<CanvasGroup>();
             taskLog.transform.DOScale(0f, 0f);
+            canvas = taskLog.GetComponent<CanvasGroup>();
+
+            taskDescription = taskLog.transform.Find("Description").GetComponent<Text>();
+            tasksCompletedCounter = taskLog.transform.Find("TasksCompleted").GetComponent<Text>();
 
             // Instantiate task list items
             InitializeTasks();
@@ -90,46 +100,64 @@ public class UITaskLog : NetworkBehaviour
 
         // Initialize arrays
         taskID = new int[taskCount];                // Task type assigned to each task number
-        taskItem = new GameObject[taskCount];       // Task item prefab with checkbos and text
+        taskItem = new GameObject[taskCount];       // Task item prefab with checkboxes and text
         taskItemCheckbox = new Image[taskCount];    // Checkbox image for the task number
         taskItemText = new Text[taskCount];         // Text for the task number
+        taskComplete = new bool[taskCount];         // Stores whether the task has been completed
 
         for (int i = 0; i < taskCount; i++)
         {
             // Find chosen tasks and set them in taskID[]
             taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, i);
 
+            // Create task item UI object for each task
             taskItem[i] = Instantiate(taskItemPrefab);
             taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
             taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
 
             taskItem[i].transform.parent = taskLog.transform;
-            taskItem[i].transform.localPosition = new Vector3(0.0f, 170f - (i * 64f), 0);
+            taskItem[i].transform.localPosition = new Vector3(0.0f, 64f - (i * 64f), 0);
             taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
             // Initialize task strings
             taskItemText[i].text = tasks[taskID[i]];
-            Debug.Log(i + " task wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
+            Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
         }
     }
 
     private void UpdateTaskLog()
     {
+        int tasksCompleted = 0;
+
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
-            bool isComplete = true;
-            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+            taskComplete[i] = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
 
-            if (isComplete)
+            if (taskComplete[i])
             {
                 taskItemCheckbox[i].sprite = checkboxOn;
+                tasksCompleted++;
             }
             else
             {
                 taskItemCheckbox[i].sprite = checkboxOff;
             }
         }
+
+        // Change description of task log depending on whether the player is a hitman
+        bool isHitman = player.amHitman;
+        if (isHitman)
+        {
+            taskDescription.text = hitmanDescription;
+        }
+        else
+        {
+            taskDescription.text = victimDescription;
+        }
+
+        // Update tasks completed counter
+        tasksCompletedCounter.text = tasksCompleted + "/" + taskCount + " tasks completed";
     }
 
     private void Begin()
