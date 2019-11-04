@@ -11,8 +11,6 @@ public class UITaskLog : NetworkBehaviour
     private bool beginRequested;
     private bool endRequested;
 
-    public GameObject gameManager;
-    private TaskLog taskManager;
     private GameObject playerCanvas;
     private GameObject taskLog;
     private CanvasGroup canvas;
@@ -77,8 +75,6 @@ public class UITaskLog : NetworkBehaviour
             canvas = taskLog.GetComponent<CanvasGroup>();
             taskLog.transform.DOScale(0f, 0f);
 
-            CmdGetLog();
-
             // Instantiate task list items
             InitializeTasks();
         }
@@ -99,11 +95,8 @@ public class UITaskLog : NetworkBehaviour
 
         for (int i = 0; i < taskCount; i++)
         {
-            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
-            {
-                // Find chosen tasks and set them in taskID[]
-                taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
-            }
+            // Find chosen tasks and set them in taskID[]
+            taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, i);
 
             taskItem[i] = Instantiate(taskItemPrefab);
             taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
@@ -121,17 +114,11 @@ public class UITaskLog : NetworkBehaviour
 
     private void UpdateTaskLog()
     {
-        
-
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
             bool isComplete = true;
-
-            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
-            {
-                isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
-            }
+            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
 
             if (isComplete)
             {
@@ -142,19 +129,6 @@ public class UITaskLog : NetworkBehaviour
                 taskItemCheckbox[i].sprite = checkboxOff;
             }
         }
-    }
-
-    [Command]
-    void CmdGetLog()
-    {
-        if (!isServer)
-        {
-            return;
-        }
-
-        gameManager = GameObject.Find("GameManager");
-        taskManager = gameManager.GetComponent<TaskLog>();
-
     }
 
     private void Begin()
