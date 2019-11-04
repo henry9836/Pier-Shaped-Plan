@@ -84,7 +84,7 @@ MonoBehaviour:
   gameover: 0
   hitmanWin: 0
   survivorWin: 1
-  amountOfTasks: 5
+  amountOfTasks: 3
   completedTasks: 0
   hitmanSelected: 0
   gameStarted: 0
@@ -115,4 +115,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7962cced521d7646aab3565ee701d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberoftasks: 5
+  numberoftasks: 3
