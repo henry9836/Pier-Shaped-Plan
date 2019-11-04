@@ -46,7 +46,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.412, z: 0.735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3252221600353099169}
+  - {fileID: 3252221600353099173}
   m_Father: {fileID: 3569225421776133037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -313,12 +313,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 0
-  gameManager: {fileID: 0}
   taskItemPrefab: {fileID: 2106618203696115439, guid: a3b585c5a56c7cc4bbccc2c23dacc648,
     type: 3}
   checkboxOn: {fileID: 21300000, guid: f67f56513d2e5414a96f76115db0cb1d, type: 3}
   checkboxOff: {fileID: 21300000, guid: 7543602c100bfd04db042440d0b16f22, type: 3}
-  taskCount: 5
   tasks:
   - Eat fish at the market
   - Greet the fisherman
@@ -326,6 +324,10 @@ MonoBehaviour:
   - Buy and read today's paper
   - Tie up the boat
   - Drop the package at the rendezvous
+  hitmanDescription: Agent, prevent your target from completing these tasks by executing
+    them!
+  victimDescription: Complete the following tasks in order to escape the hitman and
+    win the game.
 --- !u!114 &4920649276975335375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
---- !u!4 &3252221600353099169 stripped
+--- !u!4 &3252221600353099173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
     type: 3}

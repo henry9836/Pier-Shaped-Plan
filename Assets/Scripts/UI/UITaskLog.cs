@@ -11,19 +11,24 @@ public class UITaskLog : NetworkBehaviour
     private bool beginRequested;
     private bool endRequested;
 
-    public GameObject gameManager;
-    private TaskLog taskManager;
+    private PlayerController player;
     private GameObject playerCanvas;
     private GameObject taskLog;
     private CanvasGroup canvas;
+    private Text taskDescription;
+    private Text tasksCompletedCounter;
 
     public GameObject taskItemPrefab;
     public Sprite checkboxOn;
     public Sprite checkboxOff;
-    public int taskCount = 5;
     public string[] tasks;
+    public string hitmanDescription;
+    public string victimDescription;
 
+    private int taskCount = 5;
+    private bool[] taskComplete;
     private GameObject[] nodes;
+    private int[] taskID;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
     private Text[] taskItemText;
@@ -46,6 +51,7 @@ public class UITaskLog : NetworkBehaviour
 
         UpdateTaskLog();
 
+        // Toggle task log display with TAB
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             isEnabled = !isEnabled;
@@ -70,82 +76,88 @@ public class UITaskLog : NetworkBehaviour
 
         if (playerCanvas == null)
         {
+            player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
 
             taskLog = playerCanvas.transform.Find("TaskLog").gameObject;
-            canvas = taskLog.GetComponent<CanvasGroup>();
             taskLog.transform.DOScale(0f, 0f);
+            canvas = taskLog.GetComponent<CanvasGroup>();
 
-            CmdGetLog();
+            taskDescription = taskLog.transform.Find("Description").GetComponent<Text>();
+            tasksCompletedCounter = taskLog.transform.Find("TasksCompleted").GetComponent<Text>();
 
             // Instantiate task list items
-            //taskCount = taskManager.numberoftasks;
-            taskItem = new GameObject[taskCount];
-            taskItemCheckbox = new Image[taskCount];
-            taskItemText = new Text[taskCount];
+            InitializeTasks();
+        }
+    }
 
-            for (int i = 0; i < taskCount; i++)
-            {
-                taskItem[i] = Instantiate(taskItemPrefab);
-                taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
-                taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
+    private void InitializeTasks()
+    {
+        // Find cubes that are encoded with task log data
+        nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+        taskCount = nodes.Length / 2;
+        Debug.Log("Number of tasks: " + taskCount);
 
-                taskItem[i].transform.parent = taskLog.transform;
-                taskItem[i].transform.localPosition = new Vector3(0.0f, 170f - (i * 64f), 0);
-                taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        // Initialize arrays
+        taskID = new int[taskCount];                // Task type assigned to each task number
+        taskItem = new GameObject[taskCount];       // Task item prefab with checkboxes and text
+        taskItemCheckbox = new Image[taskCount];    // Checkbox image for the task number
+        taskItemText = new Text[taskCount];         // Text for the task number
+        taskComplete = new bool[taskCount];         // Stores whether the task has been completed
 
-                // Initialize task strings
-                // here
-                nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+        for (int i = 0; i < taskCount; i++)
+        {
+            // Find chosen tasks and set them in taskID[]
+            taskID[i] = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, i);
 
-                int taskID = 0;
-                taskID = decoder.Decode(TheGrandExchange.NODEID.TASKLOG, (int)nodes[i].transform.position.z);
+            // Create task item UI object for each task
+            taskItem[i] = Instantiate(taskItemPrefab);
+            taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
+            taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
 
-                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
-                {
-                }
+            taskItem[i].transform.parent = taskLog.transform;
+            taskItem[i].transform.localPosition = new Vector3(0.0f, 64f - (i * 64f), 0);
+            taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-                taskItemText[i].text = tasks[taskID];
-            }
+            // Initialize task strings
+            taskItemText[i].text = tasks[taskID[i]];
+            Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
         }
     }
 
     private void UpdateTaskLog()
     {
-        
+        int tasksCompleted = 0;
 
         // Update checkboxes
         for (int i = 0; i < taskCount; i++)
         {
-            bool isComplete = true;
-            isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            taskComplete[i] = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
 
-            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
-            {
-            }
-
-            if (isComplete)
+            if (taskComplete[i])
             {
                 taskItemCheckbox[i].sprite = checkboxOn;
+                tasksCompleted++;
             }
             else
             {
                 taskItemCheckbox[i].sprite = checkboxOff;
             }
         }
-    }
 
-    [Command]
-    void CmdGetLog()
-    {
-        if (!isServer)
+        // Change description of task log depending on whether the player is a hitman
+        bool isHitman = player.amHitman;
+        if (isHitman)
         {
-            return;
+            taskDescription.text = hitmanDescription;
+        }
+        else
+        {
+            taskDescription.text = victimDescription;
         }
 
-        gameManager = GameObject.Find("GameManager");
-        taskManager = gameManager.GetComponent<TaskLog>();
-
+        // Update tasks completed counter
+        tasksCompletedCounter.text = tasksCompleted + "/" + taskCount + " tasks completed";
     }
 
     private void Begin()
