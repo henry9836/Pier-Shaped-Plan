@@ -42,7 +42,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
+    public void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
     {
         if (!isServer)
         {
