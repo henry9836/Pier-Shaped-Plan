@@ -12,7 +12,7 @@ public class Interaction : NetworkBehaviour
     public int interactorable = 0;
 
 
-    private TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
+    public TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
 
 
     void Update()
@@ -21,7 +21,6 @@ public class Interaction : NetworkBehaviour
         {
             return;
         }
-
 
         //Attempt to find an interactable object
         Vector3 playerpos = this.transform.position;
