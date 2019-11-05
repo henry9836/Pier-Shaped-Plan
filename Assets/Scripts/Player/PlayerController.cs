@@ -42,6 +42,12 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
+    public void CmdEscape()
+    {
+        escaped = true;
+    }
+
+    [Command]
     public void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
     {
         if (!isServer)
