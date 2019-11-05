@@ -46,7 +46,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.412, z: 0.735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3252221600353099158}
+  - {fileID: 3252221600353099179}
   m_Father: {fileID: 3569225421776133037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7035931559996578777}
   - component: {fileID: 8385023030144267834}
   - component: {fileID: 9074907545027328050}
+  - component: {fileID: -6850716961884975126}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -516,6 +517,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a017c93a91b89429fc4473413a4c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6850716961884975126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589ace6b26e51324691d67509b8297f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToComplete: 5
+  currentCompletion: 0
+  maxDistance: 5
+  clientDone: 0
+  once: 0
+  interactorable: 0
+  onceSkill: 0
+  onceGen: 0
+  tick: 0
+  timer: 0
+  skillStartTime: 0
+  skillFinTime: 0
+  genTimer: 20
+  skillcheckCount: 0
+  maxchecks: 5
+  minchecks: 1
+  doing: 0
 --- !u!1001 &3252221600353099061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -585,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
---- !u!4 &3252221600353099158 stripped
+--- !u!4 &3252221600353099179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
     type: 3}
@@ -598,16 +628,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 361002e07b108764cba3266140377bc2,
-        type: 3}
-      propertyPath: m_Name
-      value: Idle Animation
-      objectReference: {fileID: 0}
-    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
-        type: 3}
-      propertyPath: m_Name
-      value: Igor Mesh
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,6 +697,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 361002e07b108764cba3266140377bc2,
+        type: 3}
+      propertyPath: m_Name
+      value: Idle Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+        type: 3}
+      propertyPath: m_Name
+      value: Igor Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 361002e07b108764cba3266140377bc2, type: 3}
