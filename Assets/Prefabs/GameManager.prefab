@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitmanReference: {fileID: 0}
+  InteractObject: {fileID: 2556891697592673801, guid: fdcf88f123f2afd4ea506754c784c9d5,
+    type: 3}
   lobbyThreshold: 2
   gameover: 0
   hitmanWin: 0
