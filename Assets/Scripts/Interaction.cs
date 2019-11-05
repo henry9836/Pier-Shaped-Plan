@@ -68,12 +68,12 @@ public class Interaction : NetworkBehaviour
 
                 //If allowed to complete flag is true
                 if (allowedToComplete) {
+                    theTask = (TheGrandExchange.TASKIDS)i;
                     if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
                     {
                         if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
                         {
                             interactorable = i;
-                            theTask = (TheGrandExchange.TASKIDS)i;
                         }
                     }
                 }
