@@ -6,18 +6,13 @@ public class Interaction : NetworkBehaviour
 {
     public float timeToComplete = 5.0f;
     public float currentCompletion = 0.0f;
-
-    public bool clientDone = false;
-
-    //public int ammountOfSkillchecks = 1;
     public float maxDistance = 5.0f;
-
-    public int interactorable = 0;
-    //public List<int> skillchecks = new List<int>();
-
+    public bool clientDone = false;
     public bool once = false;
+    public int interactorable = 0;
 
 
+    private TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
 
 
     void Update()
@@ -27,41 +22,59 @@ public class Interaction : NetworkBehaviour
             return;
         }
 
+
+        //Attempt to find an interactable object
         Vector3 playerpos = this.transform.position;
 
         interactorable = -9999;
 
         for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
         {
+            //Debug.Log("DISTANCE: " + Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]));
             //Check if close enough to a interactable spot
             if (Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]) < maxDistance)
             {
+                //Debug.Log("DISTANCE: " + Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]));
                 //Check that we are allowed to do this one
                 bool allowedToComplete = false;
 
                 //Find amount of tasks avaible
-                int tasksInWorld = 0;
-                GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE"); 
+                GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+                List<GameObject> TaskNodes = new List<GameObject>();
                 for (int j = 0; j < nodes.Length; j++)
                 {
-                    if ((int)nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+                    if ((int)nodes[j].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
                     {
-                        tasksInWorld++;
+                        TaskNodes.Add(nodes[j]);
                     }
                 }
 
-                //if each task avaible does it match our task?
-                for (int j = 0; j < tasksInWorld; j++)
+                //for each task, one avaible does it match our task?
+                for (int j = 0; j < TaskNodes.Count; j++)
                 {
-                    //do stuff
+                    //if the node we are looking at that is close to us is valid
+                    // TheGrandExchange.TASKIDS
+                    int compareY = ((int)TaskNodes[j].transform.position.y * -1)-1;
+                    int compareNode = (int)(TheGrandExchange.TASKIDS)TheGrandExchange.TASKIDS.ToObject(typeof(TheGrandExchange.TASKIDS), i);
+                    if (compareY == compareNode)
+                    {
+                        Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                        allowedToComplete = true;
+                    }
+                    else
+                    {
+                        Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                    }
                 }
 
+                //If allowed to complete flag is true
                 if (allowedToComplete) {
                     if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
                     {
                         if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
                         {
                             interactorable = i;
+                            theTask = (TheGrandExchange.TASKIDS)i;
                         }
                     }
                 }
@@ -69,7 +82,7 @@ public class Interaction : NetworkBehaviour
         }
 
 
-
+        //If we found an interable object
 
         if (interactorable != -9999)
         {
@@ -93,23 +106,18 @@ public class Interaction : NetworkBehaviour
             once = false;
         }
 
+        //If we have done skillchecks
         if (currentCompletion >= timeToComplete)
         {
             //true communications
-            TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
-
-            for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
-            {
-                if (interactables[interactorable].gameObject.layer == LayerMask.NameToLayer(((TheGrandExchange.TASKIDS)i).ToString()))
-                {
-                    theTask = (TheGrandExchange.TASKIDS)i;
-                }
-            }
-
             GetComponent<PlayerController>().CmdCompletedTask(theTask);
         }
     }
 
+
+    //VAUGHAN MOVE THE VARIBLES 
+    //TO THE TOP OF THE SCRIPT 
+    //PLEASE WHY IS THE BLOCK HERE?
 
     public bool onceSkill = false;
     public bool onceGen = false;

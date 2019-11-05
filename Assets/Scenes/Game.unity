@@ -398,11 +398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -472,6 +467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -1145,11 +1145,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1219,6 +1214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -1310,11 +1310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1384,6 +1379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -2893,11 +2893,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2967,6 +2962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -3542,7 +3542,6 @@ GameObject:
   - component: {fileID: 265082048}
   - component: {fileID: 265082047}
   - component: {fileID: 265082046}
-  - component: {fileID: 265082050}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3623,24 +3622,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &265082050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265082045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589ace6b26e51324691d67509b8297f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToComplete: 5
-  currentCompletion: 0
-  clientDone: 0
-  maxDistance: 10
-  interactorable: 0
-  once: 0
 --- !u!1001 &284453943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4864,11 +4845,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4938,6 +4914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -5440,11 +5421,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5514,6 +5490,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -5950,11 +5931,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6024,6 +6000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -6295,11 +6276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6369,6 +6345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -7405,11 +7386,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7479,6 +7455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -8159,11 +8140,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8233,6 +8209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -12516,11 +12497,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12590,6 +12566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -13872,11 +13853,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13946,6 +13922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -14880,11 +14861,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14954,6 +14930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -17252,11 +17233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17326,6 +17302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -19874,11 +19855,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19948,6 +19924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -20054,11 +20035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20128,6 +20104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -20896,11 +20877,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20970,6 +20946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -22682,11 +22663,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22756,6 +22732,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -24529,11 +24510,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24603,6 +24579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}

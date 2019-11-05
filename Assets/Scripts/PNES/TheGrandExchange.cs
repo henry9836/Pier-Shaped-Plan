@@ -20,14 +20,15 @@ public class TheGrandExchange : MonoBehaviour
         DROPTHEPACKAGE,
     };
 
+    //IMPORTANT
     //Make this in same order as TASKIDS
     public static List<Vector3> taskWorldPositions = new List<Vector3>() {
         new Vector3(0.0f,0.6f,0.0f),
-        new Vector3(3.0f,0.6f,0.0f),
-        new Vector3(6.0f,0.6f,0.0f),
-        new Vector3(9.0f,0.6f,0.0f),
-        new Vector3(12.0f,0.6f,0.0f),
-        new Vector3(15.0f,0.6f,0.0f),
+        new Vector3(10.0f,0.6f,0.0f),
+        new Vector3(20.0f,0.6f,0.0f),
+        new Vector3(30.0f,0.6f,0.0f),
+        new Vector3(40.0f,0.6f,0.0f),
+        new Vector3(50.0f,0.6f,0.0f),
         };
 
 }
