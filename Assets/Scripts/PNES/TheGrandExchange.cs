@@ -29,6 +29,6 @@ public class TheGrandExchange : MonoBehaviour
         new Vector3(30.0f,0.6f,0.0f),
         new Vector3(40.0f,0.6f,0.0f),
         new Vector3(50.0f,0.6f,0.0f),
-        };
+    };
 
 }

@@ -7,6 +7,7 @@ TagManager:
   - Gun
   - SERVERINFONODE
   - Interactable
+  - Escape
   layers:
   - Default
   - TransparentFX
