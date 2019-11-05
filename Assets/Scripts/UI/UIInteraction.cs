@@ -55,21 +55,20 @@ public class UIInteraction : NetworkBehaviour
     {
         GameObject nearestObject = null;
         float closestDistance = interactionDistance + 1.0f;
-        float currentDistance = closestDistance;
 
         for (int i = 0; i < interactables.Length; i++)
         {
             float dist = Vector3.Distance(interactables[i].transform.position, transform.position);
 
-            if (dist < currentDistance)
+            if (dist < closestDistance)
             {
-                currentDistance = dist;
+                closestDistance = dist;
                 nearestObject = interactables[i];
             }
         }
 
         // Show interaction prompt on interactable when close enough
-        if (currentDistance < interactionDistance)
+        if (closestDistance < interactionDistance)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(nearestObject.transform.position);
             interactionPrompt.SetActive(true);
