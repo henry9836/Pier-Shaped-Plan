@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &8125447027098282922
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690794613583966107}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 361002e07b108764cba3266140377bc2, type: 3}
-  m_Controller: {fileID: 9100000, guid: 22eebb253ff863041b76916c84cb7af5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1659324021323737292
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +27,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.412, z: 0.735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3252221600353099173}
+  - {fileID: 4989873000483178465}
   m_Father: {fileID: 3569225421776133037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,7 +39,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2642500510855115543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 361002e07b108764cba3266140377bc2, type: 3}
   m_Controller: {fileID: 9100000, guid: 22eebb253ff863041b76916c84cb7af5, type: 2}
   m_CullingMode: 0
@@ -88,11 +69,14 @@ GameObject:
   - component: {fileID: -7427282400714071719}
   - component: {fileID: 6152035136393145258}
   - component: {fileID: 1188323205655937762}
+  - component: {fileID: 1331920172385754106}
   - component: {fileID: 4920649276975335375}
   - component: {fileID: 3218307719004842269}
   - component: {fileID: 7035931559996578777}
   - component: {fileID: 8385023030144267834}
   - component: {fileID: 9074907545027328050}
+  - component: {fileID: -6850716961884975126}
+  - component: {fileID: 891525485514023407}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -312,10 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ebf0ca106cf8a46aaecc98000e1cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 0
+  showTaskLog: 0
+  popupShowTime: 5
   taskItemPrefab: {fileID: 2106618203696115439, guid: a3b585c5a56c7cc4bbccc2c23dacc648,
     type: 3}
   checkboxOn: {fileID: 21300000, guid: f67f56513d2e5414a96f76115db0cb1d, type: 3}
+  checkboxCross: {fileID: 21300000, guid: c34536da824ddb54085ccf5f99a5300d, type: 3}
   checkboxOff: {fileID: 21300000, guid: 7543602c100bfd04db042440d0b16f22, type: 3}
   tasks:
   - Eat fish at the market
@@ -328,6 +314,19 @@ MonoBehaviour:
     them!
   victimDescription: Complete the following tasks in order to escape the hitman and
     win the game.
+--- !u!114 &1331920172385754106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4de96e3eb4d8fe4ab313f411d46b5fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionDistance: 8
 --- !u!114 &4920649276975335375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +499,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a017c93a91b89429fc4473413a4c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6850716961884975126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589ace6b26e51324691d67509b8297f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToComplete: 5
+  currentCompletion: 0
+  maxDistance: 5
+  clientDone: 0
+  once: 0
+  interactorable: 0
+  theTask: 3
+  onceSkill: 0
+  onceGen: 0
+  tick: 0
+  timer: 0
+  skillStartTime: 0
+  skillFinTime: 0
+  genTimer: 20
+  skillcheckCount: 0
+  maxchecks: 5
+  minchecks: 1
+  doing: 0
+--- !u!114 &891525485514023407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c4e3dbc0d020d42b7eb7b327cf208d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  escapeDistance: 5
 --- !u!1001 &3252221600353099061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
---- !u!4 &3252221600353099173 stripped
+--- !u!4 &4989873000483178465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
     type: 3}
@@ -587,11 +629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle Animation
       objectReference: {fileID: 0}
-    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+    - target: {fileID: -8145970630819891421, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
-      propertyPath: m_Name
-      value: Igor Mesh
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52a338841e1a57a47b410ca5aa6cdd96, type: 2}
     - target: {fileID: -4216859302048453862, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -662,15 +704,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+        type: 3}
+      propertyPath: m_Name
+      value: Igor Mesh
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 361002e07b108764cba3266140377bc2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 361002e07b108764cba3266140377bc2, type: 3}
---- !u!1 &690794613583966107 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 361002e07b108764cba3266140377bc2,
-    type: 3}
-  m_PrefabInstance: {fileID: 8842781708700071570}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4597449346130779528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 361002e07b108764cba3266140377bc2,
