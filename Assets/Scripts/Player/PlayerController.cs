@@ -8,48 +8,61 @@ public class PlayerController : NetworkBehaviour
 
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
+    public int health = 1;
+    public float fireForce = 500;
+
+    public bool tryingToInteract = false;
 
     [SyncVar]
     public bool amHitman = false;
 
     public GameObject camPrefab;
+    public GameObject gunPrefab;
     public GameObject playerCanvas;
     public GameObject bullet;
 
     private Transform moveReference;
     private GameObject playerCanvasReference;
+    private GameObject gunReference;
     [SyncVar]
     private bool gameStarted;
     [SyncVar]
-    private bool canEscape;
-    //public Transform camRoot;
-
+    public bool canEscape = false;
+    [SyncVar]
+    public bool escaped = false;
+    [SyncVar]
+    public bool gameOverState = false;
     [Command]
     public void CmdFireBullet()
     {
-        GameObject tmpBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        tmpBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+        GameObject gunReference = GameObject.FindGameObjectWithTag("Gun");
+        GameObject tmpBullet = Instantiate(bullet, gunReference.transform.position + (gunReference.transform.forward), Quaternion.identity);
+        tmpBullet.GetComponent<Rigidbody>().AddForce(gunReference.transform.forward * fireForce);
         NetworkServer.Spawn(tmpBullet);
     }
 
-    [ClientRpc]
-    public void RpcSetHitman()
+    [Command]
+    public void CmdCompletedTask(TheGrandExchange.TASKIDS taskID)
     {
-        if (!isLocalPlayer)
+        if (!isServer)
         {
             return;
         }
-        amHitman = true;
+
+        GameObject.Find("GameManager").GetComponent<TaskLog>().CmdCompletedTask(taskID);
+
     }
 
-    [ClientRpc]
-    public void RpcCanEscape()
+    [Command]
+    void CmdHitByBullet()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        canEscape = true;
+        health -= 1; //SyncVar
+    }
+
+    [Command]
+    void CmdAmGameOverState()
+    {
+        gameOverState = true; //SyncVar
     }
 
     [ClientRpc]
@@ -82,13 +95,17 @@ public class PlayerController : NetworkBehaviour
         playerCanvasReference.transform.GetChild(0).gameObject.SetActive(false);
         gameStarted = true;
     }
-
+  
     private void Start()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
+
+        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
         canEscape = false;
@@ -108,6 +125,14 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    
+
+    //Player was hit by bullet
+    public void HitByBullet() 
+    {
+        CmdHitByBullet();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -116,7 +141,29 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //Debug.Log("LOG: " + isLocalPlayer + ":" + isServer + ":" + localPlayerAuthority);
+        //DEBUGGING CHUNK
+
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+        string log = "VALS: ";
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
+                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            }
+        }
+
+        Debug.LogError(log);
+
+        //END DEBUGGIN CHUNK
+
+        //Spawn gun if hitman
+        if (amHitman && gunReference.tag != "Gun")
+        {
+            gunReference.tag = "Gun";
+            gunReference.GetComponent<MeshRenderer>().enabled = true;
+        }
 
         if (gameStarted)
         {
@@ -124,7 +171,8 @@ public class PlayerController : NetworkBehaviour
 
             Vector3 moveDir = Vector3.zero;
             Vector3 moveCamRelative = moveReference.transform.rotation.eulerAngles;
-
+            
+            //Grab input
             if (Input.GetAxis("Horizontal") != 0)
             {
                 moveDir += (moveReference.transform.right * Input.GetAxis("Horizontal"));
@@ -135,6 +183,7 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
+            //move in direction of input
             if (moveDir != Vector3.zero)
             {
                 transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
@@ -143,23 +192,48 @@ public class PlayerController : NetworkBehaviour
                 {
                     GetComponent<Rigidbody>().AddForce(transform.forward * speed * Time.deltaTime);
                 }
+
+                //Walk animation
+                GetComponent<Animator>().SetBool("Walk", true);
+            }
+            else
+            {
+                //Idle animation
+                GetComponent<Animator>().SetBool("Walk", false);
             }
 
             // Draw line in player look direction
             Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
             Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
+            //Checking our state
+            if (health <= 0)
+            {
+                //Death animation
+                GetComponent<Animator>().SetTrigger("Death");
+                CmdAmGameOverState();
+            }
+            else if (escaped)
+            {
+                CmdAmGameOverState();
+            }
+
             //Debugging Keys
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GetComponent<TaskLog>().CmdCompletedTask(TaskLog.TASKS.BUYNEWSPAPER);
+                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
             }
 
-            //Shooting
-            if (Input.GetMouseButtonDown(0))
+            //interacting 
+            if (Input.GetKey("e"))
             {
-                CmdFireBullet();
+                tryingToInteract = true;
             }
+            else
+            {
+                tryingToInteract = false;
+            }
+
         }
 
         else

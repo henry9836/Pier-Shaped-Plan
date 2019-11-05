@@ -9,7 +9,6 @@ public class CameraCollision : MonoBehaviour
 
     private float maxDistance;
     public float distOffset;
-    private int maxWhileIter = 512;
     private int curWhileIter = 0;
 
     public float timeUnblocked;
