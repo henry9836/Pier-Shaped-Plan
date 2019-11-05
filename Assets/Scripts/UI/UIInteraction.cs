@@ -9,8 +9,10 @@ public class UIInteraction : NetworkBehaviour
 {
     private Interaction interact;
 
+    private float nearInteractDistance;
     private GameObject[] interactables;
     private GameObject interactionPrompt;
+    private Image interactProgressBar;
 
     private bool hasInitialized;
     private PlayerController player;
@@ -48,6 +50,7 @@ public class UIInteraction : NetworkBehaviour
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
 
             interactionPrompt = playerCanvas.transform.Find("InteractionPrompt").gameObject;
+            interactProgressBar = interactionPrompt.transform.Find("Text/HoldCircleProgress").GetComponent<Image>();
 
             hasInitialized = true;
         }
@@ -55,32 +58,6 @@ public class UIInteraction : NetworkBehaviour
 
     private void FindNearestInteractable()
     {
-        //GameObject nearestObject = null;
-        //float closestDistance = interactionDistance + 1.0f;
-
-        //for (int i = 0; i < interactables.Length; i++)
-        //{
-        //    float dist = Vector3.Distance(interactables[i].transform.position, transform.position);
-
-        //    if (dist < closestDistance)
-        //    {
-        //        closestDistance = dist;
-        //        nearestObject = interactables[i];
-        //    }
-        //}
-
-        //// Show interaction prompt on interactable when close enough
-        //if (closestDistance < interactionDistance)
-        //{
-        //    Vector3 screenPos = Camera.main.WorldToScreenPoint(nearestObject.transform.position);
-        //    interactionPrompt.SetActive(true);
-        //    interactionPrompt.transform.position = screenPos;
-        //}
-        //else
-        //{
-        //    interactionPrompt.SetActive(false);
-        //}
-
         if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[(int)interact.theTask]) < interact.maxDistance)
         {
             Vector3 pos = TheGrandExchange.taskWorldPositions[(int)interact.theTask];
@@ -93,6 +70,8 @@ public class UIInteraction : NetworkBehaviour
         {
             interactionPrompt.SetActive(false);
         }
+
+        interactProgressBar.fillAmount = interact.currentCompletion / interact.timeToComplete;
 
     }
 

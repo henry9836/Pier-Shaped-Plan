@@ -35,7 +35,7 @@ public class UITaskLog : NetworkBehaviour
     public string hitmanDescription;
     public string victimDescription;
 
-    private int taskCount = 5;
+    private int taskCount;
     private bool[] taskComplete;
     private int[] taskID;
     private GameObject[] nodes;
@@ -124,7 +124,14 @@ public class UITaskLog : NetworkBehaviour
     {
         // Find cubes that are encoded with task log data
         nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
-        taskCount = nodes.Length / 2;
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+            {
+                Debug.Log(taskCount);
+                taskCount++;
+            }
+        }
         Debug.Log("Number of tasks: " + taskCount);
 
         // Initialize arrays
@@ -144,7 +151,7 @@ public class UITaskLog : NetworkBehaviour
             taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
             taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
 
-            taskItem[i].transform.parent = taskLog.transform;
+            taskItem[i].transform.SetParent(taskLog.transform);
             taskItem[i].transform.localPosition = new Vector3(0.0f, 64f - (i * 64f), 0);
             taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
