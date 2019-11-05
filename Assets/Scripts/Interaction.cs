@@ -12,7 +12,7 @@ public class Interaction : NetworkBehaviour
     public int interactorable = 0;
 
 
-    private TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
+    public TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
 
 
     void Update()
@@ -21,7 +21,6 @@ public class Interaction : NetworkBehaviour
         {
             return;
         }
-
 
         //Attempt to find an interactable object
         Vector3 playerpos = this.transform.position;
@@ -69,12 +68,12 @@ public class Interaction : NetworkBehaviour
 
                 //If allowed to complete flag is true
                 if (allowedToComplete) {
-                    if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
+                    if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
                     {
-                        if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
+                        theTask = (TheGrandExchange.TASKIDS)i;
+                        if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
                         {
                             interactorable = i;
-                            theTask = (TheGrandExchange.TASKIDS)i;
                         }
                     }
                 }

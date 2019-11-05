@@ -5,14 +5,6 @@ using DG.Tweening;
 
 public class ButtonFlash : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Activate();
-        }
-    }
-
     public void Activate()
     {
         transform.DOKill(true);
