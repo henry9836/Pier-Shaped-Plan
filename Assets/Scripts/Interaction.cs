@@ -74,18 +74,17 @@ public class Interaction : NetworkBehaviour
         if (currentCompletion >= timeToComplete)
         {
             //true communications
-            TaskLog.TASKS theTask = (TaskLog.TASKS)9999;
+            TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
 
-            for (int i = 0; i < System.Enum.GetValues(typeof(TaskLog.TASKS)).Length; i++)
+            for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
             {
-                if (interactables[interactorable].gameObject.layer == LayerMask.NameToLayer(((TaskLog.TASKS)i).ToString()))
+                if (interactables[interactorable].gameObject.layer == LayerMask.NameToLayer(((TheGrandExchange.TASKIDS)i).ToString()))
                 {
-                    theTask = (TaskLog.TASKS)i;
+                    theTask = (TheGrandExchange.TASKIDS)i;
                 }
             }
 
-            GetComponent<TaskLog>().CmdDone(theTask);
-            GetComponent<TaskLog>().CmdCompletedTask(theTask);
+            GetComponent<PlayerController>().CmdCompletedTask(theTask);
         }
     }
 }
