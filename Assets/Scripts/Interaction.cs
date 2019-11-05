@@ -15,13 +15,10 @@ public class Interaction : MonoBehaviour
 
     public bool once = false;
 
-
-
     void Update()
     {
         if (isDone == false)
         {
-
             Vector3 thisPos = this.transform.position;
             GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -59,6 +56,7 @@ public class Interaction : MonoBehaviour
             if (currentCompletion >= timeToComplete)
             {
                 isDone = true;
+                Players[0].GetComponent<PlayerController>().CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
             }
 
             interactor.Clear();
