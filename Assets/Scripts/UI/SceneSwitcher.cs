@@ -24,8 +24,6 @@ public class SceneSwitcher : MonoBehaviour {
 
     void Awake()
     {
-        //fadePanel = GameObject.Find("FadePanel");
-
         curScene = SceneManager.GetActiveScene().name;
         Debug.Log("Current scene: " + curScene);
 
@@ -91,11 +89,11 @@ public class SceneSwitcher : MonoBehaviour {
         {
             if (curScene == "TitleScreen")
             {
-                QuitGame();
+                //QuitGame();
             }
             else
             {
-                SceneSwitch("TitleScreen");
+                //SceneSwitch("TitleScreen");
             }
         }
 
@@ -118,8 +116,14 @@ public class SceneSwitcher : MonoBehaviour {
             isSwitching = true;
             fadeTimeCur = fadeTime;
 
-            GetComponent<AudioSource>().clip = clickSound;
-            GetComponent<AudioSource>().Play();
+            AudioSource source = GetComponent<AudioSource>();
+
+            if (source != null)
+            {
+                source.clip = clickSound;
+                source.Play();
+            }
+
         }
     }
 
