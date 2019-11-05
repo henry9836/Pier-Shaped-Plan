@@ -517,6 +517,7 @@ MonoBehaviour:
   clientDone: 0
   once: 0
   interactorable: 0
+  theTask: 3
   onceSkill: 0
   onceGen: 0
   tick: 0
@@ -628,11 +629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle Animation
       objectReference: {fileID: 0}
-    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+    - target: {fileID: -8145970630819891421, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
-      propertyPath: m_Name
-      value: Igor Mesh
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52a338841e1a57a47b410ca5aa6cdd96, type: 2}
     - target: {fileID: -4216859302048453862, guid: 361002e07b108764cba3266140377bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -702,6 +703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781245841835099525, guid: 361002e07b108764cba3266140377bc2,
+        type: 3}
+      propertyPath: m_Name
+      value: Igor Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 361002e07b108764cba3266140377bc2, type: 3}
