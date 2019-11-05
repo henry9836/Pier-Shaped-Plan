@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: -7427282400714071719}
   - component: {fileID: 6152035136393145258}
   - component: {fileID: 1188323205655937762}
+  - component: {fileID: 1331920172385754106}
   - component: {fileID: 4920649276975335375}
   - component: {fileID: 3218307719004842269}
   - component: {fileID: 7035931559996578777}
@@ -331,6 +332,19 @@ MonoBehaviour:
     them!
   victimDescription: Complete the following tasks in order to escape the hitman and
     win the game.
+--- !u!114 &1331920172385754106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569225421776133033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4de96e3eb4d8fe4ab313f411d46b5fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionDistance: 8
 --- !u!114 &4920649276975335375
 MonoBehaviour:
   m_ObjectHideFlags: 0
