@@ -9,6 +9,7 @@ public class GameManager : NetworkBehaviour
     //This is a server only script
 
     public GameObject hitmanReference;
+    public GameObject InteractObject;
     public int lobbyThreshold = 2;
     public bool gameover = false;
     public bool hitmanWin = false;
@@ -42,6 +43,13 @@ public class GameManager : NetworkBehaviour
         gameStarted = false;
         canEscape = false;
         ending = false;
+
+        //Debug
+        GameObject interactRef = Instantiate(InteractObject, transform.position, Quaternion.identity);
+        interactRef.tag = "Respawn";
+
+        NetworkServer.Spawn(interactRef);
+
     }
 
     void SelectHitman()

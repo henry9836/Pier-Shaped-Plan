@@ -28,19 +28,41 @@ public class Interaction : NetworkBehaviour
         }
 
         Vector3 playerpos = this.transform.position;
-        GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
 
         interactorable = -9999;
 
-        for (int i = 0; i < interactables.Length; i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
         {
-            if (Vector3.Distance(playerpos, interactables[i].transform.position) < maxDistance)
+            //Check if close enough to a interactable spot
+            if (Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]) < maxDistance)
             {
-                if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
+                //Check that we are allowed to do this one
+                bool allowedToComplete = false;
+
+                //Find amount of tasks avaible
+                int tasksInWorld = 0;
+                GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE"); 
+                for (int j = 0; j < nodes.Length; j++)
                 {
-                    if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
+                    if ((int)nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
                     {
-                        interactorable = i;
+                        tasksInWorld++;
+                    }
+                }
+
+                //if each task avaible does it match our task?
+                for (int j = 0; j < tasksInWorld; j++)
+                {
+                    //do stuff
+                }
+
+                if (allowedToComplete) {
+                    if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
+                    {
+                        if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
+                        {
+                            interactorable = i;
+                        }
                     }
                 }
             }
