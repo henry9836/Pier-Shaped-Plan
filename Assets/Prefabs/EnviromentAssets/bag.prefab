@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 909016478025410658}
   - component: {fileID: 8198379898727912020}
   - component: {fileID: 2520597970842988205}
-  - component: {fileID: 5325450919561126106}
+  - component: {fileID: -490074147276063932}
   m_Layer: 0
   m_Name: bag
   m_TagString: Untagged
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4235108179026418289}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.94}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.625435, y: 2.1911492, z: 2.1911492}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,8 +79,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5325450919561126106
-MeshCollider:
+--- !u!65 &-490074147276063932
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,7 +89,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6475276739941358363, guid: cd469a1245839e240988cfac0d048bcf, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.8799393, y: 0.15686566, z: 0.8150583}
+  m_Center: {x: 0, y: 0.07843283, z: 0}

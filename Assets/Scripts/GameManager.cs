@@ -9,6 +9,7 @@ public class GameManager : NetworkBehaviour
     //This is a server only script
 
     public GameObject hitmanReference;
+    public GameObject InteractObject;
     public int lobbyThreshold = 2;
     public bool gameover = false;
     public bool hitmanWin = false;
@@ -42,6 +43,13 @@ public class GameManager : NetworkBehaviour
         gameStarted = false;
         canEscape = false;
         ending = false;
+
+        //Debug
+        GameObject interactRef = Instantiate(InteractObject, transform.position, Quaternion.identity);
+        interactRef.tag = "Respawn";
+
+        NetworkServer.Spawn(interactRef);
+
     }
 
     void SelectHitman()
@@ -80,6 +88,22 @@ public class GameManager : NetworkBehaviour
         {
 
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            //Get Completed Tasks
+            completedTasks = 0;
+            int j = 0;
+            GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE)
+                {
+                    if (GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, j))
+                    {
+                        completedTasks++;
+                    }
+                    j++;
+                }
+            }
 
             //if we have enough tasks to escape
             if ((((float)completedTasks / (float)amountOfTasks) * 100.0f) >= 60.0f)

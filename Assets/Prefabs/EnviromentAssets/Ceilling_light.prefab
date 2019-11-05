@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 5109611439459799343}
   - component: {fileID: 333037215912815879}
   - component: {fileID: 6315074712820781566}
+  - component: {fileID: -1225339007925915012}
   m_Layer: 0
   m_Name: Ceilling_light
   m_TagString: Untagged
@@ -273,6 +274,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-1225339007925915012
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121016318960919356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -2792294035386133415, guid: 165a367b50f712544bcb55ea91600554, type: 3}
 --- !u!1 &8548840264979631234
 GameObject:
   m_ObjectHideFlags: 0

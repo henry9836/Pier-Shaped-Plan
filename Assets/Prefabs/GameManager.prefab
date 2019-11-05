@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 415940124687329021}
   - component: {fileID: 415940124687329022}
   - component: {fileID: 868872681954177590}
+  - component: {fileID: 2907249196685647088}
+  - component: {fileID: -28499061108374917}
+  - component: {fileID: 5285896660512323559}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -78,6 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitmanReference: {fileID: 0}
+  InteractObject: {fileID: 2600916424791020850, guid: 8af0a299955c2344d9389bbe072c0358,
+    type: 3}
   lobbyThreshold: 2
   gameover: 0
   hitmanWin: 0
@@ -87,3 +92,42 @@ MonoBehaviour:
   hitmanSelected: 0
   gameStarted: 0
   canEscape: 0
+--- !u!114 &2907249196685647088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415940124687329016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63ae13d79109a44b29b7791c7f1554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 6435985747396966746, guid: f8447fb9d9d0f564d8af163a108e86b3,
+    type: 3}
+--- !u!114 &-28499061108374917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415940124687329016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7962cced521d7646aab3565ee701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberoftasks: 5
+--- !u!114 &5285896660512323559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415940124687329016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a017c93a91b89429fc4473413a4c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

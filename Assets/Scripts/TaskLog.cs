@@ -7,71 +7,24 @@ public class TaskLog : NetworkBehaviour
 {
     public int numberoftasks = 3;
 
-    public enum TASKS
-    {
-        EATFISH,
-        GREETFISHERMAN,
-        USEPAYPHONE,
-        BUYNEWSPAPER,
-        TIEUPBOAT,
-        DROPTHEPACKAGE,
-    };
-
-
-    [System.Serializable]
-    public struct TaskState
-    {
-        public TASKS id; //enum
-        public bool completed;
-        public TaskState(TASKS id, bool completed)
-        {
-            this.id = id;
-            this.completed = completed;
-        }
-    }
-    public class TaskStatesClass : SyncListStruct<TaskState> { }
-    TaskStatesClass TaskStates = new TaskStatesClass();
-
-
-    public List<int> ExcludedTasks = new List<int>();
+    private List<TheGrandExchange.TASKIDS> assignedTasks = new List<TheGrandExchange.TASKIDS>();
 
     //When we complete a task
     [Command]
-    public void CmdCompletedTask(TASKS _id)
+    public void CmdCompletedTask(TheGrandExchange.TASKIDS id)
     {
-        for (int i = 0; i < TaskStates.Count; i++)
+        //get the element for the other ID
+        int element = 0;
+        for (int i = 0; i < assignedTasks.Count; i++)
         {
-            if (TaskStates[i].id == _id)
+            //If we found the node with the same task
+            if (assignedTasks[i] == id)
             {
-                TaskStates.RemoveAt(i);
-                TaskStates.Add(new TaskState(_id, true));
+                element = i;
             }
         }
-        Debug.Log("Changed a value");
-        string log = "SERVER Values: ";
-        for (int i = 0; i < TaskStates.Count; i++)
-        {
-            log += " " + TaskStates[i].id + ":" + TaskStates[i].completed + " | ";
-        }
-        Debug.LogError(log);
-
-        //Update the gamemanger since we are server here
-        GameObject.Find("GameManager").GetComponent<GameManager>().completedTasks++;
-        
-        RpcEcho();
+        GetComponent<Encoder>().Modify(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (TheGrandExchange.TASKIDS)element, true);
     }
-
-    [ClientRpc]
-    public void RpcEcho()
-    {
-        string log = "CLIENT Values: ";
-        for (int i = 0; i < TaskStates.Count; i++)
-        {
-            log += " " + TaskStates[i].id + ":" + TaskStates[i].completed + " | ";
-        }
-        Debug.LogError(log);
-    }
-
 
     void Start()
     {
@@ -80,48 +33,38 @@ public class TaskLog : NetworkBehaviour
             return;
         }
 
-        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length - numberoftasks; i++)
+        //New Code
+
+        //For the number of tasks
+        while (assignedTasks.Count < numberoftasks)
         {
-            bool added = true;
-            while (added == true)
+            //Pick a task
+            int choice = Random.Range(0, System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length);
+
+            //Have we already assigned this task?
+            bool notAssigned = true;
+
+            for (int i = 0; i < assignedTasks.Count; i++)
             {
-                int rand = Random.Range(0, System.Enum.GetValues(typeof(TASKS)).Length - 1);
-                for (int j = 0; j < ExcludedTasks.Count; j++)
+                if ((int)assignedTasks[i] == choice)
                 {
-                    if (rand == ExcludedTasks[j])
-                    {
-                        added = false;
-                    }
+                    notAssigned = false;
                 }
-
-                if (added == true)
-                {
-                    ExcludedTasks.Add(rand);
-                    added = false;
-                }
-                else
-                {
-                    added = true;
-                }
-
             }
 
+            if (notAssigned)
+            {
+                assignedTasks.Add((TheGrandExchange.TASKIDS)choice);
+            }
         }
 
-        for (int i = 0; i < System.Enum.GetValues(typeof(TASKS)).Length; i++)
+        //Generate list from assigned Tasks
+        for (int i = 0; i < assignedTasks.Count; i++)
         {
-            bool Exculded = false;
-            for (int j = 0; j < ExcludedTasks.Count; j++)
-            {
-                if (ExcludedTasks[j] == i)
-                {
-                    Exculded = true;
-                }
-            }
-            if (Exculded == false)
-            {
-                TaskStates.Add(new TaskState((TASKS)i, false));
-            }
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOG, i, (int)assignedTasks[i]); //set value of task to element
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i, 0); //set completed to false
+            GameObject Visual = Instantiate(GameObject.Find("GameManager").GetComponent<GameManager>().InteractObject, TheGrandExchange.taskWorldPositions[(int)assignedTasks[i]],Quaternion.identity);
+            NetworkServer.Spawn(Visual);
         }
 
     }
