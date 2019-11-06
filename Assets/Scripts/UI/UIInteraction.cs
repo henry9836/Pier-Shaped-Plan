@@ -9,7 +9,7 @@ public class UIInteraction : NetworkBehaviour
 {
     private Decoder decoder;
     private Interaction interact;
-    private float nearInteractDistance;
+    private float nearInteractDistance = 12f;
     private Vector3[] interactionPoints;
 
     private GameObject playerCanvas;
@@ -50,6 +50,7 @@ public class UIInteraction : NetworkBehaviour
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
+            nearInteractDistance = interact.maxDistance * 3.0f;
 
             // Find cubes that are encoded with task log data
             GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
@@ -89,7 +90,7 @@ public class UIInteraction : NetworkBehaviour
         // Draw dot on nearby interaction points
         for (int i = 0; i < taskCount; i++)
         {
-            if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[i]) < nearInteractDistance)
+            if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[taskID[i]]) < nearInteractDistance)
             {
                 interactionDot[i].SetActive(true);
 
@@ -107,7 +108,13 @@ public class UIInteraction : NetworkBehaviour
         if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[(int)interact.theTask]) < interact.maxDistance)
         {
             // Disable dot when prompt appears
-            //interactionDot[taskID[(int)interact.theTask]].SetActive(true);
+            for (int i = 0; i < taskCount; i++)
+            {
+                if (taskID[i] == (int)interact.theTask)
+                {
+                    interactionDot[i].SetActive(false);
+                }
+            }
 
             Vector3 screenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[(int)interact.theTask]);
             interactionPrompt.SetActive(true);
