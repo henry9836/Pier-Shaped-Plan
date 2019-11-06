@@ -93,18 +93,19 @@ public class UIInteraction : NetworkBehaviour
 
     private void FindNearestInteractable()
     {
+        int curTaskID = (int)interact.theTask;
+
         // Draw dot on nearby interaction points
         for (int i = 0; i < taskCount; i++)
         {
             float dist = Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[taskID[i]]);
             bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[taskID[i]]);
+            interactionDot[i].transform.position = screenPos;
 
-            if (dist < nearInteractDistance && !isComplete)
+            if (dist < nearInteractDistance && !isComplete && interactionDot[i].transform.position.z > 0f)
             {
                 interactionDot[i].SetActive(true);
-
-                Vector3 screenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[taskID[i]]);
-                interactionDot[i].transform.position = screenPos;
             }
             else
             {
@@ -113,32 +114,28 @@ public class UIInteraction : NetworkBehaviour
 
         }
 
-        // Show interaction prompt when close enough and task isn't complete
-        float nearestDist = Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[(int)interact.theTask]);
-        bool nearestIsComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)interact.theTask);
+        // Draw prompt on top of interaction point when close enough and task isn't complete
+        float nearestDist = Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[curTaskID]);
+        bool nearestIsComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, TaskIDToIndex(curTaskID));
+        Vector3 nearestScreenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[curTaskID]);
+        interactionPrompt.transform.position = nearestScreenPos;
 
-        if (nearestDist < interact.maxDistance)
+        // Set prompt text to appropriate string based on the associated task
+        interactText.text = interactLabels[curTaskID];
+
+        if (nearestDist < interact.maxDistance && !nearestIsComplete && interactionPrompt.transform.position.z > 0f)
         {
-            // Disable dot when prompt appears
-            for (int i = 0; i < taskCount; i++)
-            {
-                if (taskID[i] == (int)interact.theTask)
-                {
-                    interactionDot[i].SetActive(false);
-                }
-            }
-
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[(int)interact.theTask]);
             interactionPrompt.SetActive(true);
-            interactionPrompt.transform.position = screenPos;
-            interactText.text = interactLabels[(int)interact.theTask];
+
+            // Disable dot when prompt appears
+            interactionDot[TaskIDToIndex(curTaskID)].SetActive(false);
         }
         else
         {
             interactionPrompt.SetActive(false);
         }
 
-        // Disable prompts on completed tasks
+        // Disable if hitman or completing task
         if (interactProgressBar.fillAmount == 1.0f || player.amHitman)
         {
             interactionPrompt.SetActive(false);
@@ -146,12 +143,26 @@ public class UIInteraction : NetworkBehaviour
             {
                 interactionDot[i].SetActive(false);
             }
-
         }
 
         // Update interaction progress ring
         interactProgressBar.fillAmount = interact.currentCompletion / interact.timeToComplete;
 
+    }
+
+    private int TaskIDToIndex(int ID)
+    {
+        int index = 0;
+
+        for (int i = 0; i < taskCount; i++)
+        {
+            if (taskID[i] == ID)
+            {
+                index = i;
+            }
+        }
+
+        return index;
     }
 
 }
