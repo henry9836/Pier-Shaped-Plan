@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class UIInteraction : NetworkBehaviour
 {
+    public string[] interactLabels = new string[] 
+    { "Eat Fish", "Greet Fisherman", "Use Phone", "Buy Paper", "Tie Boat", "Drop Package" };
+
     private Decoder decoder;
     private Interaction interact;
     private float nearInteractDistance = 12f;
@@ -15,6 +18,7 @@ public class UIInteraction : NetworkBehaviour
     private GameObject playerCanvas;
     public GameObject interactionDotPrefab;
     private GameObject interactionPrompt;
+    private Text interactText;
     private Image interactProgressBar;
 
     private bool hasInitialized;
@@ -47,6 +51,7 @@ public class UIInteraction : NetworkBehaviour
 
         if (playerCanvas == null)
         {
+            player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
@@ -79,6 +84,7 @@ public class UIInteraction : NetworkBehaviour
             }
 
             interactionPrompt = playerCanvas.transform.Find("InteractionPrompt").gameObject;
+            interactText = interactionPrompt.transform.Find("Text").GetComponent<Text>();
             interactProgressBar = interactionPrompt.transform.Find("Text/HoldCircleProgress").GetComponent<Image>();
 
             hasInitialized = true;
@@ -90,7 +96,10 @@ public class UIInteraction : NetworkBehaviour
         // Draw dot on nearby interaction points
         for (int i = 0; i < taskCount; i++)
         {
-            if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[taskID[i]]) < nearInteractDistance)
+            float dist = Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[taskID[i]]);
+            bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
+
+            if (dist < nearInteractDistance && !isComplete)
             {
                 interactionDot[i].SetActive(true);
 
@@ -104,8 +113,11 @@ public class UIInteraction : NetworkBehaviour
 
         }
 
-        // Show interaction prompt when close enough
-        if (Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[(int)interact.theTask]) < interact.maxDistance)
+        // Show interaction prompt when close enough and task isn't complete
+        float nearestDist = Vector3.Distance(transform.position, TheGrandExchange.taskWorldPositions[(int)interact.theTask]);
+        bool nearestIsComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)interact.theTask);
+
+        if (nearestDist < interact.maxDistance)
         {
             // Disable dot when prompt appears
             for (int i = 0; i < taskCount; i++)
@@ -119,10 +131,22 @@ public class UIInteraction : NetworkBehaviour
             Vector3 screenPos = Camera.main.WorldToScreenPoint(TheGrandExchange.taskWorldPositions[(int)interact.theTask]);
             interactionPrompt.SetActive(true);
             interactionPrompt.transform.position = screenPos;
+            interactText.text = interactLabels[(int)interact.theTask];
         }
         else
         {
             interactionPrompt.SetActive(false);
+        }
+
+        // Disable prompts on completed tasks
+        if (interactProgressBar.fillAmount == 1.0f || player.amHitman)
+        {
+            interactionPrompt.SetActive(false);
+            for (int i = 0; i < taskCount; i++)
+            {
+                interactionDot[i].SetActive(false);
+            }
+
         }
 
         // Update interaction progress ring
