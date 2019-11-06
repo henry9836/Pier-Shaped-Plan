@@ -36,8 +36,8 @@ public class UITaskLog : NetworkBehaviour
     public string victimDescription;
 
     private int taskCount;
-    private bool[] taskComplete;
     private int[] taskID;
+    private bool[] taskComplete;
     private GameObject[] nodes;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
@@ -128,7 +128,6 @@ public class UITaskLog : NetworkBehaviour
         {
             if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
             {
-                Debug.Log(taskCount);
                 taskCount++;
             }
         }
@@ -157,7 +156,7 @@ public class UITaskLog : NetworkBehaviour
 
             // Initialize task strings
             taskItemText[i].text = tasks[taskID[i]];
-            Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
+            //Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
         }
     }
 
@@ -169,12 +168,10 @@ public class UITaskLog : NetworkBehaviour
         for (int i = 0; i < taskCount; i++)
         {
             bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
-            int lastTaskCompleted;
 
             if (taskComplete[i] != isComplete)
             {
                 // Show popup when a task is completed
-                lastTaskCompleted = i;
                 taskComplete[i] = isComplete;
                 taskPopupDescription.text = tasks[taskID[i]];
 
