@@ -23,7 +23,7 @@ public class Interaction : NetworkBehaviour
     public float skillStartTime = 0.0f;
     public float skillFinTime = 0.0f;
     public float genTimer = 0.0f;
-    public float genTimerMAX = 20.0f;
+    public float genTimerMAX = 15.0f;
 
     public int skillcheckCount = 0;
     public int maxchecks = 5;
@@ -40,6 +40,13 @@ public class Interaction : NetworkBehaviour
     public GameObject point;
     public GameObject pointStart;
     public GameObject PointFin;
+
+
+    public bool INTR = false;
+    public float INTRtimer = 0.0f;
+    public float INTRtimerMAX = 0.5f;
+    public int interactorable2 = 0;
+
 
 
 
@@ -68,7 +75,7 @@ public class Interaction : NetworkBehaviour
         Vector3 playerpos = this.transform.position;
 
         interactorable = -9999;
-
+        bool resetOverride = false;
         for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
         {
             //Debug.Log("DISTANCE: " + Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]));
@@ -95,32 +102,60 @@ public class Interaction : NetworkBehaviour
                 {
                     //if the node we are looking at that is close to us is valid
                     // TheGrandExchange.TASKIDS
-                    int compareY = ((int)TaskNodes[j].transform.position.y * -1)-1;
+                    int compareY = ((int)TaskNodes[j].transform.position.y * -1) - 1;
                     int compareNode = (int)(TheGrandExchange.TASKIDS)TheGrandExchange.TASKIDS.ToObject(typeof(TheGrandExchange.TASKIDS), i);
                     if (compareY == compareNode)
                     {
-                        Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                       // Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                         allowedToComplete = true;
                     }
                     else
                     {
-                        Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                        //Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                     }
                 }
 
                 //If allowed to complete flag is true
-                if (allowedToComplete) {
+                if (allowedToComplete)
+                {
+                    //Do not allow reset to timer
+                    resetOverride = true;
                     if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
                     {
                         theTask = (TheGrandExchange.TASKIDS)i;
                         if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
                         {
-                            interactorable = i;
+                            INTRtimer += Time.deltaTime;
+                            Debug.Log(INTRtimer + " " + INTRtimerMAX);
+
+                            if (INTRtimer >= INTRtimerMAX)
+                            {
+                                INTR = true;
+                                interactorable = i;
+                                interactorable2 = i;
+                            }
                         }
                     }
                 }
             }
+            //If we are not close enough to a interactable spot
+            //else
+            //{
+            //    INTR = false;
+            //    INTRtimer = 0.0f;
+            //}
         }
+
+        if (!resetOverride) {
+            INTR = false;
+            INTRtimer = 0.0f;
+        }
+
+        if (INTR == true)
+        {
+            interactorable = interactorable2;
+        }
+
 
         //If we found an interable object
 
