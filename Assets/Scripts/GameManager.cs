@@ -9,8 +9,10 @@ public class GameManager : NetworkBehaviour
     //This is a server only script
 
     public GameObject hitmanReference;
+    public GameObject AIPrefab;
     public GameObject InteractObject;
     public int lobbyThreshold = 2;
+    public int aiToSpawn = 10;
     public bool gameover = false;
     public bool hitmanWin = false;
     public bool survivorWin = false;
@@ -54,6 +56,13 @@ public class GameManager : NetworkBehaviour
 
     void SelectHitman()
     {
+        //Spawn AI
+        for (int i = 0; i < aiToSpawn; i++)
+        {
+            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 10.0f, 5.0f), Quaternion.identity);
+            NetworkServer.Spawn(aiRefer);
+        }
+
         //Get a random player
         hitmanReference = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
         //Set random as hitman

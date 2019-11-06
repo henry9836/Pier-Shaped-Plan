@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1546.7443, g: 2180.7847, b: 3457.941, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: b3173b9613ef4a342b7f6a47818ce1bc, type: 2}
 --- !u!1001 &4200761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +490,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -559,11 +564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -1237,6 +1237,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1306,11 +1311,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -1402,6 +1402,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1472,11 +1477,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.1191869
       objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (11)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
 --- !u!4 &64061278 stripped
@@ -1515,7 +1515,7 @@ Transform:
   - {fileID: 13245688}
   - {fileID: 166023239}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &72383506
 PrefabInstance:
@@ -1636,7 +1636,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 32
-  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &83604923
 PrefabInstance:
@@ -2385,7 +2384,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &141619995
 PrefabInstance:
@@ -3110,6 +3109,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3179,11 +3183,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -4970,6 +4969,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5039,11 +5043,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -5177,7 +5176,7 @@ Transform:
   - {fileID: 244118364}
   - {fileID: 324614311}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &351603528
 PrefabInstance:
@@ -5546,6 +5545,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (12)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5615,11 +5619,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -6056,6 +6055,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6125,11 +6129,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -6401,6 +6400,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6470,11 +6474,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -7328,6 +7327,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7397,11 +7401,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -8074,7 +8073,6 @@ Transform:
   - {fileID: 614874738}
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &609792367
 PrefabInstance:
@@ -8083,6 +8081,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8152,11 +8155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -9043,6 +9041,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 666730752}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &669039760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2105399028}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669039761}
+  m_Layer: 0
+  m_Name: Warehouse1 (2) (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &669039761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2105399028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669039760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670330143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9570,6 +9598,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696280481}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &701434797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 211343860}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701434798}
+  m_Layer: 0
+  m_Name: Warehouse2 (1) (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701434798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 211343860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701434797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712110083
 GameObject:
   m_ObjectHideFlags: 0
@@ -12578,6 +12636,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817554355}
     m_Modifications:
+    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
+        type: 3}
+      propertyPath: m_Name
+      value: bag (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 909016478025410658, guid: 50f7da62a2a03104097c917a99b0f9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12647,11 +12710,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9509013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235108179026418289, guid: 50f7da62a2a03104097c917a99b0f9c8,
-        type: 3}
-      propertyPath: m_Name
-      value: bag (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f7da62a2a03104097c917a99b0f9c8, type: 3}
@@ -13385,7 +13443,7 @@ Transform:
   - {fileID: 821522353}
   - {fileID: 1871766696}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1036152587
 PrefabInstance:
@@ -13934,6 +13992,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14003,11 +14066,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -14942,6 +15000,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15011,11 +15074,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -15234,7 +15292,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 34
-  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199679870
 GameObject:
@@ -15867,7 +15924,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 31
-  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1295417216
 PrefabInstance:
@@ -17316,6 +17372,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (13)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17386,11 +17447,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.1191869
       objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (13)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
 --- !u!4 &1391535272 stripped
@@ -17428,7 +17484,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 33
-  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1405493368
 PrefabInstance:
@@ -19151,7 +19206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1512340395
 MonoBehaviour:
@@ -19939,6 +19994,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20008,11 +20068,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -20119,6 +20174,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20188,11 +20248,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -20489,7 +20544,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1631670793
 BoxCollider:
@@ -20562,7 +20617,7 @@ Transform:
   m_LocalScale: {x: 400, y: 1, z: 400}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1633130709
 PrefabInstance:
@@ -20953,7 +21008,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 35
-  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1661986481
 PrefabInstance:
@@ -20962,6 +21016,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21031,11 +21090,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -21164,7 +21218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 36
-  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1681522019
 PrefabInstance:
@@ -21823,6 +21876,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1736603583}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1743513754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 91870306}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1743513755}
+  m_Layer: 0
+  m_Name: Warehouse1 (1) (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1743513755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 91870306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743513754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1754373545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22749,6 +22832,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22818,11 +22906,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -22951,7 +23034,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 37
-  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871766695
 GameObject:
@@ -24597,6 +24679,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927904319}
     m_Modifications:
+    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
+        type: 3}
+      propertyPath: m_Name
+      value: wooden_pallet (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24666,11 +24753,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.1191869
-      objectReference: {fileID: 0}
-    - target: {fileID: 3022068233476965723, guid: d13b6328d79a8194ea7fb14b18c73bd3,
-        type: 3}
-      propertyPath: m_Name
-      value: wooden_pallet (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13b6328d79a8194ea7fb14b18c73bd3, type: 3}
@@ -25343,7 +25425,6 @@ Transform:
   - {fileID: 1205312600}
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2014008849
 PrefabInstance:
@@ -25750,7 +25831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2105399028
 PrefabInstance:
