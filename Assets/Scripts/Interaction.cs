@@ -11,8 +11,29 @@ public class Interaction : NetworkBehaviour
     public bool once = false;
     public int interactorable = 0;
 
-
     private TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
+
+
+
+
+    public bool onceGen = false;
+    public float tick = 0.0f;
+    public float timer = 0.0f;
+    public float skillStartTime = 0.0f;
+    public float skillFinTime = 0.0f;
+    public float genTimer = 0.0f;
+    public float genTimerMAX = 20.0f;
+
+    public int skillcheckCount = 0;
+    public int maxchecks = 5;
+    public int minchecks = 1;
+    public bool doing = false;
+    private int result = 0;
+
+    public List<float> valid = new List<float>();
+    public List<float> selected = new List<float>();
+    public List<float> selected2 = new List<float>();
+
 
 
     void Update()
@@ -81,122 +102,161 @@ public class Interaction : NetworkBehaviour
             }
         }
 
-
         //If we found an interable object
 
         if (interactorable != -9999)
         {
-            if (once == false)
+            bool doing = gen();
+            if (doing == true)
             {
-                once = true;
-                //set up skillcheck times
+                GetComponent<PlayerController>().CmdCompletedTask(theTask);
             }
-
-            currentCompletion += Time.deltaTime;
-
-            if (currentCompletion >= timeToComplete)
-            {
-                currentCompletion = 5.0f;
-            }
-            //if (skillcheck timer appears do skillcheck)
         }
         else
         {
-            currentCompletion = 0.0f;
-            once = false;
-        }
-
-        //If we have done skillchecks
-        if (currentCompletion >= timeToComplete)
-        {
-            //true communications
-            GetComponent<PlayerController>().CmdCompletedTask(theTask);
+            onceGen = false;
         }
     }
 
-
-    //VAUGHAN MOVE THE VARIBLES 
-    //TO THE TOP OF THE SCRIPT 
-    //PLEASE WHY IS THE BLOCK HERE?
-
-    public bool onceSkill = false;
-    public bool onceGen = false;
-    public float tick = 0.0f;
-    public float timer = 0.0f;
-    public float skillStartTime = 0.0f;
-    public float skillFinTime = 0.0f;
-    public float genTimer = 20.0f;
-    public int skillcheckCount = 0;
-    public int maxchecks = 5;
-    public int minchecks = 1;
-    public bool doing = false;
 
 
     //call in update while holding button down
-    public void gen()
+    public bool gen()
     {
+        //initlize
         if (onceGen == false)
         {
             onceGen = true;
-            genTimer = 20.0f;
-            skillcheckCount = Random.Range(minchecks, (maxchecks + 1));
+            genTimer = 0.0f;
+            skillcheckCount = Random.Range(minchecks, (maxchecks));
+            selected2.Clear();
+            selected.Clear();
+            valid.Clear();
+
+            //gets skill check times to do 
+            for (int i = 1; i < maxchecks + 1; i++)
+            {
+                valid.Add((genTimerMAX / maxchecks) * i);
+            }
+
+            valid.RemoveAt(valid.Count - 1);
+
+            for (int i = 0; i < skillcheckCount; i++)
+            {
+                int temp = Random.Range(0, valid.Count);
+                selected.Add(valid[temp]);
+                valid.RemoveAt(temp);
+            }
+
+
+            //sorting function
+            while (selected.Count > 1)
+            {
+                int lowestsel = 0;
+                for (int i = 1; i < selected.Count; i++)
+                {
+                    if (selected[lowestsel] > selected[i])
+                    {
+                        lowestsel = i;
+                    }
+                }
+                selected2.Add(selected[lowestsel]);
+                selected.RemoveAt(lowestsel);
+            }
+            selected2.Add(selected[0]);
+            selected.RemoveAt(0);
+
+            selected = new List<float>(selected2);
+            selected2.Clear();
         }
 
-        if (doing == false)
+        genTimer += Time.deltaTime;
+
+
+        if (selected.Count > 0)
         {
-            doing = true;
-            int result = Skillcheck();
-
-            if (result == 0)
+            //if its skillcheck time
+            Debug.Log(genTimer + " " + selected[0] + "timer selected ");
+            if (genTimer >= selected[0])
             {
-
+                StartCoroutine(SkillCheck());
+                selected.RemoveAt(0);
             }
-            else if (result == 1)
-            {
+        }
 
-            }
-            else if (result == 2)
-            {
 
-            }
+        //resuilts of a skil check 
+        if (result == 0) // doing
+        {
+        }
+        else if (result == 1) //sucessful skillcheck
+        {
+            Debug.Log("pass");
+            doing = false;
+
+        }
+        else if (result == 2) // unsucessful skillcheck
+        {
+            Debug.Log("fail");
+            result = 0;
+            onceGen = false;
+            doing = false;
+        }
+
+        if (genTimer > genTimerMAX) //completed the gen
+        {
+            return (true);
+        }
+        else
+        {
+            return (false);
         }
     }
 
-
-    public int Skillcheck()
+    //um oh a wjild skill check appeared
+    IEnumerator SkillCheck()
     {
-        if (onceSkill == false)
+        Debug.Log("---Skillcheck--- ");
+
+        //sets of stuff includeing start and fin a skill check times
+        timer = 0.0f;
+        tick = 0.0f;
+        skillStartTime = Random.Range(36.666f, 95.0f);
+        skillFinTime = skillStartTime + 5.0f;
+        
+
+        //the time the skill check is valid
+        for (timer = 0.0f; timer < 2.0f; timer += Time.deltaTime)
         {
-            timer = 0.0f;
-            tick = 0.0f;
-            skillStartTime = Random.Range(36.666f, 95.0f);
-            skillFinTime = skillStartTime + 5.0f;
-            onceSkill = true;
-        }
-        timer += Time.deltaTime;
-        tick = timer / 2.0f;
+            tick = (timer / 2.0f) * 100.0f;
 
-        if (Input.GetKeyDown("Space"))
-        {
-            if (tick < skillFinTime && tick > skillStartTime)
+            //if they thry to hit it 
+            if (Input.GetKeyDown("r")) // set to space
             {
-                onceSkill = false;
-                return (1);
+                if (tick < skillFinTime && tick > skillStartTime) //win
+                {
+                    Debug.Log("win skill chick");
+                    result = 1;
+                    yield break;
+                }
+                else // else
+                {
+                    onceGen = false;
+                    Debug.Log("missed skill check");
+                    result = 2;
+                    yield break;
+                }
             }
-            else
-            {
-                onceSkill = false;
-                return (2);
-            }
+            
+            result = 0; //doing
+            yield return null;
         }
-
-
-        return (0);
+        Debug.Log("skill check ended"); // they missed the time and didnt hit anything return fail
+        result = 2;
     }
-
-
 }
 
+//research of how skill checks fucntion
 //OBS - https://youtu.be/_Wb8hBPDPNo?t=31
 
 //starts - 7.36		0.0	0.0		
