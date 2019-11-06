@@ -59,7 +59,7 @@ public class GameManager : NetworkBehaviour
         //Spawn AI
         for (int i = 0; i < aiToSpawn; i++)
         {
-            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 10.0f, 5.0f), Quaternion.identity);
+            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 2.0f, 5.0f), Quaternion.identity);
             NetworkServer.Spawn(aiRefer);
         }
 
@@ -136,7 +136,7 @@ public class GameManager : NetworkBehaviour
                 //are there are non hitman players alive then game is not over
                 if (players[i].GetComponent<PlayerController>().health > 0 && !players[i].GetComponent<PlayerController>().amHitman)
                 {
-                    Debug.Log("N HITMAN1");
+                    //Debug.Log("N HITMAN1");
                     hitmanWin = false;
                     gameover = false;
                 }
@@ -154,7 +154,7 @@ public class GameManager : NetworkBehaviour
                     //has a player not escaped
                     if (!players[i].GetComponent<PlayerController>().escaped && !players[i].GetComponent<PlayerController>().amHitman)
                     {
-                        Debug.Log("N SURVIVOR");
+                        //Debug.Log("N SURVIVOR");
                         survivorWin = false;
                         gameover = false;
                     }
@@ -172,7 +172,7 @@ public class GameManager : NetworkBehaviour
                     //has a player that is not in gameoverState
                     if (!players[i].GetComponent<PlayerController>().gameOverState && !players[i].GetComponent<PlayerController>().amHitman)
                     {
-                        Debug.Log("N HITMAN2");
+                        //Debug.Log("N HITMAN2");
                         hitmanWin = false;
                         gameover = false;
                     }

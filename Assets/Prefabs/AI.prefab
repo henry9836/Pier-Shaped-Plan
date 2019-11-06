@@ -143,9 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a0c97042e4c0e479bb07d03bb5306d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arriveRange: 5
   panic: 0
   arrived: 0
-  interactLock: 0
+  waitLock: 0
 --- !u!195 &5346064720374945546
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -180,15 +181,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.05263158
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_InterpolateRotation: 12
   m_InterpolateMovement: 1
 --- !u!54 &-3047039625318428838
 Rigidbody:
