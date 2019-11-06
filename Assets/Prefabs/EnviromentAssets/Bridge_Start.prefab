@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3488210466317205112}
   - component: {fileID: 5562959628900090958}
   - component: {fileID: 2165970992347101367}
-  - component: {fileID: 1343147918227548533}
+  - component: {fileID: -4085780091577886040}
   m_Layer: 0
   m_Name: Bridge_Start
   m_TagString: Untagged
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1343147918227548533
+--- !u!65 &-4085780091577886040
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
