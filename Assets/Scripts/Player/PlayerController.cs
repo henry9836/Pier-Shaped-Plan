@@ -160,7 +160,7 @@ public class PlayerController : NetworkBehaviour
             }
         }
 
-        Debug.LogError(log);
+        //Debug.LogError(log);
 
         //END DEBUGGIN CHUNK
 

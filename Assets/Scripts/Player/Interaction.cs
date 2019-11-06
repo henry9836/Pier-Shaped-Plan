@@ -57,12 +57,12 @@ public class Interaction : NetworkBehaviour
                     int compareNode = (int)(TheGrandExchange.TASKIDS)TheGrandExchange.TASKIDS.ToObject(typeof(TheGrandExchange.TASKIDS), i);
                     if (compareY == compareNode)
                     {
-                        Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                        //Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                         allowedToComplete = true;
                     }
                     else
                     {
-                        Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                        //Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                     }
                 }
 
