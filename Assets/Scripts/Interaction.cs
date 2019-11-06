@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 public class Interaction : NetworkBehaviour
 {
@@ -11,7 +12,7 @@ public class Interaction : NetworkBehaviour
     public bool once = false;
     public int interactorable = 0;
 
-    private TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
+    public TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
 
 
 
@@ -32,7 +33,15 @@ public class Interaction : NetworkBehaviour
 
     public List<float> valid = new List<float>();
     public List<float> selected = new List<float>();
-    public List<float> selected2 = new List<float>();
+    private List<float> selected2 = new List<float>();
+
+    public GameObject UI;
+    public Sprite UIimage;
+    public GameObject point;
+    public GameObject pointStart;
+    public GameObject PointFin;
+
+
 
 
 
@@ -42,6 +51,17 @@ public class Interaction : NetworkBehaviour
         {
             return;
         }
+
+        if (UI == null)
+        {
+            UI = GameObject.FindGameObjectWithTag("PlayerCanvas");
+        }
+
+        if (UIimage == null)
+        {
+            UIimage = GameObject.Find("UISkillchecktemp").GetComponent<Image>().sprite;
+        }
+
 
 
         //Attempt to find an interactable object
@@ -221,14 +241,42 @@ public class Interaction : NetworkBehaviour
         //sets of stuff includeing start and fin a skill check times
         timer = 0.0f;
         tick = 0.0f;
-        skillStartTime = Random.Range(36.666f, 95.0f);
-        skillFinTime = skillStartTime + 5.0f;
-        
+        skillStartTime = Random.Range(36.666f, 85.0f);
+        skillFinTime = skillStartTime + 14.0f;
+
+        //UI
+        GameObject image = new GameObject();
+        image.AddComponent<Image>();
+        image.GetComponent<Image>().sprite = UIimage;
+        image.transform.SetParent(UI.transform);
+        point = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
+        point.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
+        GameObject image1 = new GameObject();
+        image1.AddComponent<Image>();
+        image1.GetComponent<Image>().sprite = UIimage;
+        image1.transform.SetParent(UI.transform);
+        pointStart = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
+        pointStart.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        pointStart.transform.eulerAngles = new Vector3(0, 0, skillStartTime * (360.0f / 100.0f));
+
+
+        GameObject image2 = new GameObject();
+        image2.AddComponent<Image>();
+        image2.GetComponent<Image>().sprite = UIimage;
+        image2.transform.SetParent(UI.transform);
+        PointFin = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
+        PointFin.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        PointFin.transform.eulerAngles = new Vector3(0, 0, skillFinTime * (360.0f / 100.0f));
+
+
 
         //the time the skill check is valid
         for (timer = 0.0f; timer < 2.0f; timer += Time.deltaTime)
         {
             tick = (timer / 2.0f) * 100.0f;
+
+            point.transform.eulerAngles = new Vector3(0, 0, tick * (360.0f / 100.0f));
 
             //if they thry to hit it 
             if (Input.GetKeyDown("r")) // set to space
@@ -237,14 +285,23 @@ public class Interaction : NetworkBehaviour
                 {
                     Debug.Log("win skill chick");
                     result = 1;
+                    Destroy(point);
+                    Destroy(pointStart);
+                    Destroy(PointFin);
+
                     yield break;
+
                 }
                 else // else
                 {
                     onceGen = false;
                     Debug.Log("missed skill check");
                     result = 2;
+                    Destroy(point);
+                    Destroy(pointStart);
+                    Destroy(PointFin);
                     yield break;
+
                 }
             }
             
@@ -253,7 +310,13 @@ public class Interaction : NetworkBehaviour
         }
         Debug.Log("skill check ended"); // they missed the time and didnt hit anything return fail
         result = 2;
+        Destroy(point);
+        Destroy(pointStart);
+        Destroy(PointFin);
+
     }
+
+
 }
 
 //research of how skill checks fucntion
