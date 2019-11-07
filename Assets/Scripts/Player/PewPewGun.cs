@@ -22,36 +22,52 @@ public class PewPewGun : NetworkBehaviour
 
     void pew()
     {
-        if (Bullets <= 0)
+        //If gun is out
+        if (GetComponent<PlayerController>().gunOut)
         {
-            Bullets = 0;
-
-            //empty click sfx
-        }
-        else
-        {
-            //pew sfx
-
-            GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
-            int hitmanno = 0;
-            for (int i = 0; i < Players.Length; i++)
+            //if we ran out of bullets
+            if (Bullets <= 0)
             {
-                if (Players[i].GetComponent<PlayerController>().amHitman == true)
-                {
-                    hitmanno = i;
-                }
+                Bullets = 0;
+
+                //empty click sfx
             }
+            //we have a bullet to shoot
+            else
+            {
+                //pew sfx
 
-            Players[hitmanno].GetComponent<PlayerController>().CmdFireBullet();
+                GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+                int hitmanno = 0;
+                for (int i = 0; i < Players.Length; i++)
+                {
+                    if (Players[i].GetComponent<PlayerController>().amHitman == true)
+                    {
+                        hitmanno = i;
+                    }
+                }
 
-            Bullets -= 1;
-            //find game manger and say that it hit Shot.collider.name
+                Players[hitmanno].GetComponent<PlayerController>().CmdFireBullet();
+
+                Bullets -= 1;
+                //find game manger and say that it hit Shot.collider.name
+            }
         }
     }
 
     [Command]
     void CmddrawLine(Vector3 hitmanLaserPos, Vector3 gunPos, Vector3 gunHitPos)
     {
+
+        //Disable render if we don't have gun out
+        if (GetComponent<PlayerController>().gunOut)
+        {
+            GetComponent<LineRenderer>().enabled = true;
+        }
+        else
+        {
+            GetComponent<LineRenderer>().enabled = false;
+        }
 
         this.gameObject.GetComponent<LineRenderer>().SetPosition(0, gunPos);
         this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunHitPos);
@@ -86,6 +102,16 @@ public class PewPewGun : NetworkBehaviour
                 hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
                 hitmanRefer.GetComponent<LineRenderer>().SetPosition(0, gunPos);
                 hitmanRefer.GetComponent<LineRenderer>().SetPosition(1, hitmanLaserPos);
+                //Disable render if we don't have gun out
+                if (hitmanRefer.GetComponent<PlayerController>().gunOut)
+                {
+                    hitmanRefer.GetComponent<LineRenderer>().enabled = true;
+                }
+                else
+                {
+                    hitmanRefer.GetComponent<LineRenderer>().enabled = false;
+                }
+
             }
         }
        
@@ -97,6 +123,16 @@ public class PewPewGun : NetworkBehaviour
         {
             return;
         }
+
+        //Disable render if we don't have gun out
+        if (GetComponent<PlayerController>().gunOut) {
+            GetComponent<LineRenderer>().enabled = true;
+        }
+        else
+        {
+            GetComponent<LineRenderer>().enabled = false;
+        }
+
 
         if (this.Camera == null)
         {
@@ -132,7 +168,7 @@ public class PewPewGun : NetworkBehaviour
 
                 CmddrawLine(Shot.point, Gun.transform.position, gunShot.point);
 
-
+                //Shoot
                 if (Input.GetMouseButtonDown(0))
                 {
                     pew();

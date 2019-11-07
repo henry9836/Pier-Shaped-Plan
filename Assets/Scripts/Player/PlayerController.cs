@@ -39,14 +39,33 @@ public class PlayerController : NetworkBehaviour
     void CmdGunOut()
     {
         gunOut = true;
+        RpcUpdateGunState();
     }
 
     [Command]
     void CmdGunHide()
     {
         gunOut = false;
+        RpcUpdateGunState();
     }
 
+    [ClientRpc]
+    void RpcUpdateGunState()
+    {
+        //Find the hitman with gun
+
+        GameObject hitmanRefer;
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().amHitman)
+            {
+                hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
+                //Update meshrender depending if is out
+                GameObject.FindGameObjectWithTag("Gun").GetComponent<MeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
+            }
+        }
+    }
 
     [Command]
     public void CmdFireBullet()
@@ -167,7 +186,7 @@ public class PlayerController : NetworkBehaviour
         if (amHitman && gunReference.tag != "Gun")
         {
             gunReference.tag = "Gun";
-            gunReference.GetComponent<MeshRenderer>().enabled = true;
+            //gunReference.GetComponent<MeshRenderer>().enabled = true;
         }
 
         if (gameStarted)
@@ -234,15 +253,20 @@ public class PlayerController : NetworkBehaviour
             }
 
             //Gun mechanic
-            //Holding right click
-            if (Input.GetMouseButton(1))
+            if (amHitman)
             {
-                CmdGunOut();
-            }
-            //We are not holding right click
-            else
-            {
-                CmdGunHide();
+                //Holding right click
+                if (Input.GetMouseButton(1))
+                {
+                    gunReference.GetComponent<MeshRenderer>().enabled = true;
+                    CmdGunOut();
+                }
+                //We are not holding right click
+                else
+                {
+                    gunReference.GetComponent<MeshRenderer>().enabled = false;
+                    CmdGunHide();
+                }
             }
         }
 
