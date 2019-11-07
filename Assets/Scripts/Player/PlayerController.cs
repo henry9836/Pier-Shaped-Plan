@@ -32,6 +32,22 @@ public class PlayerController : NetworkBehaviour
     public bool escaped = false;
     [SyncVar]
     public bool gameOverState = false;
+    [SyncVar]
+    public bool gunOut = false;
+
+    [Command]
+    void CmdGunOut()
+    {
+        gunOut = true;
+    }
+
+    [Command]
+    void CmdGunHide()
+    {
+        gunOut = false;
+    }
+
+
     [Command]
     public void CmdFireBullet()
     {
@@ -147,23 +163,6 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //DEBUGGING CHUNK
-
-        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
-
-        string log = "VALS: ";
-
-        for (int i = 0; i < nodes.Length; i++)
-        {
-            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
-                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
-            }
-        }
-
-        //Debug.LogError(log);
-
-        //END DEBUGGIN CHUNK
-
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
@@ -189,8 +188,8 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
-            //move in direction of input
-            if (moveDir != Vector3.zero)
+            //move in direction of input and not dead
+            if (moveDir != Vector3.zero && (health > 0))
             {
                 transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
 
@@ -209,8 +208,8 @@ public class PlayerController : NetworkBehaviour
             }
 
             // Draw line in player look direction
-            Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
-            Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
+            //Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
+            //Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
             //Checking our state
             if (health <= 0)
@@ -224,12 +223,6 @@ public class PlayerController : NetworkBehaviour
                 CmdAmGameOverState();
             }
 
-            //Debugging Keys
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
-            }
-
             //interacting 
             if (Input.GetKey("e"))
             {
@@ -240,6 +233,17 @@ public class PlayerController : NetworkBehaviour
                 tryingToInteract = false;
             }
 
+            //Gun mechanic
+            //Holding right click
+            if (Input.GetMouseButton(1))
+            {
+                CmdGunOut();
+            }
+            //We are not holding right click
+            else
+            {
+                CmdGunHide();
+            }
         }
 
         else
