@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 2036858077804222374}
   - component: {fileID: 6998410332945837456}
   - component: {fileID: 3612960527336280425}
+  - component: {fileID: 8824888424216720400}
   m_Layer: 0
   m_Name: Bridge_Middle2c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2036858077804222374
 Transform:
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 9b3454d9522c868468c62f560e27687c, type: 3}
+  - {fileID: 2100000, guid: f7337c4867b6b93429097af48b90be6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8824888424216720400
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3035151793432634805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.550278, y: 5.765076, z: 4.7312818}
+  m_Center: {x: 0.0000011920929, y: 0, z: 0}
