@@ -145,7 +145,7 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference = transform.GetChild(0).transform.GetChild(0).gameObject;
         gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
