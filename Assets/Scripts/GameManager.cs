@@ -54,7 +54,7 @@ public class GameManager : NetworkBehaviour
 
     }
 
-    void SelectHitman()
+    void SetupGame()
     {
         //Spawn AI
         for (int i = 0; i < aiToSpawn; i++)
@@ -69,6 +69,18 @@ public class GameManager : NetworkBehaviour
         hitmanReference.GetComponent<PlayerController>().amHitman = true; //SyncVar
         hitmanSelected = true;
 
+        //Assign Models
+        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.HITMANMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.SURVIVORMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+
+        GameObject[] AIObjs = GameObject.FindGameObjectsWithTag("AI");
+
+        for (int i = 0; i < AIObjs.Length; i++)
+        {
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.AIMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+            AIObjs[i].GetComponent<AIController>().PNESID = i;
+        }
+        
         //Unblind players
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
@@ -89,7 +101,7 @@ public class GameManager : NetworkBehaviour
         //If we have not selected our hitman and the game has enough players then select the hitman
         if (!hitmanSelected && lobbyThreshold <= GameObject.FindGameObjectsWithTag("Player").Length)
         {
-            SelectHitman();
+            SetupGame();
         }
 
         //Game is running and not gameover
