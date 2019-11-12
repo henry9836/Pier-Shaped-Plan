@@ -24,6 +24,7 @@ public class UIInteraction : NetworkBehaviour
 
     private bool hasInitialized;
     private PlayerController player;
+    private SceneSwitcher scene;
 
     private int taskCount;
     private int[] taskID;
@@ -54,6 +55,7 @@ public class UIInteraction : NetworkBehaviour
         {
             player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
+            scene = gameObject.AddComponent<SceneSwitcher>() as SceneSwitcher;
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
             nearInteractDistance = interact.maxDistance * 3.0f;
