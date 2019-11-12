@@ -116,9 +116,9 @@ public class PlayerController : NetworkBehaviour
         if (playerCanvasReference == null)
         {
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
-            playerCanvasReference.transform.GetChild(0).gameObject.SetActive(true);
+            playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(true);
         }
-        playerCanvasReference.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Text>().text = "WAITING FOR PLAYERS\n" + playerCount + " CONNECTED";
+        playerCanvasReference.transform.Find("Blinder").transform.GetChild(0).gameObject.GetComponent<Text>().text = "WAITING FOR PLAYERS\n" + playerCount + " CONNECTED";
     }
 
     [ClientRpc]
@@ -133,7 +133,7 @@ public class PlayerController : NetworkBehaviour
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
         }
 
-        playerCanvasReference.transform.GetChild(0).gameObject.SetActive(false);
+        playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(false);
         gameStarted = true;
     }
   
@@ -162,7 +162,7 @@ public class PlayerController : NetworkBehaviour
         {
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
             //Blind User until game starts
-            playerCanvasReference.transform.GetChild(0).gameObject.SetActive(true);
+            playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(true);
         }
     }
 
@@ -296,7 +296,7 @@ public class PlayerController : NetworkBehaviour
         else
         {
             //Check on UI state because we might of done it out of order
-            if (!playerCanvasReference.transform.GetChild(0).gameObject.activeInHierarchy)
+            if (!playerCanvasReference.transform.Find("Blinder").gameObject.activeInHierarchy)
             {
                 //we did go out of order
                 gameStarted = true;
