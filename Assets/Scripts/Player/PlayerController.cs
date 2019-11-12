@@ -182,6 +182,23 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        //DEBUGGING CHUNK
+
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
+
+        string log = "VALS: ";
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
+                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
+            }
+        }
+
+        //Debug.LogError(log);
+
+        //END DEBUGGIN CHUNK
+
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
@@ -241,6 +258,12 @@ public class PlayerController : NetworkBehaviour
             {
                 CmdAmGameOverState();
             }
+
+            //Debugging Keys
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
+            //}
 
             //interacting 
             if (Input.GetKey("e"))
