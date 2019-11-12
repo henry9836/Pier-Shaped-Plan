@@ -148,7 +148,7 @@ public class UIInteraction : NetworkBehaviour
         }
 
         // Update interaction progress ring
-        interactProgressBar.fillAmount = interact.currentCompletion / interact.timeToComplete;
+        interactProgressBar.fillAmount = interact.INTRtimer / interact.INTRtimerMAX;
 
         // Upadate status text
         if (player.amHitman)
