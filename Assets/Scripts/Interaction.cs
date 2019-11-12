@@ -39,6 +39,11 @@ public class Interaction : NetworkBehaviour
     public Sprite UIimageIndicator;
     public Sprite UIimageCircle;
 
+    private CanvasGroup completionUI;
+
+    public Image ProgressBar;
+
+
     public GameObject point;
     public GameObject pointStart;
     public GameObject PointFin;
@@ -64,7 +69,10 @@ public class Interaction : NetworkBehaviour
         if (UI == null)
         {
             UI = GameObject.FindGameObjectWithTag("PlayerCanvas");
+            completionUI = UI.transform.Find("SkillCheck").GetComponent<CanvasGroup>();
+            ProgressBar = completionUI.transform.Find("ProgressFill").GetComponent<Image>();
         }
+       
 
         if (UIimageIndicator == null)
         {
@@ -232,6 +240,7 @@ public class Interaction : NetworkBehaviour
 
         genTimer += Time.deltaTime;
 
+        ProgressBar.fillAmount = genTimer / genTimerMAX;
 
         if (selected.Count > 0)
         {
@@ -290,20 +299,20 @@ public class Interaction : NetworkBehaviour
         image.AddComponent<Image>();
         image.GetComponent<Image>().sprite = UIimageIndicator;
         image.transform.SetParent(UI.transform);
-        image.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+        image.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
         point = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
         point.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-
 
         GameObject image1 = new GameObject();
         image1.AddComponent<Image>();
         image1.GetComponent<Image>().sprite = UIimageCircle;
         image1.transform.SetParent(UI.transform);
-        image1.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+        image1.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
         pointStart = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
         pointStart.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         pointStart.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
 
+        //Begin();
 
         //GameObject image2 = new GameObject();
         //image2.AddComponent<Image>();
@@ -327,6 +336,8 @@ public class Interaction : NetworkBehaviour
             {
                 if (tick < skillFinTime && tick > skillStartTime) //win
                 {
+                    //End();
+
                     Debug.Log("win skill chick");
                     result = 1;
                     Destroy(point);
@@ -338,6 +349,8 @@ public class Interaction : NetworkBehaviour
                 }
                 else // else
                 {
+                   // End();
+
                     onceGen = false;
                     Debug.Log("missed skill check");
                     result = 2;
@@ -352,6 +365,8 @@ public class Interaction : NetworkBehaviour
             result = 0; //doing
             yield return null;
         }
+       // End();
+
         Debug.Log("skill check ended"); // they missed the time and didnt hit anything return fail
         result = 2;
         Destroy(point);
@@ -361,6 +376,14 @@ public class Interaction : NetworkBehaviour
     }
 
 
+    private void Begin()
+    {
+        completionUI.alpha = 1.0f;
+    }
+    private void End()
+    {
+        completionUI.alpha = 0.0f;
+    }
 }
 
 //research of how skill checks fucntion
