@@ -225,10 +225,10 @@ public class PlayerController : NetworkBehaviour
             }
 
             //Debugging Keys
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
+            //}
 
             //interacting 
             if (Input.GetKey("e"))

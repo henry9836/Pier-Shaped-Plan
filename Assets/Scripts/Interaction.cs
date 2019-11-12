@@ -36,7 +36,9 @@ public class Interaction : NetworkBehaviour
     private List<float> selected2 = new List<float>();
 
     public GameObject UI;
-    public Sprite UIimage;
+    public Sprite UIimageIndicator;
+    public Sprite UIimageCircle;
+
     public GameObject point;
     public GameObject pointStart;
     public GameObject PointFin;
@@ -64,11 +66,14 @@ public class Interaction : NetworkBehaviour
             UI = GameObject.FindGameObjectWithTag("PlayerCanvas");
         }
 
-        if (UIimage == null)
+        if (UIimageIndicator == null)
         {
-            UIimage = GameObject.Find("UISkillchecktemp").GetComponent<Image>().sprite;
+            UIimageIndicator = GameObject.Find("UISkillchecktemp").GetComponent<Image>().sprite;
         }
-
+        if (UIimageCircle == null)
+        {
+            UIimageCircle = GameObject.Find("UISkillchecktemp2").GetComponent<Image>().sprite;
+        }
 
 
         //Attempt to find an interactable object
@@ -256,6 +261,7 @@ public class Interaction : NetworkBehaviour
             result = 0;
             onceGen = false;
             doing = false;
+            this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract = false;
         }
 
         if (genTimer > genTimerMAX) //completed the gen
@@ -276,33 +282,36 @@ public class Interaction : NetworkBehaviour
         //sets of stuff includeing start and fin a skill check times
         timer = 0.0f;
         tick = 0.0f;
-        skillStartTime = Random.Range(36.666f, 85.0f);
+        skillStartTime = Random.Range(36.666f, 85.0f );
         skillFinTime = skillStartTime + 14.0f;
 
         //UI
         GameObject image = new GameObject();
         image.AddComponent<Image>();
-        image.GetComponent<Image>().sprite = UIimage;
+        image.GetComponent<Image>().sprite = UIimageIndicator;
         image.transform.SetParent(UI.transform);
+        image.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
         point = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
         point.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
+
         GameObject image1 = new GameObject();
         image1.AddComponent<Image>();
-        image1.GetComponent<Image>().sprite = UIimage;
+        image1.GetComponent<Image>().sprite = UIimageCircle;
         image1.transform.SetParent(UI.transform);
+        image1.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
         pointStart = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
         pointStart.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        pointStart.transform.eulerAngles = new Vector3(0, 0, skillStartTime * (360.0f / 100.0f));
+        pointStart.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
 
 
-        GameObject image2 = new GameObject();
-        image2.AddComponent<Image>();
-        image2.GetComponent<Image>().sprite = UIimage;
-        image2.transform.SetParent(UI.transform);
-        PointFin = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        PointFin.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        PointFin.transform.eulerAngles = new Vector3(0, 0, skillFinTime * (360.0f / 100.0f));
+        //GameObject image2 = new GameObject();
+        //image2.AddComponent<Image>();
+        //image2.GetComponent<Image>().sprite = UIimageIndicator;
+        //image2.transform.SetParent(UI.transform);
+        //PointFin = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
+        //PointFin.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        //PointFin.transform.eulerAngles = new Vector3(0, 0, skillFinTime * (360.0f / 100.0f));
 
 
 
@@ -314,7 +323,7 @@ public class Interaction : NetworkBehaviour
             point.transform.eulerAngles = new Vector3(0, 0, tick * (360.0f / 100.0f));
 
             //if they thry to hit it 
-            if (Input.GetKeyDown("r")) // set to space
+            if (Input.GetKeyDown("space")) 
             {
                 if (tick < skillFinTime && tick > skillStartTime) //win
                 {
