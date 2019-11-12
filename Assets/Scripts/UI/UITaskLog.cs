@@ -35,9 +35,9 @@ public class UITaskLog : NetworkBehaviour
     public string hitmanDescription;
     public string victimDescription;
 
-    private int taskCount = 5;
-    private bool[] taskComplete;
+    private int taskCount;
     private int[] taskID;
+    private bool[] taskComplete;
     private GameObject[] nodes;
     private GameObject[] taskItem;
     private Image[] taskItemCheckbox;
@@ -124,7 +124,13 @@ public class UITaskLog : NetworkBehaviour
     {
         // Find cubes that are encoded with task log data
         nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
-        taskCount = nodes.Length / 2;
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOG)
+            {
+                taskCount++;
+            }
+        }
         Debug.Log("Number of tasks: " + taskCount);
 
         // Initialize arrays
@@ -144,13 +150,13 @@ public class UITaskLog : NetworkBehaviour
             taskItemCheckbox[i] = taskItem[i].transform.GetChild(0).GetComponent<Image>();
             taskItemText[i] = taskItem[i].transform.GetChild(1).GetComponent<Text>();
 
-            taskItem[i].transform.parent = taskLog.transform;
+            taskItem[i].transform.SetParent(taskLog.transform);
             taskItem[i].transform.localPosition = new Vector3(0.0f, 64f - (i * 64f), 0);
             taskItem[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
             // Initialize task strings
             taskItemText[i].text = tasks[taskID[i]];
-            Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
+            //Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
         }
     }
 
@@ -162,12 +168,10 @@ public class UITaskLog : NetworkBehaviour
         for (int i = 0; i < taskCount; i++)
         {
             bool isComplete = decoder.DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i);
-            int lastTaskCompleted;
 
             if (taskComplete[i] != isComplete)
             {
                 // Show popup when a task is completed
-                lastTaskCompleted = i;
                 taskComplete[i] = isComplete;
                 taskPopupDescription.text = tasks[taskID[i]];
 
