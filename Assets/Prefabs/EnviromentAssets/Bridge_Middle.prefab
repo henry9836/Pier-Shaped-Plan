@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 4360187395053391046}
   - component: {fileID: 4744957731335845616}
   - component: {fileID: 1361758903457532425}
-  - component: {fileID: -216129073409543007}
+  - component: {fileID: -1841075920985876980}
   m_Layer: 0
   m_Name: Bridge_Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4360187395053391046
 Transform:
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &-216129073409543007
+--- !u!65 &-1841075920985876980
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
