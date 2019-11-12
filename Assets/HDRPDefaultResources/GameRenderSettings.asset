@@ -75,7 +75,7 @@ MonoBehaviour:
     showEyeDropper: 1
   enableSunDisk:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
 --- !u!114 &-5636555292627806996
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -105,7 +105,7 @@ MonoBehaviour:
     min: 0
     max: 1
   maxFogDistance:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 5000
     min: 0
   mipFogMaxMip:
@@ -122,28 +122,28 @@ MonoBehaviour:
     m_Value: 1000
     min: 0
   albedo:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 50
     min: 1
   baseHeight:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   meanHeight:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 10
   anisotropy:
     m_OverrideState: 1
-    m_Value: 0.65
+    m_Value: 0.4
     min: -1
     max: 1
   globalLightProbeDimmer:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0
     max: 1
@@ -169,31 +169,31 @@ MonoBehaviour:
     m_Value: 150
     min: 0
   cascadeShadowSplitCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 4
     min: 1
     max: 4
   cascadeShadowSplit0:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.05
   cascadeShadowSplit1:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.15
   cascadeShadowSplit2:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.3
   cascadeShadowBorder0:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.26666668
   cascadeShadowBorder1:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.19999999
   cascadeShadowBorder2:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.17777778
   cascadeShadowBorder3:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.04761905
 --- !u!114 &-2962872181204505630
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -212,11 +212,33 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   skyAmbientMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   fogType:
     m_OverrideState: 1
     m_Value: 3
+--- !u!114 &-2208253521174190692
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f034cba68ab55e046ae1445a42f18c0e, type: 3}
+  m_Name: IndirectLightingController
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  indirectSpecularIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+  indirectDiffuseIntensity:
+    m_OverrideState: 1
+    m_Value: 1.25
+    min: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +257,7 @@ MonoBehaviour:
   - {fileID: -7408721133138034335}
   - {fileID: -5636555292627806996}
   - {fileID: 6313922747869604399}
+  - {fileID: -2208253521174190692}
 --- !u!114 &6313922747869604399
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -255,26 +278,26 @@ MonoBehaviour:
     min: 0
     max: 4
   stepCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 6
     min: 2
     max: 32
   radius:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
     min: 0.25
     max: 5
   fullResolution:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   maximumRadiusInPixels:
-    m_OverrideState: 0
-    m_Value: 40
+    m_OverrideState: 1
+    m_Value: 128
     min: 16
     max: 256
   directLightingStrength:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.5
     min: 0
     max: 1
   enableRaytracing:
