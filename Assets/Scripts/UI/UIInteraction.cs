@@ -20,6 +20,7 @@ public class UIInteraction : NetworkBehaviour
     private GameObject interactionPrompt;
     private Text interactText;
     private Image interactProgressBar;
+    private Text statusText;
 
     private bool hasInitialized;
     private PlayerController player;
@@ -86,6 +87,7 @@ public class UIInteraction : NetworkBehaviour
             interactionPrompt = playerCanvas.transform.Find("InteractionPrompt").gameObject;
             interactText = interactionPrompt.transform.Find("Text").GetComponent<Text>();
             interactProgressBar = interactionPrompt.transform.Find("Text/HoldCircleProgress").GetComponent<Image>();
+            statusText = playerCanvas.transform.Find("StatusText").GetComponent<Text>();
 
             hasInitialized = true;
         }
@@ -147,6 +149,16 @@ public class UIInteraction : NetworkBehaviour
 
         // Update interaction progress ring
         interactProgressBar.fillAmount = interact.currentCompletion / interact.timeToComplete;
+
+        // Upadate status text
+        if (player.amHitman)
+        {
+            statusText.text = "HITMAN";
+        }
+        else
+        {
+            statusText.text = "TARGET";
+        }
 
     }
 
