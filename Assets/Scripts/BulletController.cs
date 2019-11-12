@@ -23,6 +23,10 @@ public class BulletController : NetworkBehaviour
             other.GetComponent<PlayerController>().HitByBullet();
             CmdDestroyMe();
         }
+        else if (other.tag == "AI")
+        {
+            other.GetComponent<AIController>().HitByBullet();
+        }
         //If it is a other
         else
         {
