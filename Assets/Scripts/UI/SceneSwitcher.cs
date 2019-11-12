@@ -9,7 +9,7 @@ using DG.Tweening;
 public class SceneSwitcher : MonoBehaviour {
 
     public GameObject fadePanel;
-    public float fadeTime;
+    public float fadeTime = 0.5f;
     private float fadeInDelay = 0.25f;
     private Image fadeImage;
     public string targetScene;
@@ -40,7 +40,7 @@ public class SceneSwitcher : MonoBehaviour {
 
         if (fadePanel == null)
         {
-            fadePanel = GameObject.Find("SceneFader");
+            fadePanel = GameObject.Find("FadePanel");
         }
         fadePanel.SetActive(true);
         fadeImage = fadePanel.GetComponent<Image>();

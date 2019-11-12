@@ -32,6 +32,41 @@ public class PlayerController : NetworkBehaviour
     public bool escaped = false;
     [SyncVar]
     public bool gameOverState = false;
+    [SyncVar]
+    public bool gunOut = false;
+
+    [Command]
+    void CmdGunOut()
+    {
+        gunOut = true;
+        RpcUpdateGunState();
+    }
+
+    [Command]
+    void CmdGunHide()
+    {
+        gunOut = false;
+        RpcUpdateGunState();
+    }
+
+    [ClientRpc]
+    void RpcUpdateGunState()
+    {
+        //Find the hitman with gun
+
+        GameObject hitmanRefer;
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().amHitman)
+            {
+                hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
+                //Update meshrender depending if is out
+                GameObject.FindGameObjectWithTag("Gun").GetComponent<MeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
+            }
+        }
+    }
+
     [Command]
     public void CmdFireBullet()
     {
@@ -81,9 +116,9 @@ public class PlayerController : NetworkBehaviour
         if (playerCanvasReference == null)
         {
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
-            playerCanvasReference.transform.GetChild(0).gameObject.SetActive(true);
+            playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(true);
         }
-        playerCanvasReference.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Text>().text = "WAITING FOR PLAYERS\n" + playerCount + " CONNECTED";
+        playerCanvasReference.transform.Find("Blinder").transform.GetChild(0).gameObject.GetComponent<Text>().text = "WAITING FOR PLAYERS\n" + playerCount + " CONNECTED";
     }
 
     [ClientRpc]
@@ -98,7 +133,7 @@ public class PlayerController : NetworkBehaviour
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
         }
 
-        playerCanvasReference.transform.GetChild(0).gameObject.SetActive(false);
+        playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(false);
         gameStarted = true;
     }
   
@@ -110,7 +145,7 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        gunReference = transform.GetChild(1).transform.GetChild(0).gameObject;
+        gunReference = transform.GetChild(0).transform.GetChild(0).gameObject;
         gunReference.GetComponent<MeshRenderer>().enabled = false;
 
         gameStarted = false;
@@ -127,7 +162,7 @@ public class PlayerController : NetworkBehaviour
         {
             playerCanvasReference = Instantiate(playerCanvas, Vector3.zero, Quaternion.identity);
             //Blind User until game starts
-            playerCanvasReference.transform.GetChild(0).gameObject.SetActive(true);
+            playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(true);
         }
     }
 
@@ -160,7 +195,7 @@ public class PlayerController : NetworkBehaviour
             }
         }
 
-        Debug.LogError(log);
+        //Debug.LogError(log);
 
         //END DEBUGGIN CHUNK
 
@@ -168,7 +203,7 @@ public class PlayerController : NetworkBehaviour
         if (amHitman && gunReference.tag != "Gun")
         {
             gunReference.tag = "Gun";
-            gunReference.GetComponent<MeshRenderer>().enabled = true;
+            //gunReference.GetComponent<MeshRenderer>().enabled = true;
         }
 
         if (gameStarted)
@@ -189,8 +224,8 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
-            //move in direction of input
-            if (moveDir != Vector3.zero)
+            //move in direction of input and not dead
+            if (moveDir != Vector3.zero && (health > 0))
             {
                 transform.LookAt(new Vector3(transform.position.x + moveDir.x, transform.position.y, transform.position.z + moveDir.z));
 
@@ -209,8 +244,8 @@ public class PlayerController : NetworkBehaviour
             }
 
             // Draw line in player look direction
-            Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
-            Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
+            //Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
+            //Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
             //Checking our state
             if (health <= 0)
@@ -225,10 +260,10 @@ public class PlayerController : NetworkBehaviour
             }
 
             //Debugging Keys
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
+            //}
 
             //interacting 
             if (Input.GetKey("e"))
@@ -240,12 +275,28 @@ public class PlayerController : NetworkBehaviour
                 tryingToInteract = false;
             }
 
+            //Gun mechanic
+            if (amHitman)
+            {
+                //Holding right click
+                if (Input.GetMouseButton(1))
+                {
+                    gunReference.GetComponent<MeshRenderer>().enabled = true;
+                    CmdGunOut();
+                }
+                //We are not holding right click
+                else
+                {
+                    gunReference.GetComponent<MeshRenderer>().enabled = false;
+                    CmdGunHide();
+                }
+            }
         }
 
         else
         {
             //Check on UI state because we might of done it out of order
-            if (!playerCanvasReference.transform.GetChild(0).gameObject.activeInHierarchy)
+            if (!playerCanvasReference.transform.Find("Blinder").gameObject.activeInHierarchy)
             {
                 //we did go out of order
                 gameStarted = true;
