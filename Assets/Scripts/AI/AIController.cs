@@ -8,8 +8,16 @@ public class AIController : NetworkBehaviour
 {
     public float arriveRange = 5;
     public float gunDiscoverRange = 20;
+    [SyncVar]
     public bool panic;
     public bool arrived;
+    [SyncVar]
+    public bool dead;
+    [SyncVar]
+    public bool interacting;
+    [SyncVar]
+    public int selectedModel;
+
     public bool waitLock;
     public Vector2 fleeDistance = new Vector2(25, 50);
     private Vector3 targetPos;
@@ -17,6 +25,19 @@ public class AIController : NetworkBehaviour
 
     private bool warped;
     private NavMeshAgent agent;
+
+    //Player was hit by bullet
+    public void HitByBullet()
+    {
+        CmdHitByBullet();
+    }
+
+    [Command]
+    void CmdHitByBullet()
+    {
+        dead = true;
+        //Play death animation
+    }
 
     void Flee(GameObject hitmanPos)
     {
@@ -60,6 +81,8 @@ public class AIController : NetworkBehaviour
         {
             return;
         }
+        dead = false;
+        interacting = false;
         panic = false;
         waitLock = false;
         arrived = false;
@@ -80,6 +103,9 @@ public class AIController : NetworkBehaviour
 
     void Update()
     {
+
+        //Equip model
+
         if (!isServer)
         {
             return;
@@ -92,39 +118,63 @@ public class AIController : NetworkBehaviour
             warped = agent.Warp(transform.position);
         }
 
-        //Check if there is a weapon nearby
-        CheckForWeapon();
-
-        //If there is no weapon
-        if (!panic)
+        //If we are not dead
+        if (!dead)
         {
-            //If we have arrived at our destination
-            if (Vector3.Distance(transform.position, targetPos) < arriveRange)
+            //Check if there is a weapon nearby
+            CheckForWeapon();
+
+            //If there is no weapon
+            if (!panic)
             {
-                //Start the timer
-                if (!arrived && !waitLock)
+                //If we have arrived at our destination
+                if (Vector3.Distance(transform.position, targetPos) < arriveRange)
                 {
-                    //stop agent
-                    targetPos = transform.position;
-                    warped = agent.SetDestination(targetPos);
+                    //Start the timer
+                    if (!arrived && !waitLock)
+                    {
+                        //stop agent
+                        targetPos = transform.position;
+                        warped = agent.SetDestination(targetPos);
 
-                    //Start interact animation
 
-                    StartCoroutine(WaitAtPoint());
-                }
-                
-                //if our wait is over go somewhere else
-                if (!waitLock && arrived)
-                {
-                    arrived = false;
-                    Wander();
+                        //Find which object we are at
+                        GameObject[] pts = GameObject.FindGameObjectsWithTag("AINAVNODE");
+
+                        float closestDistance = Mathf.Infinity;
+                        GameObject arriveObject = null;
+
+                        for (int i = 0; i < pts.Length; i++)
+                        {
+                            if (Vector3.Distance(pts[i].transform.position, transform.position) < closestDistance)
+                            {
+                                arriveObject = pts[i];
+                                closestDistance = Vector3.Distance(pts[i].transform.position, transform.position);
+                            }
+                        }
+
+                        //If this is an interaction node
+                        if (arriveObject.GetComponent<NavNodeController>().interatableNode) {
+                            interacting = true;
+                            //Start interact animation
+                        }
+                        
+                        StartCoroutine(WaitAtPoint());
+                    }
+
+                    //if our wait is over go somewhere else
+                    if (!waitLock && arrived)
+                    {
+                        arrived = false;
+                        Wander();
+                    }
                 }
             }
+
+            //Go to target
+
+            warped = agent.SetDestination(targetPos);
         }
-
-        //Go to target
-
-        warped = agent.SetDestination(targetPos);
 
     }
 
@@ -134,6 +184,7 @@ public class AIController : NetworkBehaviour
         waitLock = true;
         yield return new WaitForSeconds(Random.Range(3,6));
         waitLock = false;
+        interacting = false;
     }
 
 }
