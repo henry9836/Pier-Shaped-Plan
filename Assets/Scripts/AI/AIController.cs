@@ -16,7 +16,7 @@ public class AIController : NetworkBehaviour
     [SyncVar]
     public bool interacting;
     [SyncVar]
-    public int selectedModel;
+    public int PNESID;
 
     public bool waitLock;
     public Vector2 fleeDistance = new Vector2(25, 50);
