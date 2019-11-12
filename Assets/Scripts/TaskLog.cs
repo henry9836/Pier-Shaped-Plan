@@ -26,6 +26,11 @@ public class TaskLog : NetworkBehaviour
         GetComponent<Encoder>().Modify(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (TheGrandExchange.TASKIDS)element, true);
     }
 
+    private void FixedUpdate()
+    {
+        //When game starts
+    }
+
     void Start()
     {
         if (!isServer)
@@ -34,7 +39,7 @@ public class TaskLog : NetworkBehaviour
         }
 
         //New Code
-
+        
         //For the number of tasks
         while (assignedTasks.Count < numberoftasks)
         {
