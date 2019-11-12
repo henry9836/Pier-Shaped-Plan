@@ -8,7 +8,8 @@ TagManager:
   - SERVERINFONODE
   - Interactable
   - Escape
-  - PlayerCanvas
+  - AINAVNODE
+  - AI
   layers:
   - Default
   - TransparentFX
