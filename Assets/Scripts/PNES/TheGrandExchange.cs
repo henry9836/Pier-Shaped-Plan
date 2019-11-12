@@ -31,4 +31,19 @@ public class TheGrandExchange : MonoBehaviour
         new Vector3(50.0f,0.6f,0.0f),
     };
 
+    //Used for loading model and texture
+    public enum MODELIDS
+    {
+        IGOR,
+        SOLDIER,
+        GRANNY,
+        KAREN,
+        SERGEI,
+        IGOR2,
+        SOLDIER2,
+        GRANNY2,
+        KAREN2,
+        SERGEI2,
+    };
+
 }
