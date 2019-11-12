@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     private string sceneCur;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         sceneCur = SceneManager.GetActiveScene().name;
+        audioSource = GetComponent<AudioSource>();
 
         DontDestroyOnLoad(this.gameObject);
 
@@ -22,6 +24,8 @@ public class MusicManager : MonoBehaviour
         if (sceneCur == "Game")
         {
             //Destroy(this.gameObject);
+            audioSource.Stop();
+            Debug.Log("this should be working");
         }
 
     }
@@ -33,8 +37,10 @@ public class MusicManager : MonoBehaviour
 
         if (sceneCur == "Game")
         {
-            //Destroy(this.gameObject);
-            //Debug.Log("jldlsad");
+            audioSource.Stop();
+            Debug.Log("this should be working");
         }
+
+        Debug.Log(sceneCur);
     }
 }
