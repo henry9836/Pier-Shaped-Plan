@@ -7,7 +7,10 @@ public class TheGrandExchange : MonoBehaviour
     public enum NODEID{ 
         ERRORNOTYPE,
         TASKLOG,
-        TASKLOGCOMPLETESTATE
+        TASKLOGCOMPLETESTATE,
+        AIMODELS,
+        HITMANMODEL,
+        SURVIVORMODEL,
     };
 
     public enum TASKIDS
