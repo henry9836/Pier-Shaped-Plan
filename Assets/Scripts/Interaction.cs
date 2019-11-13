@@ -319,37 +319,8 @@ public class Interaction : NetworkBehaviour
         //UI
         
 
-        //GameObject image = new GameObject();
-        //image.AddComponent<Image>();
-        //image.GetComponent<Image>().sprite = UIimageIndicator;
-        //image.transform.SetParent(UI.transform);
-        //image.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
-        //point = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        //point.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-
-        //GameObject image1 = new GameObject();
-        //image1.AddComponent<Image>();
-        //image1.GetComponent<Image>().sprite = UIimageCircle;
-        //image1.transform.SetParent(UI.transform);
-        //image1.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
-        //pointStart = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        //pointStart.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-
         Beginskill();
         skillCircle.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
-
-
-
-        //Begin();
-
-        //GameObject image2 = new GameObject();
-        //image2.AddComponent<Image>();
-        //image2.GetComponent<Image>().sprite = UIimageIndicator;
-        //image2.transform.SetParent(UI.transform);
-        //PointFin = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        //PointFin.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        //PointFin.transform.eulerAngles = new Vector3(0, 0, skillFinTime * (360.0f / 100.0f));
-
 
 
         //the time the skill check is valid
@@ -412,7 +383,7 @@ public class Interaction : NetworkBehaviour
     {
         skillCheckCanvas.alpha = 0.0f;
     }
-
+    
     private void Beginskill()
     {
         skillCircleCanvas.alpha = 1.0f;
