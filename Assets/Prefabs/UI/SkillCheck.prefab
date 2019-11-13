@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1740748630597188711}
   - component: {fileID: 1267222061465124791}
   - component: {fileID: 6134934490743687501}
+  - component: {fileID: 245661840711552956}
   m_Layer: 5
   m_Name: SkillIndicator
   m_TagString: Untagged
@@ -73,6 +74,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &245661840711552956
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231797889681183188}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1061543350096756780
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +97,7 @@ GameObject:
   - component: {fileID: 4735949978685732494}
   - component: {fileID: 4209903528156639253}
   - component: {fileID: 1405088941197374581}
+  - component: {fileID: 1855149684208596021}
   m_Layer: 5
   m_Name: SkillCircle
   m_TagString: Untagged
@@ -146,6 +160,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1855149684208596021
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061543350096756780}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1517150259376012944
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +183,7 @@ GameObject:
   - component: {fileID: 2900474946588542112}
   - component: {fileID: 7298209487722195771}
   - component: {fileID: 1692885198814560565}
+  - component: {fileID: 6194775857550647893}
   m_Layer: 5
   m_Name: SpacePrompt
   m_TagString: Untagged
@@ -219,6 +246,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6194775857550647893
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517150259376012944}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5666920881388457015
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +359,7 @@ GameObject:
   - component: {fileID: 1303994216056656223}
   - component: {fileID: 3599195950429255185}
   - component: {fileID: 2799701199137158757}
+  - component: {fileID: 8215995939414545445}
   m_Layer: 5
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -383,6 +423,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &8215995939414545445
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401847167918002993}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7508216283613823012
 GameObject:
   m_ObjectHideFlags: 0
