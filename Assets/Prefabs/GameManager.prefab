@@ -81,9 +81,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitmanReference: {fileID: 0}
+  AIPrefab: {fileID: 5346064720374945545, guid: 719827909ebdbb84c83fd4d1050cd628,
+    type: 3}
   InteractObject: {fileID: 2600916424791020850, guid: 8af0a299955c2344d9389bbe072c0358,
     type: 3}
   lobbyThreshold: 2
+  aiToSpawn: 10
   gameover: 0
   hitmanWin: 0
   survivorWin: 1
