@@ -39,7 +39,12 @@ public class Interaction : NetworkBehaviour
     public Sprite UIimageIndicator;
     public Sprite UIimageCircle;
 
-    private CanvasGroup completionUI;
+    private CanvasGroup skillCheckCanvas;
+    private GameObject skillCircle;
+    private CanvasGroup skillCircleCanvas;
+    private GameObject skillIndicator;
+    private CanvasGroup skillIndicatorCanvas;
+    private CanvasGroup spacePrompt;
 
     public Image ProgressBar;
 
@@ -55,10 +60,6 @@ public class Interaction : NetworkBehaviour
     public int interactorable2 = 0;
 
 
-
-
-
-
     void Update()
     {
         if (!isLocalPlayer)
@@ -69,8 +70,21 @@ public class Interaction : NetworkBehaviour
         if (UI == null)
         {
             UI = GameObject.FindGameObjectWithTag("PlayerCanvas");
-            completionUI = UI.transform.Find("SkillCheck").GetComponent<CanvasGroup>();
-            ProgressBar = completionUI.transform.Find("ProgressFill").GetComponent<Image>();
+            // Main skill check canvas
+            skillCheckCanvas = UI.transform.Find("SkillCheck").GetComponent<CanvasGroup>();
+
+            skillCircle = UI.transform.Find("SkillCheck/SkillCircle").gameObject;                   // Skill circle object for rotating
+            skillCircleCanvas = skillCircle.GetComponent<CanvasGroup>();                            // Skill circle for fade
+
+            skillIndicator = UI.transform.Find("SkillCheck/SkillIndicator").gameObject;             // Skill indicator for rotating
+            skillIndicatorCanvas = skillIndicator.GetComponent<CanvasGroup>();                      // Skill indicator for fade
+            spacePrompt = UI.transform.Find("SkillCheck/SpacePrompt").GetComponent<CanvasGroup>();
+
+            skillCircleCanvas.alpha = 0.0f;                                                         // Set circle and indicator alpha to 0
+            skillIndicatorCanvas.alpha = 0.0f;
+            spacePrompt.alpha = 0.0f;
+
+            ProgressBar = UI.transform.Find("SkillCheck/ProgressBar/ProgressFill").GetComponent<Image>();
         }
        
 
@@ -174,6 +188,7 @@ public class Interaction : NetworkBehaviour
 
         if (interactorable != -9999)
         {
+
             bool doing = gen();
             if (doing == true)
             {
@@ -194,6 +209,8 @@ public class Interaction : NetworkBehaviour
         //initlize
         if (onceGen == false)
         {
+            Begin();
+
             onceGen = true;
             genTimer = 0.0f;
             skillcheckCount = Random.Range(minchecks, (maxchecks));
@@ -262,7 +279,7 @@ public class Interaction : NetworkBehaviour
         {
             Debug.Log("pass");
             doing = false;
-
+            Endskill();
         }
         else if (result == 2) // unsucessful skillcheck
         {
@@ -271,10 +288,14 @@ public class Interaction : NetworkBehaviour
             onceGen = false;
             doing = false;
             this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract = false;
+            Endskill();
         }
 
         if (genTimer > genTimerMAX) //completed the gen
         {
+            End();
+
+
             return (true);
         }
         else
@@ -286,6 +307,7 @@ public class Interaction : NetworkBehaviour
     //um oh a wjild skill check appeared
     IEnumerator SkillCheck()
     {
+
         Debug.Log("---Skillcheck--- ");
 
         //sets of stuff includeing start and fin a skill check times
@@ -295,33 +317,10 @@ public class Interaction : NetworkBehaviour
         skillFinTime = skillStartTime + 14.0f;
 
         //UI
-        GameObject image = new GameObject();
-        image.AddComponent<Image>();
-        image.GetComponent<Image>().sprite = UIimageIndicator;
-        image.transform.SetParent(UI.transform);
-        image.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
-        point = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        point.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        
 
-        GameObject image1 = new GameObject();
-        image1.AddComponent<Image>();
-        image1.GetComponent<Image>().sprite = UIimageCircle;
-        image1.transform.SetParent(UI.transform);
-        image1.GetComponent<RectTransform>().localScale = new Vector3(4.0f, 4.0f, 1.0f);
-        pointStart = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        pointStart.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        pointStart.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
-
-        //Begin();
-
-        //GameObject image2 = new GameObject();
-        //image2.AddComponent<Image>();
-        //image2.GetComponent<Image>().sprite = UIimageIndicator;
-        //image2.transform.SetParent(UI.transform);
-        //PointFin = UI.transform.GetChild(UI.transform.childCount - 1).gameObject;
-        //PointFin.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        //PointFin.transform.eulerAngles = new Vector3(0, 0, skillFinTime * (360.0f / 100.0f));
-
+        Beginskill();
+        skillCircle.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
 
 
         //the time the skill check is valid
@@ -329,7 +328,7 @@ public class Interaction : NetworkBehaviour
         {
             tick = (timer / 2.0f) * 100.0f;
 
-            point.transform.eulerAngles = new Vector3(0, 0, tick * (360.0f / 100.0f));
+            skillIndicator.transform.eulerAngles = new Vector3(0, 0, tick * (360.0f / 100.0f));
 
             //if they thry to hit it 
             if (Input.GetKeyDown("space")) 
@@ -378,11 +377,24 @@ public class Interaction : NetworkBehaviour
 
     private void Begin()
     {
-        completionUI.alpha = 1.0f;
+        skillCheckCanvas.alpha = 1.0f;
     }
     private void End()
     {
-        completionUI.alpha = 0.0f;
+        skillCheckCanvas.alpha = 0.0f;
+    }
+    
+    private void Beginskill()
+    {
+        skillCircleCanvas.alpha = 1.0f;
+        skillIndicatorCanvas.alpha = 1.0f;
+        spacePrompt.alpha = 1.0f;
+    }
+    private void Endskill()
+    {
+        skillCircleCanvas.alpha = 0.0f;
+        skillIndicatorCanvas.alpha = 0.0f;
+        spacePrompt.alpha = 0.0f;
     }
 }
 
