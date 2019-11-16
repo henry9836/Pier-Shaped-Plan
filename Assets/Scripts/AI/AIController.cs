@@ -75,6 +75,21 @@ public class AIController : NetworkBehaviour
         }
     }
 
+    [Command]
+    void CmdModelLoad()
+    {
+        int model = 0;
+        model = GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.AIMODELS, PNESid);
+        transform.GetChild(model).gameObject.SetActive(true);
+        RpcModelLoad(model);
+    }
+
+    [ClientRpc]
+    void RpcModelLoad(int model)
+    {
+        transform.GetChild(model).gameObject.SetActive(true);
+    }
+
     void Start()
     {
         if (!isServer)
