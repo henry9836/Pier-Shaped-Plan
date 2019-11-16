@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
     private GameObject playerCanvasReference;
     private GameObject gunReference;
     [SyncVar]
-    private bool gameStarted;
+    public bool gameStarted;
     [SyncVar]
     public bool canEscape = false;
     [SyncVar]
