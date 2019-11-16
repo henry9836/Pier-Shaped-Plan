@@ -9,8 +9,17 @@ public class TheGrandExchange : MonoBehaviour
         TASKLOG,
         TASKLOGCOMPLETESTATE,
         AIMODELS,
-        HITMANMODEL,
-        SURVIVORMODEL,
+        PLAYERMODELS,
+        AIANIMATORIDLE,
+        AIANIMATORWALK,
+        AIANIMATORPANIC,
+        AIANIMATORDEATH,
+        PLAYERANIMATORIDLE,
+        PLAYERANIMATORWALK,
+        PLAYERANIMATORGUN,
+        PLAYERANIMATORRUN,
+        PLAYERANIMATORSHOOT,
+        PLAYERANIMATORDEATH,
     };
 
     public enum TASKIDS
