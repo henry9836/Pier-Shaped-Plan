@@ -24,6 +24,7 @@ public class PlayerController : NetworkBehaviour
     private Transform moveReference;
     private GameObject playerCanvasReference;
     private GameObject gunReference;
+    private bool modelLoaded = false;
     [SyncVar]
     public bool gameStarted;
     [SyncVar]
@@ -34,6 +35,33 @@ public class PlayerController : NetworkBehaviour
     public bool gameOverState = false;
     [SyncVar]
     public bool gunOut = false;
+    [SyncVar]
+    public int PNESid = 0;
+
+    [Command]
+    void CmdModelLoad()
+    {
+        //offset by one to skip over gun
+        int model = 1;
+        if (amHitman)
+        {
+            model = (GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.PLAYERMODELS, PNESid) + 1);
+        }
+        else
+        {
+            model = (GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.PLAYERMODELS, PNESid) + 1);
+        }
+        transform.GetChild(model).gameObject.SetActive(true);
+        modelLoaded = true;
+        RpcModelLoad(model);
+    }
+
+    [ClientRpc]
+    void RpcModelLoad(int model)
+    {
+        transform.GetChild(model).gameObject.SetActive(true);
+        modelLoaded = true;
+    }
 
     [Command]
     void CmdGunOut()
@@ -144,7 +172,7 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-
+        modelLoaded = false;
         gunReference = transform.GetChild(0).transform.GetChild(0).gameObject;
         gunReference.GetComponent<MeshRenderer>().enabled = false;
 
@@ -182,23 +210,6 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //DEBUGGING CHUNK
-
-        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
-
-        string log = "VALS: ";
-
-        for (int i = 0; i < nodes.Length; i++)
-        {
-            if (nodes[i].transform.position.x == (int)TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE) {
-                log += " | " + GetComponent<Decoder>().DecodeBool(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, (int)nodes[i].transform.position.z);
-            }
-        }
-
-        //Debug.LogError(log);
-
-        //END DEBUGGIN CHUNK
-
         //Spawn gun if hitman
         if (amHitman && gunReference.tag != "Gun")
         {
@@ -208,6 +219,12 @@ public class PlayerController : NetworkBehaviour
 
         if (gameStarted)
         {
+            //Model loading
+            //if (!modelLoaded)
+            //{
+                CmdModelLoad();
+            //}
+
             //Movement
 
             Vector3 moveDir = Vector3.zero;
@@ -235,35 +252,28 @@ public class PlayerController : NetworkBehaviour
                 }
 
                 //Walk animation
-                GetComponent<Animator>().SetBool("Walk", true);
+                //GetComponent<Animator>().SetBool("Walk", true);
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 1);
             }
             else
             {
                 //Idle animation
-                GetComponent<Animator>().SetBool("Walk", false);
+                //GetComponent<Animator>().SetBool("Walk", false);
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 0);
             }
-
-            // Draw line in player look direction
-            //Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
-            //Debug.DrawLine(transform.position, transform.position + transform.forward * 1.5f, Color.white, Time.deltaTime);
 
             //Checking our state
             if (health <= 0)
             {
                 //Death animation
-                GetComponent<Animator>().SetTrigger("Death");
+                //GetComponent<Animator>().SetTrigger("Death");
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORDEATH, PNESid, 1);
                 CmdAmGameOverState();
             }
             else if (escaped)
             {
                 CmdAmGameOverState();
             }
-
-            //Debugging Keys
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    CmdCompletedTask(TheGrandExchange.TASKIDS.BUYNEWSPAPER);
-            //}
 
             //interacting 
             if (Input.GetKey("e"))
