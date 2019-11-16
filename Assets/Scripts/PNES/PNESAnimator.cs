@@ -136,15 +136,11 @@ public class PNESAnimator : NetworkBehaviour
                     ai = GetComponent<AIController>();
                 }
 
-                Debug.Log("decoder: " + decoder.name);
-                Debug.Log("Animator: " + GetComponent<Animator>().gameObject);
-                Debug.Log("ai: " + ai);
-                Debug.Log("PNESID: " + ai.PNESid);
-
                 //Idle
                 GetComponent<Animator>().SetBool("Walk", false);
                 GetComponent<Animator>().SetBool("Panic", false);
                 GetComponent<Animator>().SetBool("Gun", false);
+                GetComponent<Animator>().SetBool("Draw", false);
                 //Walk
                 GetComponent<Animator>().SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORWALK, ai.PNESid)));
                 //Panic
