@@ -53,6 +53,11 @@ public class PlayerController : NetworkBehaviour
         }
         transform.GetChild(model).gameObject.SetActive(true);
         modelLoaded = true;
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
+
         RpcModelLoad(model);
     }
 
@@ -61,6 +66,10 @@ public class PlayerController : NetworkBehaviour
     {
         transform.GetChild(model).gameObject.SetActive(true);
         modelLoaded = true;
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
     }
 
     [Command]
