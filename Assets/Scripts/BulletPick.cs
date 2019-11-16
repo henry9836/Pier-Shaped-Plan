@@ -12,34 +12,47 @@ public class BulletPick : MonoBehaviour
 
     void Start()
     {
-        dispenser = GameObject.Find("dispenser");
+        dispenser = GameObject.Find("DispenserLocations");
     }
 
     void Update()
     {
-        if (this.GetComponent<PlayerController>().amHitman == false)
+        if (this.GetComponent<PlayerController>().gameStarted == true)
         {
-            Destroy(this);
+            if (this.GetComponent<PlayerController>().amHitman == false)
+            {
+                Destroy(this);
+            }
         }
 
+        //for each despencer
         for (int i = 0; i < dispenser.transform.childCount; i++)
         {
+            //if in range
             if (Vector3.Distance(this.gameObject.transform.position, dispenser.transform.GetChild(i).transform.position) < maxdistance)
             {
-                if (dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().currenttimer <= 0.0f)
+                //if its not on cool down. inittimer = 30, currenttimer starts at 30 and goes down to 0
+                //loading up: ((blah.inittimer - blah.currenttimer) / blah.inittimer)
+                // or 
+                //loading down: (blah.currenttimer / blah.inittimer)
+                if (dispenser.transform.GetChild(i).GetComponent<bulletDispenser>().currenttimer <= 0.0f)
                 {
-                    if (Input.GetKeyDown("e"))
+
+                    if (Input.GetKey("e"))
                     {
+                        //hold e for UIcurrenttimer/UIfintimer (2 seconds)
                         UIcurrenttimer += Time.deltaTime;
 
                         if (UIcurrenttimer >= UIfintimer)
                         {
+                            //bullet despenced
                             add(i);
                         }
                     }
                     else
                     {
-                        UIcurrenttimer = 0.0f; ;
+                        //reset holding timer
+                        UIcurrenttimer = 0.0f; 
                     }
                 }
             }
@@ -48,7 +61,8 @@ public class BulletPick : MonoBehaviour
 
     void add(int i)
     {
-        dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().currenttimer = dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().inittimer;
+        //resets timer, adds a bulet, resets holding timer
+        dispenser.transform.GetChild(i).GetComponent<bulletDispenser>().currenttimer = dispenser.transform.GetChild(i).GetComponent<bulletDispenser>().inittimer;
         this.GetComponent<PewPewGun>().Bullets += 1;
         UIcurrenttimer = 0.0f;
     }
