@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerCamera : MonoBehaviour 
 {
-
+    private PlayerController player;
     public Transform cameraTarget;
     private GameObject camPivot;
     private GameObject camRoot;
@@ -34,10 +34,16 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
+        player = GetComponent<PlayerController>();
+
         Cursor.lockState = CursorLockMode.Locked;
         camPivot = transform.GetChild(0).gameObject;
         camRoot = transform.GetChild(0).GetChild(0).gameObject;
         mainCam = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Camera>();
+
+        // Ensure rotations never get offset what they are supposed to be
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        camPivot.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
     }
 
     void Update () 
@@ -95,7 +101,7 @@ public class PlayerCamera : MonoBehaviour
     {
         float mouseX = Mathf.Clamp(Input.GetAxisRaw(mouseXInputName) * mouseSensitivity * Time.smoothDeltaTime, -50f, 50f);
         float mouseY = Mathf.Clamp(Input.GetAxisRaw(mouseYInputName) * mouseSensitivity * Time.smoothDeltaTime, -50f, 50f);
-
+        
         // Clamp and smooth vertical rotation
         xAxisRot += mouseY;
 
@@ -114,6 +120,17 @@ public class PlayerCamera : MonoBehaviour
         
         camPivot.transform.Rotate(Vector3.left * mouseY);
         transform.Rotate(Vector3.up * mouseX);
+
+        // Camera roataion axis failsafe
+        Quaternion q1 = transform.rotation;
+        q1.eulerAngles = new Vector3(0, q1.eulerAngles.y, 0);
+        transform.rotation = q1;
+
+        Quaternion q2 = camPivot.transform.localRotation;
+        q2.eulerAngles = new Vector3(q2.eulerAngles.x, 0, 0);
+        camPivot.transform.localRotation = q2;
+
+
     }
 
     private void ClampXaxisRotationToValue(float value)
