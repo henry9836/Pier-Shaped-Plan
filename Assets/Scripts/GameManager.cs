@@ -56,12 +56,12 @@ public class GameManager : NetworkBehaviour
 
     void SetupGame()
     {
-        //Spawn AI
-        for (int i = 0; i < aiToSpawn; i++)
-        {
-            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 2.0f, 5.0f), Quaternion.identity);
-            NetworkServer.Spawn(aiRefer);
-        }
+        //////////////////Spawn AI
+        ////////////////for (int i = 0; i < aiToSpawn; i++)
+        ////////////////{
+        ////////////////    GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 2.0f, 5.0f), Quaternion.identity);
+        ////////////////    NetworkServer.Spawn(aiRefer);
+        ////////////////}
 
         //Get a random player
         hitmanReference = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
@@ -70,21 +70,30 @@ public class GameManager : NetworkBehaviour
         hitmanSelected = true;
 
         //Assign Models
-        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.HITMANMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
-        GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.SURVIVORMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+        //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.HITMANMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+        //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.SURVIVORMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
 
-        GameObject[] AIObjs = GameObject.FindGameObjectsWithTag("AI");
+        ////////////GameObject[] AIObjs = GameObject.FindGameObjectsWithTag("AI");
 
-        for (int i = 0; i < AIObjs.Length; i++)
+        ////////////for (int i = 0; i < AIObjs.Length; i++)
+        ////////////{
+        ////////////    GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.AIMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+        ////////////    AIObjs[i].GetComponent<AIController>().PNESid = i;
+        ////////////    //Encode Animator
+        ////////////    AIObjs[i].GetComponent<PNESAnimator>().CmdCreateAnimator();
+        ////////////}
+
+        //Unblind players and assign ids
+
+        GameObject[] PlayerObjs = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < PlayerObjs.Length; i++)
         {
-            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.AIMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
-            AIObjs[i].GetComponent<AIController>().PNESID = i;
-        }
-        
-        //Unblind players
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
-        {
-            GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<PlayerController>().RpcUnblind();
+            PlayerObjs[i].GetComponent<PlayerController>().RpcUnblind();
+            PlayerObjs[i].GetComponent<PlayerController>().PNESid = i;
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.PLAYERMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+            //Encode Animator
+            PlayerObjs[i].GetComponent<PNESAnimator>().CmdCreateAnimator();
         }
 
         gameStarted = true;
