@@ -4,41 +4,52 @@ using UnityEngine;
 
 public class BulletPick : MonoBehaviour
 {
-    public float inittimer = 30.0f;
-    public float currenttimer = 0.0f;
+    public float UIfintimer = 2.0f;
+    public float UIcurrenttimer = 0.0f;
+    private float maxdistance = 5.0f;
 
-    public float UIinittimer = 2.0f;
-    public float UIcurrenttimer = 2.0f;
+    GameObject dispenser;
 
+    void Start()
+    {
+        dispenser = GameObject.Find("dispenser");
+    }
 
     void Update()
     {
-        currenttimer -= Time.deltaTime;
-        if (currenttimer <= 0.0f)
+        if (this.GetComponent<PlayerController>().amHitman == false)
         {
-            if (this.GetComponent<PlayerController>().amHitman == true)
+            Destroy(this);
+        }
+
+        for (int i = 0; i < dispenser.transform.childCount; i++)
+        {
+            if (Vector3.Distance(this.gameObject.transform.position, dispenser.transform.GetChild(i).transform.position) < maxdistance)
             {
-                if (Input.GetKeyDown("e"))
+                if (dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().currenttimer <= 0.0f)
                 {
-                    UIcurrenttimer -= Time.deltaTime;
-             
-                    if (UIcurrenttimer <= 0.0f)
+                    if (Input.GetKeyDown("e"))
                     {
-                        add();
+                        UIcurrenttimer += Time.deltaTime;
+
+                        if (UIcurrenttimer >= UIfintimer)
+                        {
+                            add(i);
+                        }
                     }
-                }
-                else
-                {
-                    UIcurrenttimer = UIinittimer;
+                    else
+                    {
+                        UIcurrenttimer = 0.0f; ;
+                    }
                 }
             }
         }
     }
 
-    void add()
+    void add(int i)
     {
+        dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().currenttimer = dispenser.transform.GetChild(i).GetComponent<bulletDispencer>().inittimer;
         this.GetComponent<PewPewGun>().Bullets += 1;
-        currenttimer = inittimer;
-        UIcurrenttimer = UIinittimer;
+        UIcurrenttimer = 0.0f;
     }
 }
