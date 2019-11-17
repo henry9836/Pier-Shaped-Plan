@@ -53,6 +53,11 @@ public class EndScreen : NetworkBehaviour
 
         Initialize();
 
+        if (!hasInitialized)
+        {
+            return;
+        }
+
         // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
         {
@@ -83,10 +88,6 @@ public class EndScreen : NetworkBehaviour
 
         decorCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 30.0f * Time.deltaTime), Space.Self);
 
-        if (!hasInitialized)
-        {
-            return;
-        }
         
         if (player.gameStarted && !readStart)
         {

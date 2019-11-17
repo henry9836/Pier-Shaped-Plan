@@ -162,15 +162,20 @@ public class Interaction : NetworkBehaviour
                                 interactorable2 = i;
                             }
                         }
+                        else if (!INTR)
+                        {
+                            INTRtimer = 0.0f;
+                        }
                     }
                 }
             }
             //If we are not close enough to a interactable spot
-            //else
-            //{
-            //    INTR = false;
-            //    INTRtimer = 0.0f;
-            //}
+            else
+            {
+                //INTR = false;
+                //INTRtimer = 0.0f;
+                //Endskill();
+            }
         }
 
         if (!resetOverride) {
@@ -198,6 +203,7 @@ public class Interaction : NetworkBehaviour
         else
         {
             onceGen = false;
+            End();
         }
     }
 
