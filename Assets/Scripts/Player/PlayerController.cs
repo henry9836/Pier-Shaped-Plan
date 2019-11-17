@@ -53,6 +53,11 @@ public class PlayerController : NetworkBehaviour
         }
         transform.GetChild(model).gameObject.SetActive(true);
         modelLoaded = true;
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
+
         RpcModelLoad(model);
     }
 
@@ -61,6 +66,10 @@ public class PlayerController : NetworkBehaviour
     {
         transform.GetChild(model).gameObject.SetActive(true);
         modelLoaded = true;
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model + 1).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
     }
 
     [Command]
@@ -292,12 +301,14 @@ public class PlayerController : NetworkBehaviour
                 if (Input.GetMouseButton(1))
                 {
                     gunReference.GetComponent<MeshRenderer>().enabled = true;
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 1);
                     CmdGunOut();
                 }
                 //We are not holding right click
                 else
                 {
                     gunReference.GetComponent<MeshRenderer>().enabled = false;
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 0);
                     CmdGunHide();
                 }
             }
