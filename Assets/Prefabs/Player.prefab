@@ -537,6 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIfintimer: 2
   UIcurrenttimer: 0
+  interactionDotPrefab: {fileID: 7394353596652546495, guid: cde5f7d1f432903468d65a06bd0ecc80,
+    type: 3}
 --- !u!114 &-7872627530530132574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,11 +753,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3366142691416989399}
     m_Modifications:
-    - target: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
-        type: 3}
-      propertyPath: m_Name
-      value: Gun
-      objectReference: {fileID: 0}
     - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,6 +808,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
 --- !u!4 &3252221600353098391 stripped
@@ -826,16 +828,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 958309806943924320, guid: c0f3eb6a186085247998478f05a37799,
-        type: 3}
-      propertyPath: m_Name
-      value: KAREN NEW TREE TEST ALT
-      objectReference: {fileID: 0}
-    - target: {fileID: 958309806943924320, guid: c0f3eb6a186085247998478f05a37799,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4258083533198492275, guid: c0f3eb6a186085247998478f05a37799,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -889,6 +881,16 @@ PrefabInstance:
     - target: {fileID: 4258083533198492275, guid: c0f3eb6a186085247998478f05a37799,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 958309806943924320, guid: c0f3eb6a186085247998478f05a37799,
+        type: 3}
+      propertyPath: m_Name
+      value: KAREN NEW TREE TEST ALT
+      objectReference: {fileID: 0}
+    - target: {fileID: 958309806943924320, guid: c0f3eb6a186085247998478f05a37799,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -986,16 +988,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 5750158231406431117, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb,
-        type: 3}
-      propertyPath: m_Name
-      value: IGOR NEW TREE TEST ALT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750158231406431117, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8761739515012463006, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1051,6 +1043,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5750158231406431117, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb,
+        type: 3}
+      propertyPath: m_Name
+      value: IGOR NEW TREE TEST ALT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750158231406431117, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b59fdf53c0f8b84ab8ccab3f981a3cb, type: 3}
 --- !u!4 &2438963933236739669 stripped
@@ -1066,16 +1068,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 7150703466920380735, guid: e20fa0f827047c04fb6fa7ad2292f087,
-        type: 3}
-      propertyPath: m_Name
-      value: SERGEI NEW TREE TEST
-      objectReference: {fileID: 0}
-    - target: {fileID: 7150703466920380735, guid: e20fa0f827047c04fb6fa7ad2292f087,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6153956900483857196, guid: e20fa0f827047c04fb6fa7ad2292f087,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1131,6 +1123,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7150703466920380735, guid: e20fa0f827047c04fb6fa7ad2292f087,
+        type: 3}
+      propertyPath: m_Name
+      value: SERGEI NEW TREE TEST
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150703466920380735, guid: e20fa0f827047c04fb6fa7ad2292f087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4318174634348631638, guid: e20fa0f827047c04fb6fa7ad2292f087,
         type: 3}
       propertyPath: m_Enabled
@@ -1156,16 +1158,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 5790486125153852262, guid: eabac69bb42bd4e41896e72007a4c266,
-        type: 3}
-      propertyPath: m_Name
-      value: GRANNY NEW TREE TEST ALT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5790486125153852262, guid: eabac69bb42bd4e41896e72007a4c266,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7350061145803811189, guid: eabac69bb42bd4e41896e72007a4c266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1221,6 +1213,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5790486125153852262, guid: eabac69bb42bd4e41896e72007a4c266,
+        type: 3}
+      propertyPath: m_Name
+      value: GRANNY NEW TREE TEST ALT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790486125153852262, guid: eabac69bb42bd4e41896e72007a4c266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eabac69bb42bd4e41896e72007a4c266, type: 3}
 --- !u!4 &225163530991457312 stripped
@@ -1236,16 +1238,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 2024445352828132846, guid: 4f0287a54068d674ba8c85c6d828233c,
-        type: 3}
-      propertyPath: m_Name
-      value: IGOR NEW TREE TEST
-      objectReference: {fileID: 0}
-    - target: {fileID: 2024445352828132846, guid: 4f0287a54068d674ba8c85c6d828233c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3045312452294356989, guid: 4f0287a54068d674ba8c85c6d828233c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1301,6 +1293,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2024445352828132846, guid: 4f0287a54068d674ba8c85c6d828233c,
+        type: 3}
+      propertyPath: m_Name
+      value: IGOR NEW TREE TEST
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024445352828132846, guid: 4f0287a54068d674ba8c85c6d828233c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0287a54068d674ba8c85c6d828233c, type: 3}
 --- !u!4 &5095610065076666653 stripped
@@ -1316,16 +1318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 3318365965136077173, guid: a21e2782d1ed6c04c96e3d749baf9afb,
-        type: 3}
-      propertyPath: m_Name
-      value: SERGEI NEW TREE TEST ALT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3318365965136077173, guid: a21e2782d1ed6c04c96e3d749baf9afb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1753709619092935526, guid: a21e2782d1ed6c04c96e3d749baf9afb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1381,6 +1373,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3318365965136077173, guid: a21e2782d1ed6c04c96e3d749baf9afb,
+        type: 3}
+      propertyPath: m_Name
+      value: SERGEI NEW TREE TEST ALT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318365965136077173, guid: a21e2782d1ed6c04c96e3d749baf9afb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21e2782d1ed6c04c96e3d749baf9afb, type: 3}
 --- !u!4 &7511598592663082920 stripped
@@ -1396,16 +1398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3569225421776133037}
     m_Modifications:
-    - target: {fileID: 4232418846887081490, guid: e430fa87a44200a46bddd9718e01e853,
-        type: 3}
-      propertyPath: m_Name
-      value: GRANNY NEW TREE TEST
-      objectReference: {fileID: 0}
-    - target: {fileID: 4232418846887081490, guid: e430fa87a44200a46bddd9718e01e853,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 929935447206495233, guid: e430fa87a44200a46bddd9718e01e853,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,6 +1451,16 @@ PrefabInstance:
     - target: {fileID: 929935447206495233, guid: e430fa87a44200a46bddd9718e01e853,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232418846887081490, guid: e430fa87a44200a46bddd9718e01e853,
+        type: 3}
+      propertyPath: m_Name
+      value: GRANNY NEW TREE TEST
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232418846887081490, guid: e430fa87a44200a46bddd9718e01e853,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
