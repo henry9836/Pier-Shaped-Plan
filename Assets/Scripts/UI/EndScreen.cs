@@ -105,7 +105,10 @@ public class EndScreen : NetworkBehaviour
             endScreen = playerCanvas.transform.Find("EndScreen").gameObject;
             endScreenCanvas = endScreen.GetComponent<CanvasGroup>();
             endTitleText = endScreen.transform.Find("Title").GetComponent<Text>();
-            endDescText = endScreen.transform.Find("Desc").GetComponent<Text>();
+            endDescText = endScreen.transform.Find("Description").GetComponent<Text>();
+
+            endScreen.transform.DOScale(0.0f, 0.0f);
+            endScreenCanvas.alpha = 0.0f;
 
             hasInitialized = true;
         }
