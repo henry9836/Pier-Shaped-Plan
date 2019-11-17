@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class PewPewGun : NetworkBehaviour
 {
@@ -9,6 +10,8 @@ public class PewPewGun : NetworkBehaviour
     public int maxBullets = 6;
     public GameObject Camera;
     public GameObject Gun;
+    public GameObject bulletUI;
+
 
     //when picked up bullets
     void AddBullet(int shots)
@@ -151,6 +154,10 @@ public class PewPewGun : NetworkBehaviour
             }
             Gun = GameObject.FindGameObjectWithTag("Gun");
         }
+        else if (bulletUI == null)
+        {
+            bulletUI = GameObject.Find("BulletText");
+        }
         else
         {
             RaycastHit Shot;
@@ -160,6 +167,8 @@ public class PewPewGun : NetworkBehaviour
 
             if (this.gameObject.GetComponent<PlayerController>().amHitman == true)
             {
+                bulletUI.GetComponent<Text>().text = Bullets + "/" + maxBullets;
+
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(0, Gun.transform.position);
                 this.gameObject.GetComponent<LineRenderer>().SetPosition(1, gunShot.point);
 
@@ -174,8 +183,11 @@ public class PewPewGun : NetworkBehaviour
                     pew();
                 }
             }
+            else
+            {
+                bulletUI.GetComponent<Text>().text = "";
 
-
+            }
         }
     }
 }

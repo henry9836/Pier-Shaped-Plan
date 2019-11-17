@@ -32,6 +32,7 @@ public class LobbyScreen : MonoBehaviour
         screenStateCur = (int)TabState.Join;
         canvas = GetComponent<CanvasGroup>();
         manager = FindObjectOfType<NetworkManager>();
+        manager.StopHost();
         manager.networkAddress = "localhost";
         inputField.text = manager.networkAddress;
         hostAddress = IPManager.GetIP(ADDRESSFAM.IPv4);
