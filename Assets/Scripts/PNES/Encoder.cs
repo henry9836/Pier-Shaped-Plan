@@ -9,7 +9,6 @@ public class Encoder : NetworkBehaviour
 
     public void Encode(TheGrandExchange.NODEID id, int element, int value)
     {
-
         if (!isServer)
         {
             return;
