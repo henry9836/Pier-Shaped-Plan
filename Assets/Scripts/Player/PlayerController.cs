@@ -8,8 +8,10 @@ public class PlayerController : NetworkBehaviour
 
     public float speed = 100.0f;
     public float maxSpeed = 10.0f;
+    private float tmpSpeed = 0.0f;
     public int health = 1;
     public float fireForce = 500;
+    public float panicSpeedMultiplier = 2.0f;
 
     public bool tryingToInteract = false;
 
@@ -70,7 +72,8 @@ public class PlayerController : NetworkBehaviour
         modelLoaded = true;
 
         //Assign Animator
-        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        //GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        GetComponent<PNESAnimator>().animator = GetComponent<Animator>();
         GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
         GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
     }
@@ -204,6 +207,8 @@ public class PlayerController : NetworkBehaviour
             //Blind User until game starts
             playerCanvasReference.transform.Find("Blinder").gameObject.SetActive(true);
         }
+
+        tmpSpeed = maxSpeed;
     }
 
     
@@ -232,10 +237,7 @@ public class PlayerController : NetworkBehaviour
         if (gameStarted)
         {
             //Model loading
-            //if (!modelLoaded)
-            //{
-                CmdModelLoad();
-            //}
+            CmdModelLoad();
 
             //Movement
 
@@ -253,6 +255,13 @@ public class PlayerController : NetworkBehaviour
                 moveDir += (moveReference.transform.forward * Input.GetAxis("Vertical"));
             }
 
+            //Adjust maxspeed
+            maxSpeed = tmpSpeed;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                maxSpeed *= panicSpeedMultiplier;
+            }
+
             //move in direction of input and not dead
             if (moveDir != Vector3.zero && (health > 0))
             {
@@ -264,13 +273,23 @@ public class PlayerController : NetworkBehaviour
                 }
 
                 //Walk animation
-                //GetComponent<Animator>().SetBool("Walk", true);
-                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 1);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    Debug.Log("WE ARE SHIFTING INTO OPVERDRIVE!");
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 0);
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORPANIC, PNESid, 1);
+                }
+                else
+                {
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORPANIC, PNESid, 0);
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 1);
+                }
             }
             else
             {
                 //Idle animation
                 //GetComponent<Animator>().SetBool("Walk", false);
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORPANIC, PNESid, 0);
                 GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORWALK, PNESid, 0);
             }
 
