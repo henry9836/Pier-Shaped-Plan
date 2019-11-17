@@ -29,6 +29,8 @@ public class PNESAnimator : NetworkBehaviour
 
         gameStarted = true;
 
+        //Encode
+
         if (encoder == null)
         {
             encoder = GameObject.FindGameObjectWithTag("GameController").GetComponent<Encoder>();
@@ -52,6 +54,7 @@ public class PNESAnimator : NetworkBehaviour
             encoder.Encode(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid, 0);
             //Death
             encoder.Encode(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid, 0);
+
         }
         else if (animatorType == ANIMATORTYPE.AI)
         {
@@ -67,6 +70,7 @@ public class PNESAnimator : NetworkBehaviour
             encoder.Encode(TheGrandExchange.NODEID.AIANIMATORPANIC, ai.PNESid, 0);
             //Death
             encoder.Encode(TheGrandExchange.NODEID.AIANIMATORDEATH, ai.PNESid, 0);
+
         }
     }
 
@@ -118,6 +122,7 @@ public class PNESAnimator : NetworkBehaviour
                 if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid))
                 {
                     GetComponent<Animator>().SetTrigger("Shoot");
+                    CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid, 0); //reset shoot so we are not spamming it
                 }
                 //Death
                 if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid))
@@ -136,6 +141,7 @@ public class PNESAnimator : NetworkBehaviour
                 GetComponent<Animator>().SetBool("Walk", false);
                 GetComponent<Animator>().SetBool("Panic", false);
                 GetComponent<Animator>().SetBool("Gun", false);
+                GetComponent<Animator>().SetBool("Draw", false);
                 //Walk
                 GetComponent<Animator>().SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORWALK, ai.PNESid)));
                 //Panic
