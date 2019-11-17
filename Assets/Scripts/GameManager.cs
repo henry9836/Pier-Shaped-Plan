@@ -87,8 +87,8 @@ public class GameManager : NetworkBehaviour
         {
             PlayerObjs[i].GetComponent<PlayerController>().RpcUnblind();
             PlayerObjs[i].GetComponent<PlayerController>().PNESid = i;
-            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.PLAYERMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
-            //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.PLAYERMODELS, i, 4);
+            //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.PLAYERMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.PLAYERMODELS, i, 4);
             //Encode Animator
             PlayerObjs[i].GetComponent<PNESAnimator>().CmdCreateAnimator();
         }
