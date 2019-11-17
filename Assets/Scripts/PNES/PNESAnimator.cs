@@ -122,6 +122,7 @@ public class PNESAnimator : NetworkBehaviour
                 if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid))
                 {
                     GetComponent<Animator>().SetTrigger("Shoot");
+                    CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid, 0); //reset shoot so we are not spamming it
                 }
                 //Death
                 if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid))
