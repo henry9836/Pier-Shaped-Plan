@@ -301,12 +301,14 @@ public class PlayerController : NetworkBehaviour
                 if (Input.GetMouseButton(1))
                 {
                     gunReference.GetComponent<MeshRenderer>().enabled = true;
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 1);
                     CmdGunOut();
                 }
                 //We are not holding right click
                 else
                 {
                     gunReference.GetComponent<MeshRenderer>().enabled = false;
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 0);
                     CmdGunHide();
                 }
             }
