@@ -59,7 +59,7 @@ public class UIInteraction : NetworkBehaviour
             EndScreen end = gameObject.AddComponent<EndScreen>() as EndScreen;
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
-            nearInteractDistance = interact.maxDistance * 3.0f;
+            nearInteractDistance = interact.maxDistance * 10.0f;
 
             // Find cubes that are encoded with task log data
             GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
