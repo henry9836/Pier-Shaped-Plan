@@ -19,6 +19,7 @@ public class EndScreen : NetworkBehaviour
 
     private Text endTitleText;
     private Text endDescText;
+    private GameObject decorCircle;
 
     public string hitmanEndTitleSuccess = "MISSION COMPLETE";
     public string hitmanEndDescSuccess = "Target eliminated. Good work, Agent!";
@@ -45,6 +46,7 @@ public class EndScreen : NetworkBehaviour
 
         Initialize();
 
+        // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
         {
             if (player.escaped)
@@ -72,6 +74,7 @@ public class EndScreen : NetworkBehaviour
             }
         }
 
+        decorCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 30.0f * Time.deltaTime), Space.Self);
 
         if (!hasInitialized)
         {
@@ -106,6 +109,7 @@ public class EndScreen : NetworkBehaviour
             endScreenCanvas = endScreen.GetComponent<CanvasGroup>();
             endTitleText = endScreen.transform.Find("Title").GetComponent<Text>();
             endDescText = endScreen.transform.Find("Description").GetComponent<Text>();
+            decorCircle = endScreen.transform.Find("DecorCircle").gameObject;
 
             endScreen.transform.DOScale(0.0f, 0.0f);
             endScreenCanvas.alpha = 0.0f;
