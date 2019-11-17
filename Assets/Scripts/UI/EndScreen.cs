@@ -7,9 +7,14 @@ using DG.Tweening;
 
 public class EndScreen : NetworkBehaviour
 {
+    private GameManager manager;
     private PlayerController player;
     private GameObject playerCanvas;
     private bool hasInitialized;
+
+    private bool gameOver;
+    private bool hitmanWin;
+    private bool targetWin;
 
     public bool showStart;
     private bool readStart;
@@ -34,34 +39,75 @@ public class EndScreen : NetworkBehaviour
 
     private GameObject StartHitman;
     private CanvasGroup StartHitmanCanvas;
+    private Decoder decoder;
 
     private GameObject StartTarget;
     private CanvasGroup StartTargetCanvas;
 
+    void UpdateState()
+    {
+
+        int gameState = decoder.Decode(TheGrandExchange.NODEID.GAMESTATE, 0);
+
+        switch (gameState)
+        {
+            case 0:
+                {
+                    targetWin = false;
+                    hitmanWin = false;
+                    break;
+                }
+            case 1:
+                {
+                    hitmanWin = true;
+                    break;
+                }
+            case 2:
+                {
+                    targetWin = true;
+                    break;
+                }
+            default:
+                break;
+        }
+    }
 
     void Start()
     {
-        
+        if (!isServer)
+        {
+            return;
+        }
+
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
 
+        //CmdGetGameState();
+
         Initialize();
+
+        UpdateState();
+
 
         if (!hasInitialized)
         {
-            return;
+            //return;
         }
+
+        Debug.Log(gameOver + " " + hitmanWin + " " + targetWin);
 
         // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
         {
-            if (player.escaped)
+            if (targetWin)
             {
                 endTitleText.text = hitmanEndTitleFail;
                 endDescText.text = hitmanEndDescFail;
@@ -74,7 +120,7 @@ public class EndScreen : NetworkBehaviour
         }
         else
         {
-            if (player.escaped)
+            if (targetWin)
             {
                 endTitleText.text = targetEndTitleSuccess;
                 endDescText.text = targetEndDescSuccess;
@@ -100,7 +146,7 @@ public class EndScreen : NetworkBehaviour
             readStart = true;
         }
 
-        if (player.gameOverState)
+        if (targetWin || hitmanWin)
         {
             ShowEndScreen();
         }
@@ -117,8 +163,12 @@ public class EndScreen : NetworkBehaviour
         }
     }
 
+
     private void Initialize()
     {
+
+        decoder = GetComponent<Decoder>();
+
         if (playerCanvas == null)
         {
             player = GetComponent<PlayerController>();
@@ -154,7 +204,7 @@ public class EndScreen : NetworkBehaviour
     {
         if (!showStart)
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
 
             endScreenCanvas.DOKill(true);
             endScreenCanvas.DOFade(1f, 0.3f);
