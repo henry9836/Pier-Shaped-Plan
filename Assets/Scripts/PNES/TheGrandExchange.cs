@@ -35,12 +35,12 @@ public class TheGrandExchange : MonoBehaviour
     //IMPORTANT
     //Make this in same order as TASKIDS
     public static List<Vector3> taskWorldPositions = new List<Vector3>() {
-        new Vector3(0.0f,0.6f,0.0f),
-        new Vector3(10.0f,0.6f,0.0f),
-        new Vector3(20.0f,0.6f,0.0f),
-        new Vector3(30.0f,0.6f,0.0f),
-        new Vector3(40.0f,0.6f,0.0f),
-        new Vector3(50.0f,0.6f,0.0f),
+        new Vector3(3.64f, 5.73f, -84.02f),
+        new Vector3(64.4f,5.6f,-81.7f),
+        new Vector3(-63.2f, 4.8f, -116.4f),
+        new Vector3(-41.5f,7.6f,-62.9f),
+        new Vector3(114.0f,5.07f,-136.0f),
+        new Vector3(-3.73f,18.3f,-119.1f),
     };
 
     //Used for loading model and texture

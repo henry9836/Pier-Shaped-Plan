@@ -538,6 +538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIfintimer: 2
   UIcurrenttimer: 0
+  interactionDotPrefab: {fileID: 7394353596652546495, guid: cde5f7d1f432903468d65a06bd0ecc80,
+    type: 3}
 --- !u!114 &-7872627530530132574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,11 +754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3366142691416989399}
     m_Modifications:
-    - target: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
-        type: 3}
-      propertyPath: m_Name
-      value: Gun
-      objectReference: {fileID: 0}
     - target: {fileID: 7502329983528524500, guid: e56e281ecb6fd7848a717df1e691b247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,6 +808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148637719941337620, guid: e56e281ecb6fd7848a717df1e691b247,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56e281ecb6fd7848a717df1e691b247, type: 3}
