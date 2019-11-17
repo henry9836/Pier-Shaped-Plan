@@ -140,7 +140,6 @@ public class PNESAnimator : NetworkBehaviour
                 //Idle
                 GetComponent<Animator>().SetBool("Walk", false);
                 GetComponent<Animator>().SetBool("Panic", false);
-                GetComponent<Animator>().SetBool("Gun", false);
                 GetComponent<Animator>().SetBool("Draw", false);
                 //Walk
                 GetComponent<Animator>().SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORWALK, ai.PNESid)));
