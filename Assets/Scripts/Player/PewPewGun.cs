@@ -14,7 +14,7 @@ public class PewPewGun : NetworkBehaviour
 
 
     //when picked up bullets
-    void AddBullet(int shots)
+    public void AddBullet(int shots)
     {
         Bullets += shots;
         if (Bullets > maxBullets)

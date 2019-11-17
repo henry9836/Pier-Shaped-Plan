@@ -53,20 +53,17 @@ public class EndScreen : NetworkBehaviour
         {
             case 0:
                 {
-                    Debug.Log("Game is not over");
                     targetWin = false;
                     hitmanWin = false;
                     break;
                 }
             case 1:
                 {
-                    Debug.Log("Hitman Win");
                     hitmanWin = true;
                     break;
                 }
             case 2:
                 {
-                    Debug.Log("Target Win");
                     targetWin = true;
                     break;
                 }
@@ -96,13 +93,13 @@ public class EndScreen : NetworkBehaviour
         //CmdGetGameState();
 
         Initialize();
+
         UpdateState();
 
-        
 
         if (!hasInitialized)
         {
-            return;
+            //return;
         }
 
         Debug.Log(gameOver + " " + hitmanWin + " " + targetWin);
@@ -166,32 +163,6 @@ public class EndScreen : NetworkBehaviour
         }
     }
 
-    [Command]
-    private void CmdGetGameState()
-    {
-        if (isServer)
-        {
-            return;
-        }
-
-        if (manager == null)
-        {
-            manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        }
-
-        RpcReturnGameState(manager.gameover, manager.hitmanWin, manager.survivorWin);
-    }
-
-
-    [ClientRpc]
-   private void RpcReturnGameState(bool gmovr, bool hwin, bool twin)
-    {
-        Debug.LogError("RECIEVED " + gmovr + "|" + hwin + "|" + twin);
-
-        gameOver = gmovr;
-        hitmanWin = hwin;
-        targetWin = twin;
-    }
 
     private void Initialize()
     {
@@ -233,7 +204,7 @@ public class EndScreen : NetworkBehaviour
     {
         if (!showStart)
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
 
             endScreenCanvas.DOKill(true);
             endScreenCanvas.DOFade(1f, 0.3f);
