@@ -105,7 +105,7 @@ public class PlayerController : NetworkBehaviour
             {
                 hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
                 //Update meshrender depending if is out
-                GameObject.FindGameObjectWithTag("Gun").GetComponent<MeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
+                GameObject.FindGameObjectWithTag("Gun").transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
             }
         }
     }
@@ -122,7 +122,10 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdEscape()
     {
-        escaped = true;
+        if (canEscape)
+        {
+            escaped = true;
+        }
     }
 
     [Command]
@@ -322,14 +325,14 @@ public class PlayerController : NetworkBehaviour
                 //Holding right click
                 if (Input.GetMouseButton(1))
                 {
-                    gunReference.GetComponent<MeshRenderer>().enabled = true;
+                    gunReference.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = true;
                     GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 1);
                     CmdGunOut();
                 }
                 //We are not holding right click
                 else
                 {
-                    gunReference.GetComponent<MeshRenderer>().enabled = false;
+                    gunReference.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = false;
                     GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 0);
                     CmdGunHide();
                 }

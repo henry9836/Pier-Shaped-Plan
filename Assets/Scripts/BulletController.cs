@@ -26,6 +26,7 @@ public class BulletController : NetworkBehaviour
         else if (other.tag == "AI")
         {
             other.GetComponent<AIController>().HitByBullet();
+            CmdDestroyMe();
         }
         //If it is a other
         else
