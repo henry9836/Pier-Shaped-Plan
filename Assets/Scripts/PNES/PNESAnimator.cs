@@ -96,6 +96,9 @@ public class PNESAnimator : NetworkBehaviour
         if (gameStarted)
         {
 
+            //REMOVE LATER
+            animator = GetComponent<Animator>();
+            
             if (animator != null)
             {
 

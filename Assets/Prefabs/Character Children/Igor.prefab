@@ -672,13 +672,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015116237500921404}
+  - component: {fileID: 8175949210407466442}
   m_Layer: 0
-  m_Name: Idle Animation
+  m_Name: Igor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2015116237500921404
 Transform:
   m_ObjectHideFlags: 0
@@ -698,6 +699,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8175949210407466442
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291137723209597999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 361002e07b108764cba3266140377bc2, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3313442508711331912
 GameObject:
   m_ObjectHideFlags: 0
