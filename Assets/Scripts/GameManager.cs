@@ -59,7 +59,7 @@ public class GameManager : NetworkBehaviour
         //Spawn AI
         for (int i = 0; i < aiToSpawn; i++)
         {
-            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(80.0f, 8.0f, -88.0f), Quaternion.identity);
+            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(25.0f, 8.0f, -88.0f), Quaternion.identity);
             NetworkServer.Spawn(aiRefer);
         }
 
@@ -201,6 +201,7 @@ public class GameManager : NetworkBehaviour
         {
             if (hitmanWin)
             {
+                hitmanReference.GetComponent<PlayerController>().gameOverState = true;
                 Debug.Log("Hitman Win!");
             }
             else
