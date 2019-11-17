@@ -201,6 +201,7 @@ public class GameManager : NetworkBehaviour
         {
             if (hitmanWin)
             {
+                hitmanReference.GetComponent<PlayerController>().gameOverState = true;
                 Debug.Log("Hitman Win!");
             }
             else
