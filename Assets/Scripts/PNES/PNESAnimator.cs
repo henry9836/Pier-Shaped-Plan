@@ -11,6 +11,7 @@ public class PNESAnimator : NetworkBehaviour
     };
 
     public ANIMATORTYPE animatorType = ANIMATORTYPE.PLAYER;
+    public Animator animator;
 
     private Encoder encoder = null;
     private Decoder decoder = null;
@@ -28,6 +29,8 @@ public class PNESAnimator : NetworkBehaviour
         }
 
         gameStarted = true;
+
+        //Encode
 
         if (encoder == null)
         {
@@ -52,6 +55,7 @@ public class PNESAnimator : NetworkBehaviour
             encoder.Encode(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid, 0);
             //Death
             encoder.Encode(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid, 0);
+
         }
         else if (animatorType == ANIMATORTYPE.AI)
         {
@@ -67,6 +71,7 @@ public class PNESAnimator : NetworkBehaviour
             encoder.Encode(TheGrandExchange.NODEID.AIANIMATORPANIC, ai.PNESid, 0);
             //Death
             encoder.Encode(TheGrandExchange.NODEID.AIANIMATORDEATH, ai.PNESid, 0);
+
         }
     }
 
@@ -91,60 +96,69 @@ public class PNESAnimator : NetworkBehaviour
         if (gameStarted)
         {
 
-            if (decoder == null)
+            if (animator != null)
             {
-                decoder = GetComponent<Decoder>();
+
+                if (decoder == null)
+                {
+                    decoder = GetComponent<Decoder>();
+                }
+
+                //Run animation depending on animatorType
+
+                if (animatorType == ANIMATORTYPE.PLAYER)
+                {
+                    if (pc == null)
+                    {
+                        pc = GetComponent<PlayerController>();
+                    }
+                    //Idle
+                    animator.SetBool("Walk", false);
+                    animator.SetBool("Panic", false);
+                    animator.SetBool("Draw", false);
+                    //Walk
+                    animator.SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORWALK, pc.PNESid)));
+                    //Run
+                    animator.SetBool("Panic", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORRUN, pc.PNESid)));
+                    //Gun
+                    animator.SetBool("Draw", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORGUN, pc.PNESid)));
+                    //Shoot
+                    if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid))
+                    {
+                        animator.SetTrigger("Shoot");
+                        CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid, 0); //reset shoot so we are not spamming it
+                    }
+                    //Death
+                    if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid))
+                    {
+                        animator.SetTrigger("Death");
+                    }
+                }
+                else if (animatorType == ANIMATORTYPE.AI)
+                {
+                    if (ai == null)
+                    {
+                        ai = GetComponent<AIController>();
+                    }
+
+                    //Idle
+                    animator.SetBool("Walk", false);
+                    animator.SetBool("Panic", false);
+                    animator.SetBool("Draw", false);
+                    //Walk
+                    animator.SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORWALK, ai.PNESid)));
+                    //Panic
+                    animator.SetBool("Panic", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORPANIC, ai.PNESid)));
+                    //Death
+                    if (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORDEATH, ai.PNESid))
+                    {
+                        animator.SetTrigger("Death");
+                    }
+                }
             }
-
-            //Run animation depending on animatorType
-
-            if (animatorType == ANIMATORTYPE.PLAYER)
+            else
             {
-                if (pc == null)
-                {
-                    pc = GetComponent<PlayerController>();
-                }
-                //Idle
-                GetComponent<Animator>().SetBool("Walk", false);
-                GetComponent<Animator>().SetBool("Panic", false);
-                GetComponent<Animator>().SetBool("Draw", false);
-                //Walk
-                GetComponent<Animator>().SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORWALK, pc.PNESid)));
-                //Run
-                GetComponent<Animator>().SetBool("Panic", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORRUN, pc.PNESid)));
-                //Gun
-                GetComponent<Animator>().SetBool("Draw", (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORGUN, pc.PNESid)));
-                //Shoot
-                if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, pc.PNESid))
-                {
-                    GetComponent<Animator>().SetTrigger("Shoot");
-                }
-                //Death
-                if (decoder.DecodeBool(TheGrandExchange.NODEID.PLAYERANIMATORDEATH, pc.PNESid))
-                {
-                    GetComponent<Animator>().SetTrigger("Death");
-                }
-            }
-            else if (animatorType == ANIMATORTYPE.AI)
-            {
-                if (ai == null)
-                {
-                    ai = GetComponent<AIController>();
-                }
-
-                //Idle
-                GetComponent<Animator>().SetBool("Walk", false);
-                GetComponent<Animator>().SetBool("Panic", false);
-                GetComponent<Animator>().SetBool("Gun", false);
-                //Walk
-                GetComponent<Animator>().SetBool("Walk", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORWALK, ai.PNESid)));
-                //Panic
-                GetComponent<Animator>().SetBool("Panic", (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORPANIC, ai.PNESid)));
-                //Death
-                if (decoder.DecodeBool(TheGrandExchange.NODEID.AIANIMATORDEATH, ai.PNESid))
-                {
-                    GetComponent<Animator>().SetTrigger("Death");
-                }
+                Debug.LogWarning("Animator not set in PNES Animator Script");
             }
         }
     }

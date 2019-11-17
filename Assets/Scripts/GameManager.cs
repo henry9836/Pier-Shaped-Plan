@@ -56,12 +56,12 @@ public class GameManager : NetworkBehaviour
 
     void SetupGame()
     {
-        //////////////////Spawn AI
-        ////////////////for (int i = 0; i < aiToSpawn; i++)
-        ////////////////{
-        ////////////////    GameObject aiRefer = Instantiate(AIPrefab, new Vector3(20.0f, 2.0f, 5.0f), Quaternion.identity);
-        ////////////////    NetworkServer.Spawn(aiRefer);
-        ////////////////}
+        //Spawn AI
+        for (int i = 0; i < aiToSpawn; i++)
+        {
+            GameObject aiRefer = Instantiate(AIPrefab, new Vector3(25.0f, 8.0f, -88.0f), Quaternion.identity);
+            NetworkServer.Spawn(aiRefer);
+        }
 
         //Get a random player
         hitmanReference = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
@@ -69,19 +69,15 @@ public class GameManager : NetworkBehaviour
         hitmanReference.GetComponent<PlayerController>().amHitman = true; //SyncVar
         hitmanSelected = true;
 
-        //Assign Models
-        //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.HITMANMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
-        //GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.SURVIVORMODEL, 0, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+        GameObject[] AIObjs = GameObject.FindGameObjectsWithTag("AI");
 
-        ////////////GameObject[] AIObjs = GameObject.FindGameObjectsWithTag("AI");
-
-        ////////////for (int i = 0; i < AIObjs.Length; i++)
-        ////////////{
-        ////////////    GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.AIMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
-        ////////////    AIObjs[i].GetComponent<AIController>().PNESid = i;
-        ////////////    //Encode Animator
-        ////////////    AIObjs[i].GetComponent<PNESAnimator>().CmdCreateAnimator();
-        ////////////}
+        for (int i = 0; i < AIObjs.Length; i++)
+        {
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.AIMODELS, i, Random.Range(0, TheGrandExchange.MODELIDS.GetNames(typeof(TheGrandExchange.MODELIDS)).Length));
+            AIObjs[i].GetComponent<AIController>().PNESid = i;
+            //Encode Animator
+            AIObjs[i].GetComponent<PNESAnimator>().CmdCreateAnimator();
+        }
 
         //Unblind players and assign ids
 
@@ -205,6 +201,7 @@ public class GameManager : NetworkBehaviour
         {
             if (hitmanWin)
             {
+                hitmanReference.GetComponent<PlayerController>().gameOverState = true;
                 Debug.Log("Hitman Win!");
             }
             else
