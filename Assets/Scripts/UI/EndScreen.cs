@@ -7,9 +7,14 @@ using DG.Tweening;
 
 public class EndScreen : NetworkBehaviour
 {
+    private GameManager manager;
     private PlayerController player;
     private GameObject playerCanvas;
     private bool hasInitialized;
+
+    private bool gameOver;
+    private bool hitmanWin;
+    private bool targetWin;
 
     public bool showStart;
     private bool readStart;
@@ -41,11 +46,18 @@ public class EndScreen : NetworkBehaviour
 
     void Start()
     {
-        
+        if (!isServer)
+        {
+            return;
+        }
+
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
+        CmdGetGameState();
+
         if (!isLocalPlayer)
         {
             return;
@@ -57,6 +69,8 @@ public class EndScreen : NetworkBehaviour
         {
             return;
         }
+
+        Debug.Log(gameOver + " " + hitmanWin + " " + targetWin);
 
         // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
@@ -115,6 +129,28 @@ public class EndScreen : NetworkBehaviour
         {
             HideStartScreen();
         }
+    }
+
+    [Command]
+    private void CmdGetGameState()
+    {
+        if (isServer)
+        {
+            return;
+        }
+
+        RpcReturnGameState(manager.gameover, manager.hitmanWin, manager.survivorWin);
+    }
+
+
+    [ClientRpc]
+   private void RpcReturnGameState(bool gmovr, bool hwin, bool twin)
+    {
+        gameOver = gmovr;
+        hitmanWin = hwin;
+        targetWin = twin;
+
+
     }
 
     private void Initialize()
