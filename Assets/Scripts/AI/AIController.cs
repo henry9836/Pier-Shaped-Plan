@@ -75,6 +75,30 @@ public class AIController : NetworkBehaviour
         }
     }
 
+    [Command]
+    void CmdModelLoad()
+    {
+        int model = 0;
+        model = GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.AIMODELS, PNESid);
+        transform.GetChild(model).gameObject.SetActive(true);
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
+
+        RpcModelLoad(model);
+    }
+
+    [ClientRpc]
+    void RpcModelLoad(int model)
+    {
+        transform.GetChild(model).gameObject.SetActive(true);
+
+        //Assign Animator
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
+    }
+
     void Start()
     {
         if (!isServer)
@@ -110,6 +134,8 @@ public class AIController : NetworkBehaviour
         {
             return;
         }
+
+        CmdModelLoad();
 
         //Fix AI
         if (!warped)
