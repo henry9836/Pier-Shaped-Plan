@@ -8,6 +8,12 @@ public class MusicManager : MonoBehaviour
     private string sceneCur;
     private AudioSource audioSource;
 
+    public AudioClip menuMusic;
+    public AudioClip gameMusic;
+
+    private bool menuMusicPlaying;
+    private bool gameMusicPlaying;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +41,36 @@ public class MusicManager : MonoBehaviour
     {
         sceneCur = SceneManager.GetActiveScene().name;
 
+        if (sceneCur == "MainMenu")
+        {
+            if (!menuMusicPlaying)
+            {
+                audioSource.clip = menuMusic;
+                audioSource.Play();
+                menuMusicPlaying = true;
+            }
+
+            if (gameMusicPlaying)
+            {
+                audioSource.Stop();
+                gameMusicPlaying = false;
+            }
+        }
+
         if (sceneCur == "Game")
         {
-            audioSource.Stop();
-            Debug.Log("this should be working");
+            if (menuMusicPlaying)
+            {
+                audioSource.Stop();
+                menuMusicPlaying = false;
+            }
+
+            if (!gameMusicPlaying)
+            {
+                audioSource.clip = gameMusic;
+                audioSource.Play();
+                gameMusicPlaying = true;
+            }
         }
 
         Debug.Log(sceneCur);
