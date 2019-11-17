@@ -39,10 +39,41 @@ public class EndScreen : NetworkBehaviour
 
     private GameObject StartHitman;
     private CanvasGroup StartHitmanCanvas;
+    private Decoder decoder;
 
     private GameObject StartTarget;
     private CanvasGroup StartTargetCanvas;
 
+    void UpdateState()
+    {
+
+        int gameState = decoder.Decode(TheGrandExchange.NODEID.GAMESTATE, 0);
+
+        switch (gameState)
+        {
+            case 0:
+                {
+                    Debug.Log("Game is not over");
+                    targetWin = false;
+                    hitmanWin = false;
+                    break;
+                }
+            case 1:
+                {
+                    Debug.Log("Hitman Win");
+                    hitmanWin = true;
+                    break;
+                }
+            case 2:
+                {
+                    Debug.Log("Target Win");
+                    targetWin = true;
+                    break;
+                }
+            default:
+                break;
+        }
+    }
 
     void Start()
     {
@@ -56,14 +87,18 @@ public class EndScreen : NetworkBehaviour
 
     void Update()
     {
-        CmdGetGameState();
 
         if (!isLocalPlayer)
         {
             return;
         }
 
+        //CmdGetGameState();
+
         Initialize();
+        UpdateState();
+
+        
 
         if (!hasInitialized)
         {
@@ -75,7 +110,7 @@ public class EndScreen : NetworkBehaviour
         // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
         {
-            if (player.escaped)
+            if (targetWin)
             {
                 endTitleText.text = hitmanEndTitleFail;
                 endDescText.text = hitmanEndDescFail;
@@ -88,7 +123,7 @@ public class EndScreen : NetworkBehaviour
         }
         else
         {
-            if (player.escaped)
+            if (targetWin)
             {
                 endTitleText.text = targetEndTitleSuccess;
                 endDescText.text = targetEndDescSuccess;
@@ -114,7 +149,7 @@ public class EndScreen : NetworkBehaviour
             readStart = true;
         }
 
-        if (player.gameOverState)
+        if (targetWin || hitmanWin)
         {
             ShowEndScreen();
         }
@@ -139,6 +174,11 @@ public class EndScreen : NetworkBehaviour
             return;
         }
 
+        if (manager == null)
+        {
+            manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        }
+
         RpcReturnGameState(manager.gameover, manager.hitmanWin, manager.survivorWin);
     }
 
@@ -146,15 +186,18 @@ public class EndScreen : NetworkBehaviour
     [ClientRpc]
    private void RpcReturnGameState(bool gmovr, bool hwin, bool twin)
     {
+        Debug.LogError("RECIEVED " + gmovr + "|" + hwin + "|" + twin);
+
         gameOver = gmovr;
         hitmanWin = hwin;
         targetWin = twin;
-
-
     }
 
     private void Initialize()
     {
+
+        decoder = GetComponent<Decoder>();
+
         if (playerCanvas == null)
         {
             player = GetComponent<PlayerController>();

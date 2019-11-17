@@ -9,6 +9,7 @@ public class TheGrandExchange : MonoBehaviour
         TASKLOG,
         TASKLOGCOMPLETESTATE,
         AIMODELS,
+        GAMESTATE,
         PLAYERMODELS,
         AIANIMATORIDLE,
         AIANIMATORWALK,
@@ -30,6 +31,13 @@ public class TheGrandExchange : MonoBehaviour
         BUYNEWSPAPER,
         TIEUPBOAT,
         DROPTHEPACKAGE,
+    };
+
+    public enum GAMESTATEIDS
+    {
+        ERROR,
+        HITMANWIN,
+        TARGETWIN
     };
 
     //IMPORTANT

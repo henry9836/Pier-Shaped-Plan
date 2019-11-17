@@ -114,6 +114,8 @@ public class GameManager : NetworkBehaviour
         else if (gameStarted && !gameover)
         {
 
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.GAMESTATE, 0, (int)TheGrandExchange.GAMESTATEIDS.ERROR);
+
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
             //Get Completed Tasks
@@ -202,11 +204,13 @@ public class GameManager : NetworkBehaviour
         {
             if (hitmanWin)
             {
+                GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.GAMESTATE, 0, (int)TheGrandExchange.GAMESTATEIDS.HITMANWIN);
                 hitmanReference.GetComponent<PlayerController>().gameOverState = true;
                 Debug.Log("Hitman Win!");
             }
             else
             {
+                GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.GAMESTATE, 0, (int)TheGrandExchange.GAMESTATEIDS.TARGETWIN);
                 Debug.Log("Survivor Win!");
             }
             if (!ending)
@@ -218,6 +222,7 @@ public class GameManager : NetworkBehaviour
         //Game is not ready and has not started
         else if (!gameStarted)
         {
+            GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.GAMESTATE, 0, (int)TheGrandExchange.GAMESTATEIDS.ERROR);
             //Update Player Count
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
             {
