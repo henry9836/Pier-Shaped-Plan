@@ -225,6 +225,7 @@ MonoBehaviour:
   maxSpeed: 5
   health: 1
   fireForce: 5000
+  panicSpeedMultiplier: 2
   tryingToInteract: 0
   amHitman: 0
   camPrefab: {fileID: 8867953112220475306, guid: b3fea41f94d0cb842b016599a4a4053a,
@@ -916,7 +917,7 @@ PrefabInstance:
     - target: {fileID: 2942377964224188401, guid: 06198de562fb40d4897bb49bbe870e1f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2201755488915553762, guid: 06198de562fb40d4897bb49bbe870e1f,
         type: 3}
