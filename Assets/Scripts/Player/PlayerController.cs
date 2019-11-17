@@ -122,7 +122,10 @@ public class PlayerController : NetworkBehaviour
     [Command]
     public void CmdEscape()
     {
-        escaped = true;
+        if (canEscape)
+        {
+            escaped = true;
+        }
     }
 
     [Command]
