@@ -56,6 +56,7 @@ public class UIInteraction : NetworkBehaviour
             player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
             scene = gameObject.AddComponent<SceneSwitcher>() as SceneSwitcher;
+            EndScreen end = gameObject.AddComponent<EndScreen>() as EndScreen;
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
             nearInteractDistance = interact.maxDistance * 3.0f;
