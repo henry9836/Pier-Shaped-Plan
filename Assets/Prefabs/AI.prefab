@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: -6413898894291552790}
   - component: {fileID: -7600774925604064224}
   - component: {fileID: -6351804927918281010}
-  - component: {fileID: -4810381593945828018}
   - component: {fileID: -8856168544749642498}
   m_Layer: 0
   m_Name: AI
@@ -161,7 +160,7 @@ MonoBehaviour:
   arriveRange: 5
   gunDiscoverRange: 20
   panic: 0
-  arrived: 0
+  arrived: 1
   dead: 0
   interacting: 0
   PNESid: 0
@@ -385,25 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorType: 1
---- !u!95 &-4810381593945828018
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5346064720374945545}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animator: {fileID: 0}
 --- !u!114 &-8856168544749642498
 MonoBehaviour:
   m_ObjectHideFlags: 0
