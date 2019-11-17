@@ -54,7 +54,7 @@ public class Decoder : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Could not find node to decode | [Req] ID: " + (int)id + " ELEMENT: " + element);
+            Debug.LogWarning("Could not find node to decode | [Req] ID: " + (TheGrandExchange.NODEID)id + " ELEMENT: " + element);
         }
 
         return result;

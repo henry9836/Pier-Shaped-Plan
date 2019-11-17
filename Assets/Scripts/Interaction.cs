@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 public class Interaction : NetworkBehaviour
 {
@@ -11,8 +12,52 @@ public class Interaction : NetworkBehaviour
     public bool once = false;
     public int interactorable = 0;
 
-
     public TheGrandExchange.TASKIDS theTask = TheGrandExchange.TASKIDS.BUYNEWSPAPER;
+
+
+
+
+    public bool onceGen = false;
+    public float tick = 0.0f;
+    public float timer = 0.0f;
+    public float skillStartTime = 0.0f;
+    public float skillFinTime = 0.0f;
+    public float genTimer = 0.0f;
+    public float genTimerMAX = 15.0f;
+
+    public int skillcheckCount = 0;
+    public int maxchecks = 5;
+    public int minchecks = 1;
+    public bool doing = false;
+    private int result = 0;
+
+    public List<float> valid = new List<float>();
+    public List<float> selected = new List<float>();
+    private List<float> selected2 = new List<float>();
+
+    public GameObject UI;
+    public Sprite UIimageIndicator;
+    public Sprite UIimageCircle;
+
+    private CanvasGroup skillCheckCanvas;
+    private GameObject skillCircle;
+    private CanvasGroup skillCircleCanvas;
+    private GameObject skillIndicator;
+    private CanvasGroup skillIndicatorCanvas;
+    private CanvasGroup spacePrompt;
+
+    public Image ProgressBar;
+
+
+    public GameObject point;
+    public GameObject pointStart;
+    public GameObject PointFin;
+
+
+    public bool INTR = false;
+    public float INTRtimer = 0.0f;
+    public float INTRtimerMAX = 0.5f;
+    public int interactorable2 = 0;
 
 
     void Update()
@@ -22,11 +67,42 @@ public class Interaction : NetworkBehaviour
             return;
         }
 
+        if (UI == null)
+        {
+            UI = GameObject.FindGameObjectWithTag("PlayerCanvas");
+            // Main skill check canvas
+            skillCheckCanvas = UI.transform.Find("SkillCheck").GetComponent<CanvasGroup>();
+
+            skillCircle = UI.transform.Find("SkillCheck/SkillCircle").gameObject;                   // Skill circle object for rotating
+            skillCircleCanvas = skillCircle.GetComponent<CanvasGroup>();                            // Skill circle for fade
+
+            skillIndicator = UI.transform.Find("SkillCheck/SkillIndicator").gameObject;             // Skill indicator for rotating
+            skillIndicatorCanvas = skillIndicator.GetComponent<CanvasGroup>();                      // Skill indicator for fade
+            spacePrompt = UI.transform.Find("SkillCheck/SpacePrompt").GetComponent<CanvasGroup>();
+
+            skillCircleCanvas.alpha = 0.0f;                                                         // Set circle and indicator alpha to 0
+            skillIndicatorCanvas.alpha = 0.0f;
+            spacePrompt.alpha = 0.0f;
+
+            ProgressBar = UI.transform.Find("SkillCheck/ProgressBar/ProgressFill").GetComponent<Image>();
+        }
+       
+
+        if (UIimageIndicator == null)
+        {
+            UIimageIndicator = GameObject.Find("UISkillchecktemp").GetComponent<Image>().sprite;
+        }
+        if (UIimageCircle == null)
+        {
+            UIimageCircle = GameObject.Find("UISkillchecktemp2").GetComponent<Image>().sprite;
+        }
+
+
         //Attempt to find an interactable object
         Vector3 playerpos = this.transform.position;
 
         interactorable = -9999;
-
+        bool resetOverride = false;
         for (int i = 0; i < System.Enum.GetValues(typeof(TheGrandExchange.TASKIDS)).Length; i++)
         {
             //Debug.Log("DISTANCE: " + Vector3.Distance(playerpos, TheGrandExchange.taskWorldPositions[i]));
@@ -53,31 +129,58 @@ public class Interaction : NetworkBehaviour
                 {
                     //if the node we are looking at that is close to us is valid
                     // TheGrandExchange.TASKIDS
-                    int compareY = ((int)TaskNodes[j].transform.position.y * -1)-1;
+                    int compareY = ((int)TaskNodes[j].transform.position.y * -1) - 1;
                     int compareNode = (int)(TheGrandExchange.TASKIDS)TheGrandExchange.TASKIDS.ToObject(typeof(TheGrandExchange.TASKIDS), i);
                     if (compareY == compareNode)
                     {
-                        Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                       // Debug.Log("ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                         allowedToComplete = true;
                     }
                     else
                     {
-                        Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
+                        //Debug.Log("NOT ALLOWED: " + compareY + ":" + compareNode + ":" + i);
                     }
                 }
 
                 //If allowed to complete flag is true
-                if (allowedToComplete) {
+                if (allowedToComplete)
+                {
+                    //Do not allow reset to timer
+                    resetOverride = true;
                     if (this.transform.gameObject.GetComponent<PlayerController>().amHitman == false)
                     {
                         theTask = (TheGrandExchange.TASKIDS)i;
                         if (this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract == true)
                         {
-                            interactorable = i;
+                            INTRtimer += Time.deltaTime;
+                            Debug.Log(INTRtimer + " " + INTRtimerMAX);
+
+                            if (INTRtimer >= INTRtimerMAX)
+                            {
+                                INTR = true;
+                                interactorable = i;
+                                interactorable2 = i;
+                            }
                         }
                     }
                 }
             }
+            //If we are not close enough to a interactable spot
+            //else
+            //{
+            //    INTR = false;
+            //    INTRtimer = 0.0f;
+            //}
+        }
+
+        if (!resetOverride) {
+            INTR = false;
+            INTRtimer = 0.0f;
+        }
+
+        if (INTR == true)
+        {
+            interactorable = interactorable2;
         }
 
 
@@ -85,117 +188,217 @@ public class Interaction : NetworkBehaviour
 
         if (interactorable != -9999)
         {
-            if (once == false)
-            {
-                once = true;
-                //set up skillcheck times
-            }
 
-            currentCompletion += Time.deltaTime;
-
-            if (currentCompletion >= timeToComplete)
+            bool doing = gen();
+            if (doing == true)
             {
-                currentCompletion = 5.0f;
+                GetComponent<PlayerController>().CmdCompletedTask(theTask);
             }
-            //if (skillcheck timer appears do skillcheck)
         }
         else
         {
-            currentCompletion = 0.0f;
-            once = false;
-        }
-
-        //If we have done skillchecks
-        if (currentCompletion >= timeToComplete)
-        {
-            //true communications
-            GetComponent<PlayerController>().CmdCompletedTask(theTask);
+            onceGen = false;
         }
     }
 
-
-    //VAUGHAN MOVE THE VARIBLES 
-    //TO THE TOP OF THE SCRIPT 
-    //PLEASE WHY IS THE BLOCK HERE?
-
-    public bool onceSkill = false;
-    public bool onceGen = false;
-    public float tick = 0.0f;
-    public float timer = 0.0f;
-    public float skillStartTime = 0.0f;
-    public float skillFinTime = 0.0f;
-    public float genTimer = 20.0f;
-    public int skillcheckCount = 0;
-    public int maxchecks = 5;
-    public int minchecks = 1;
-    public bool doing = false;
 
 
     //call in update while holding button down
-    public void gen()
+    public bool gen()
     {
+        //initlize
         if (onceGen == false)
         {
+            Begin();
+
             onceGen = true;
-            genTimer = 20.0f;
-            skillcheckCount = Random.Range(minchecks, (maxchecks + 1));
+            genTimer = 0.0f;
+            skillcheckCount = Random.Range(minchecks, (maxchecks));
+            selected2.Clear();
+            selected.Clear();
+            valid.Clear();
+
+            //gets skill check times to do 
+            for (int i = 1; i < maxchecks + 1; i++)
+            {
+                valid.Add((genTimerMAX / maxchecks) * i);
+            }
+
+            valid.RemoveAt(valid.Count - 1);
+
+            for (int i = 0; i < skillcheckCount; i++)
+            {
+                int temp = Random.Range(0, valid.Count);
+                selected.Add(valid[temp]);
+                valid.RemoveAt(temp);
+            }
+
+
+            //sorting function
+            while (selected.Count > 1)
+            {
+                int lowestsel = 0;
+                for (int i = 1; i < selected.Count; i++)
+                {
+                    if (selected[lowestsel] > selected[i])
+                    {
+                        lowestsel = i;
+                    }
+                }
+                selected2.Add(selected[lowestsel]);
+                selected.RemoveAt(lowestsel);
+            }
+            selected2.Add(selected[0]);
+            selected.RemoveAt(0);
+
+            selected = new List<float>(selected2);
+            selected2.Clear();
         }
 
-        if (doing == false)
+        genTimer += Time.deltaTime;
+
+        ProgressBar.fillAmount = genTimer / genTimerMAX;
+
+        if (selected.Count > 0)
         {
-            doing = true;
-            int result = Skillcheck();
-
-            if (result == 0)
+            //if its skillcheck time
+            Debug.Log(genTimer + " " + selected[0] + "timer selected ");
+            if (genTimer >= selected[0])
             {
-
+                StartCoroutine(SkillCheck());
+                selected.RemoveAt(0);
             }
-            else if (result == 1)
-            {
+        }
 
-            }
-            else if (result == 2)
-            {
 
-            }
+        //resuilts of a skil check 
+        if (result == 0) // doing
+        {
+        }
+        else if (result == 1) //sucessful skillcheck
+        {
+            Debug.Log("pass");
+            doing = false;
+            Endskill();
+        }
+        else if (result == 2) // unsucessful skillcheck
+        {
+            Debug.Log("fail");
+            result = 0;
+            onceGen = false;
+            doing = false;
+            this.transform.gameObject.GetComponent<PlayerController>().tryingToInteract = false;
+            Endskill();
+        }
+
+        if (genTimer > genTimerMAX) //completed the gen
+        {
+            End();
+
+
+            return (true);
+        }
+        else
+        {
+            return (false);
         }
     }
 
-
-    public int Skillcheck()
+    //um oh a wjild skill check appeared
+    IEnumerator SkillCheck()
     {
-        if (onceSkill == false)
+
+        Debug.Log("---Skillcheck--- ");
+
+        //sets of stuff includeing start and fin a skill check times
+        timer = 0.0f;
+        tick = 0.0f;
+        skillStartTime = Random.Range(36.666f, 85.0f );
+        skillFinTime = skillStartTime + 14.0f;
+
+        //UI
+        
+
+        Beginskill();
+        skillCircle.transform.eulerAngles = new Vector3(0, 0, (skillStartTime + 14.0f) * (360.0f / 100.0f));
+
+
+        //the time the skill check is valid
+        for (timer = 0.0f; timer < 2.0f; timer += Time.deltaTime)
         {
-            timer = 0.0f;
-            tick = 0.0f;
-            skillStartTime = Random.Range(36.666f, 95.0f);
-            skillFinTime = skillStartTime + 5.0f;
-            onceSkill = true;
-        }
-        timer += Time.deltaTime;
-        tick = timer / 2.0f;
+            tick = (timer / 2.0f) * 100.0f;
 
-        if (Input.GetKeyDown("Space"))
-        {
-            if (tick < skillFinTime && tick > skillStartTime)
+            skillIndicator.transform.eulerAngles = new Vector3(0, 0, tick * (360.0f / 100.0f));
+
+            //if they thry to hit it 
+            if (Input.GetKeyDown("space")) 
             {
-                onceSkill = false;
-                return (1);
+                if (tick < skillFinTime && tick > skillStartTime) //win
+                {
+                    //End();
+
+                    Debug.Log("win skill chick");
+                    result = 1;
+                    Destroy(point);
+                    Destroy(pointStart);
+                    Destroy(PointFin);
+
+                    yield break;
+
+                }
+                else // else
+                {
+                   // End();
+
+                    onceGen = false;
+                    Debug.Log("missed skill check");
+                    result = 2;
+                    Destroy(point);
+                    Destroy(pointStart);
+                    Destroy(PointFin);
+                    yield break;
+
+                }
             }
-            else
-            {
-                onceSkill = false;
-                return (2);
-            }
+            
+            result = 0; //doing
+            yield return null;
         }
+       // End();
 
+        Debug.Log("skill check ended"); // they missed the time and didnt hit anything return fail
+        result = 2;
+        Destroy(point);
+        Destroy(pointStart);
+        Destroy(PointFin);
 
-        return (0);
     }
 
 
+    private void Begin()
+    {
+        skillCheckCanvas.alpha = 1.0f;
+    }
+    private void End()
+    {
+        skillCheckCanvas.alpha = 0.0f;
+    }
+    
+    private void Beginskill()
+    {
+        skillCircleCanvas.alpha = 1.0f;
+        skillIndicatorCanvas.alpha = 1.0f;
+        spacePrompt.alpha = 1.0f;
+    }
+    private void Endskill()
+    {
+        skillCircleCanvas.alpha = 0.0f;
+        skillIndicatorCanvas.alpha = 0.0f;
+        spacePrompt.alpha = 0.0f;
+    }
 }
 
+//research of how skill checks fucntion
 //OBS - https://youtu.be/_Wb8hBPDPNo?t=31
 
 //starts - 7.36		0.0	0.0		

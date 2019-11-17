@@ -1213,6 +1213,8 @@ Transform:
   - {fileID: 1905999607009932569}
   - {fileID: 7414022596294581409}
   - {fileID: 6548553216566275214}
+  - {fileID: 1411771761043440149}
+  - {fileID: 327780713479928830}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1858,8 +1860,6 @@ Transform:
   - {fileID: 8737424736251743109}
   - {fileID: 8737424735982635133}
   - {fileID: 8737424736254837245}
-  - {fileID: 8737424736634279031}
-  - {fileID: 8737424736112420337}
   - {fileID: 8737424736978415467}
   - {fileID: 8737424735328435813}
   - {fileID: 8737424736790469989}
@@ -1872,6 +1872,8 @@ Transform:
   - {fileID: 8737424736553501094}
   - {fileID: 8737424737421232013}
   - {fileID: 8737424736113045293}
+  - {fileID: 5834572427684924024}
+  - {fileID: 3625049142707345409}
   m_Father: {fileID: 1905999606843821478}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4120,96 +4122,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1905999605753897892}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1905999605756550772
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1905999607830308589}
-    m_Modifications:
-    - target: {fileID: 6154644785039706518, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_Name
-      value: Window (58)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.910001
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 13.302767
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.0003562113
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000052928674
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.00032971706
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.041
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.038000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 33.39731
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 9.612209
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 27.813755
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7b1d58b7975ef6429cad4542ecf683f, type: 3}
---- !u!4 &8737424736112420337 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1905999605756550772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1905999605756908712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4225,7 +4137,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.62
+      value: 9.410001
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -4260,7 +4172,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 63
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -8182,11 +8094,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8256,6 +8163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -8902,11 +8814,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8977,6 +8884,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.8232534
       objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (11)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
 --- !u!4 &6673072422631798559 stripped
@@ -8992,11 +8904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (17)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9066,6 +8973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -9755,7 +9667,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 57
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -9892,11 +9804,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9966,6 +9873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -12365,7 +12277,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 56
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -13492,11 +13404,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13566,6 +13473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -21232,11 +21144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21306,6 +21213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -21412,11 +21324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21486,6 +21393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -22582,11 +22494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22656,6 +22563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -24382,11 +24294,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (23)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24456,6 +24363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (23)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -25462,11 +25374,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25536,6 +25443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -26542,11 +26454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26616,6 +26523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -27532,11 +27444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27606,6 +27513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -29062,11 +28974,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29136,6 +29043,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -31852,11 +31764,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31926,6 +31833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -33562,11 +33474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33637,6 +33544,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.8232534
       objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (9)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
 --- !u!4 &6673072423062942085 stripped
@@ -33695,7 +33607,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -35092,11 +35004,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35166,6 +35073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -35812,11 +35724,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35886,6 +35793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -37162,11 +37074,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (16)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37236,6 +37143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -39365,7 +39277,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 60
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -40312,11 +40224,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40386,6 +40293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -40582,11 +40494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40656,6 +40563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -42652,11 +42564,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (22)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42726,6 +42633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (22)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -44362,11 +44274,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -44436,6 +44343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -46702,11 +46614,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46776,6 +46683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -47422,11 +47334,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (21)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47496,6 +47403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -48232,11 +48144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48306,6 +48213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -48952,11 +48864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49026,6 +48933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -49582,11 +49494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49656,6 +49563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -51742,11 +51654,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51816,6 +51723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -53812,11 +53724,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (16)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53886,6 +53793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -54802,11 +54714,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54876,6 +54783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -55342,11 +55254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55416,6 +55323,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -56152,11 +56064,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (24)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56226,6 +56133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (24)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -57052,11 +56964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57126,6 +57033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -57952,11 +57864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (25)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -58026,6 +57933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (25)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -58402,11 +58314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -58476,6 +58383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (20)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -58762,11 +58674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -58836,6 +58743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (20)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -59122,11 +59034,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59196,6 +59103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -60742,11 +60654,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (18)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60816,6 +60723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -62362,11 +62274,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62436,6 +62343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -63125,7 +63037,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -64980,7 +64892,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.619999
+      value: 9.41
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -65015,7 +64927,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 62
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -65602,11 +65514,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65676,6 +65583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -65962,11 +65874,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66036,6 +65943,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -66772,11 +66684,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66846,6 +66753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -68842,11 +68754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68916,6 +68823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -70912,11 +70824,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70986,6 +70893,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -74242,11 +74154,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (21)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -74316,6 +74223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -77662,11 +77574,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -77736,6 +77643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -78832,11 +78744,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -78906,6 +78813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -79184,96 +79096,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2282149440291993416, guid: d13b6328d79a8194ea7fb14b18c73bd3,
     type: 3}
   m_PrefabInstance: {fileID: 1905999607353093421}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1905999607353733106
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1905999607830308589}
-    m_Modifications:
-    - target: {fileID: 6154644785039706518, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_Name
-      value: Window (57)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.797516
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 33.39731
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 9.61221
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 27.813753
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7b1d58b7975ef6429cad4542ecf683f, type: 3}
---- !u!4 &8737424736634279031 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1905999607353733106}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1905999607353849434
 PrefabInstance:
@@ -80452,11 +80274,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80526,6 +80343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -80632,11 +80454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80707,6 +80524,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.8232534
       objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (11)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
 --- !u!4 &6673072421858602160 stripped
@@ -80722,11 +80544,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (18)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80796,6 +80613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -81892,11 +81714,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (17)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81966,6 +81783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -82115,7 +81937,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 61
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -82252,11 +82074,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82326,6 +82143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -84322,11 +84144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -84396,6 +84213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -85042,11 +84864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (26)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85116,6 +84933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (26)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -85582,11 +85404,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85656,6 +85473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -85762,11 +85584,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85836,6 +85653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -88912,11 +88734,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88986,6 +88803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -90352,11 +90174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -90426,6 +90243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -90982,11 +90804,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -91056,6 +90873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -91612,11 +91434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -91686,6 +91503,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -92872,11 +92694,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -92946,6 +92763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -93095,7 +92917,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 58
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -93322,11 +93144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999606201021901}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -93396,6 +93213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -93635,7 +93457,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -94895,7 +94717,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 59
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -98812,11 +98634,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -98886,6 +98703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -99035,7 +98857,7 @@ PrefabInstance:
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 55
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
         type: 3}
@@ -100072,11 +99894,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -100146,6 +99963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -100342,11 +100164,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905999605965517722}
     m_Modifications:
-    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
-        type: 3}
-      propertyPath: m_Name
-      value: Ceilling_light (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -100416,6 +100233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8232534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
@@ -101314,6 +101136,96 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3384360585266363655}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3731929106315784701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1905999607830308589}
+    m_Modifications:
+    - target: {fileID: 6154644785039706518, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_Name
+      value: Window (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.797516
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13.003242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.61221
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 27.813753
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d7b1d58b7975ef6429cad4542ecf683f, type: 3}
+--- !u!4 &5834572427684924024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3731929106315784701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3783499801740123529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101392,4 +101304,244 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3488210466317205112, guid: 8bb92fecbc149df4bbb882eec6649f3c,
     type: 3}
   m_PrefabInstance: {fileID: 3783499801740123529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4784087630167403217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1905999607320172967}
+    m_Modifications:
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.636274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121016318960919356, guid: 58e282424f8f3fa48be70186c944e202,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceilling_light
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58e282424f8f3fa48be70186c944e202, type: 3}
+--- !u!4 &327780713479928830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5109611439459799343, guid: 58e282424f8f3fa48be70186c944e202,
+    type: 3}
+  m_PrefabInstance: {fileID: 4784087630167403217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5871616354057036676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1905999607830308589}
+    m_Modifications:
+    - target: {fileID: 6154644785039706518, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_Name
+      value: Window (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.302767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0003562113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000052928674
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00032971706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.038000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13.003242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.612209
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 27.813755
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d7b1d58b7975ef6429cad4542ecf683f, type: 3}
+--- !u!4 &3625049142707345409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7148031788497402757, guid: d7b1d58b7975ef6429cad4542ecf683f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5871616354057036676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6881178577938726371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1905999607320172967}
+    m_Modifications:
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.115103
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9435863
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.979069
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650560133184476089, guid: 05d5d950b4442d845b9845cdef75f1ad,
+        type: 3}
+      propertyPath: m_Name
+      value: Office
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05d5d950b4442d845b9845cdef75f1ad, type: 3}
+--- !u!4 &1411771761043440149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5542037347253403638, guid: 05d5d950b4442d845b9845cdef75f1ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 6881178577938726371}
   m_PrefabAsset: {fileID: 0}

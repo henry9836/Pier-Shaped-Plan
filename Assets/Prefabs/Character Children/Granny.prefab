@@ -558,7 +558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7045487152222175208}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1833171949052394982
 SkinnedMeshRenderer:
@@ -1009,10 +1009,10 @@ Transform:
   m_GameObject: {fileID: 5659022418748204710}
   m_LocalRotation: {x: -0.7071068, y: -0.000000042146855, z: -2.5121483e-15, w: 0.7071067}
   m_LocalPosition: {x: -0.14840741, y: 1.1241302, z: 0.13648416}
-  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 0.9999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7045487152222175208}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7809207163757555955
 SkinnedMeshRenderer:
@@ -1074,13 +1074,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7045487152222175208}
+  - component: {fileID: 9122322617955087996}
   m_Layer: 0
   m_Name: Granny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7045487152222175208
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,11 +1097,30 @@ Transform:
   - {fileID: 406356241179480227}
   - {fileID: 4842719173131175763}
   - {fileID: 4911683306752332391}
-  - {fileID: 5123746391684325092}
   - {fileID: 2498677649980846096}
+  - {fileID: 5123746391684325092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &9122322617955087996
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313414339979185659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d46feb1ccdf5f224dbab9650abc9ac87, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6325884973776748956
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,9 +20,11 @@ public class UIInteraction : NetworkBehaviour
     private GameObject interactionPrompt;
     private Text interactText;
     private Image interactProgressBar;
+    private Text statusText;
 
     private bool hasInitialized;
     private PlayerController player;
+    private SceneSwitcher scene;
 
     private int taskCount;
     private int[] taskID;
@@ -53,9 +55,11 @@ public class UIInteraction : NetworkBehaviour
         {
             player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
+            scene = gameObject.AddComponent<SceneSwitcher>() as SceneSwitcher;
+            EndScreen end = gameObject.AddComponent<EndScreen>() as EndScreen;
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
-            nearInteractDistance = interact.maxDistance * 3.0f;
+            nearInteractDistance = interact.maxDistance * 10.0f;
 
             // Find cubes that are encoded with task log data
             GameObject[] nodes = GameObject.FindGameObjectsWithTag("SERVERINFONODE");
@@ -86,6 +90,7 @@ public class UIInteraction : NetworkBehaviour
             interactionPrompt = playerCanvas.transform.Find("InteractionPrompt").gameObject;
             interactText = interactionPrompt.transform.Find("Text").GetComponent<Text>();
             interactProgressBar = interactionPrompt.transform.Find("Text/HoldCircleProgress").GetComponent<Image>();
+            statusText = playerCanvas.transform.Find("StatusText").GetComponent<Text>();
 
             hasInitialized = true;
         }
@@ -146,7 +151,17 @@ public class UIInteraction : NetworkBehaviour
         }
 
         // Update interaction progress ring
-        interactProgressBar.fillAmount = interact.currentCompletion / interact.timeToComplete;
+        interactProgressBar.fillAmount = interact.INTRtimer / interact.INTRtimerMAX;
+
+        // Upadate status text
+        if (player.amHitman)
+        {
+            statusText.text = "HITMAN";
+        }
+        else
+        {
+            statusText.text = "TARGET";
+        }
 
     }
 

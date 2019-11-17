@@ -33,8 +33,6 @@ public class TaskLog : NetworkBehaviour
             return;
         }
 
-        //New Code
-
         //For the number of tasks
         while (assignedTasks.Count < numberoftasks)
         {
@@ -63,12 +61,9 @@ public class TaskLog : NetworkBehaviour
         {
             GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOG, i, (int)assignedTasks[i]); //set value of task to element
             GetComponent<Encoder>().Encode(TheGrandExchange.NODEID.TASKLOGCOMPLETESTATE, i, 0); //set completed to false
-            GameObject Visual = Instantiate(GameObject.Find("GameManager").GetComponent<GameManager>().InteractObject, TheGrandExchange.taskWorldPositions[(int)assignedTasks[i]],Quaternion.identity);
+            GameObject Visual = Instantiate(GetComponent<GameManager>().InteractObject, TheGrandExchange.taskWorldPositions[(int)assignedTasks[i]], Quaternion.identity);
             NetworkServer.Spawn(Visual);
         }
-
     }
-
-
 }
 
