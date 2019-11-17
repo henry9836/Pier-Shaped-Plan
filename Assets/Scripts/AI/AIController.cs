@@ -8,6 +8,7 @@ public class AIController : NetworkBehaviour
 {
     public float arriveRange = 5;
     public float gunDiscoverRange = 20;
+    Vector3 lastPos = Vector3.zero;
     [SyncVar]
     public bool panic;
     public bool arrived;
@@ -75,6 +76,31 @@ public class AIController : NetworkBehaviour
         }
     }
 
+    [Command]
+    void CmdModelLoad()
+    {
+        int model = 0;
+        model = GetComponent<Decoder>().Decode(TheGrandExchange.NODEID.AIMODELS, PNESid);
+        transform.GetChild(model).gameObject.SetActive(true);
+
+        //Assign Animator
+        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+
+        //GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        //GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
+
+        RpcModelLoad(model);
+    }
+
+    [ClientRpc]
+    void RpcModelLoad(int model)
+    {
+        transform.GetChild(model).gameObject.SetActive(true);
+
+        //Assign Animator
+        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+    }
+
     void Start()
     {
         if (!isServer)
@@ -109,6 +135,44 @@ public class AIController : NetworkBehaviour
         if (!isServer)
         {
             return;
+        }
+
+        CmdModelLoad();
+
+        //Animation
+        if (dead)
+        {
+            //play dead
+            GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORIDLE, PNESid, 0);
+            GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORPANIC, PNESid, 0);
+            GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORWALK, PNESid, 0);
+            GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORDEATH, PNESid, 1);
+        }
+        else
+        {
+            //play animations
+            //panic
+            if (panic)
+            {
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORPANIC, PNESid, 1);
+            }
+            else
+            {
+                //if we have moved
+                if (lastPos != transform.position)
+                {
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORIDLE, PNESid, 0);
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORWALK, PNESid, 1);
+                }
+                //if we have not moved
+                else
+                {
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORIDLE, PNESid, 1);
+                    GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.AIANIMATORWALK, PNESid, 0);
+                }
+            }
+            //update last pos
+            lastPos = transform.position;
         }
 
         //Fix AI
