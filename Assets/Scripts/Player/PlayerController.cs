@@ -72,7 +72,8 @@ public class PlayerController : NetworkBehaviour
         modelLoaded = true;
 
         //Assign Animator
-        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        //GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        GetComponent<PNESAnimator>().animator = GetComponent<Animator>();
         GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
         GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
     }

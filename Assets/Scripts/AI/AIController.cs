@@ -84,10 +84,12 @@ public class AIController : NetworkBehaviour
         transform.GetChild(model).gameObject.SetActive(true);
 
         //Assign Animator
-        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        //GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        
+        GetComponent<PNESAnimator>().animator = GetComponent<Animator>();
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
 
-        //GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
-        //GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
 
         RpcModelLoad(model);
     }
@@ -98,7 +100,11 @@ public class AIController : NetworkBehaviour
         transform.GetChild(model).gameObject.SetActive(true);
 
         //Assign Animator
-        GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+        //GetComponent<PNESAnimator>().animator = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>();
+
+        GetComponent<PNESAnimator>().animator = GetComponent<Animator>();
+        GetComponent<Animator>().runtimeAnimatorController = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().avatar = transform.GetChild(model).transform.GetChild(4).gameObject.GetComponent<Animator>().avatar;
     }
 
     void Start()
