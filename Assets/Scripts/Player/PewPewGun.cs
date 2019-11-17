@@ -36,7 +36,7 @@ public class PewPewGun : NetworkBehaviour
             else
             {
                 //pew sfx
-
+                GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORSHOOT, GetComponent<PlayerController>().PNESid, 1);
                 GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
                 int hitmanno = 0;
                 for (int i = 0; i < Players.Length; i++)
