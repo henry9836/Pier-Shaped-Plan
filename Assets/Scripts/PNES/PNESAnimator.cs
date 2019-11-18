@@ -144,7 +144,6 @@ public class PNESAnimator : NetworkBehaviour
                         ai = GetComponent<AIController>();
                     }
 
-                    Debug.Log("AI WE ARE DOING THING");
 
                     //Idle
                     animator.SetBool("Walk", false);
