@@ -7,7 +7,6 @@ using DG.Tweening;
 
 public class EndScreen : NetworkBehaviour
 {
-    private GameManager manager;
     private PlayerController player;
     private GameObject playerCanvas;
     private bool hasInitialized;
@@ -72,19 +71,8 @@ public class EndScreen : NetworkBehaviour
         }
     }
 
-    void Start()
-    {
-        if (!isServer)
-        {
-            return;
-        }
-
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
     void Update()
     {
-
         if (!isLocalPlayer)
         {
             return;
@@ -99,10 +87,9 @@ public class EndScreen : NetworkBehaviour
 
         if (!hasInitialized)
         {
-            //return;
+            return;
         }
 
-        Debug.Log(gameOver + " " + hitmanWin + " " + targetWin);
 
         // Set text based on whether player is hitman and whether they succeeded
         if (player.amHitman)
@@ -135,7 +122,7 @@ public class EndScreen : NetworkBehaviour
         decorCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 30.0f * Time.deltaTime), Space.Self);
 
         
-        if (player.gameStarted && !readStart)
+        if (player.gameStarted && !readStart && hasInitialized)
         {
             showStart = true;
         }
@@ -145,6 +132,9 @@ public class EndScreen : NetworkBehaviour
             showStart = false;
             readStart = true;
         }
+
+        StartHitman.SetActive(player.amHitman);
+        StartTarget.SetActive(!player.amHitman);
 
         if (targetWin || hitmanWin)
         {
@@ -169,7 +159,7 @@ public class EndScreen : NetworkBehaviour
 
         decoder = GetComponent<Decoder>();
 
-        if (playerCanvas == null)
+        if (playerCanvas == null || endScreen == null || StartHitman == null || StartTarget == null)
         {
             player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
@@ -217,18 +207,14 @@ public class EndScreen : NetworkBehaviour
         beginRequested = true;
         endRequested = false;
 
-        if (player.amHitman)
-        {
-            StartHitmanCanvas.DOKill(true);
-            StartHitmanCanvas.DOFade(1f, 0.3f);
-            StartHitman.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-        }
-        else
-        {
-            StartTargetCanvas.DOKill(true);
-            StartTargetCanvas.DOFade(1f, 0.3f);
-            StartTarget.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-        }
+        StartHitmanCanvas.DOKill(true);
+        StartHitmanCanvas.DOFade(1f, 0.3f);
+        StartHitman.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+        
+        StartTargetCanvas.DOKill(true);
+        StartTargetCanvas.DOFade(1f, 0.3f);
+        StartTarget.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+        
     }
 
     private void HideStartScreen()
@@ -236,17 +222,13 @@ public class EndScreen : NetworkBehaviour
         beginRequested = false;
         endRequested = true;
 
-        if (player.amHitman)
-        {
-            StartHitmanCanvas.DOKill(true);
-            StartHitmanCanvas.DOFade(0f, 0.25f);
-            //StartHitman.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
-        }
-        else
-        {
-            StartTargetCanvas.DOKill(true);
-            StartTargetCanvas.DOFade(0f, 0.25f);
-            //StartTarget.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
-        }
+        StartHitmanCanvas.DOKill(true);
+        StartHitmanCanvas.DOFade(0f, 0.25f);
+        //StartHitman.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
+
+        StartTargetCanvas.DOKill(true);
+        StartTargetCanvas.DOFade(0f, 0.25f);
+        //StartTarget.transform.DOScale(0f, 0.4f).SetEase(Ease.InQuad);
+        
     }
 }
