@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class UIInteraction : NetworkBehaviour
 {
-    public string[] interactLabels = new string[] 
+    public string[] interactLabels = new string[]
     { "Eat Fish", "Greet Fisherman", "Use Phone", "Buy Paper", "Tie Boat", "Drop Package" };
 
     private Decoder decoder;
@@ -15,8 +15,14 @@ public class UIInteraction : NetworkBehaviour
     private float nearInteractDistance = 12f;
     private Vector3[] interactionPoints;
 
+    private GameObject[] escapeObjects;
+    private Vector3[] escapePoints;
+    private GameObject[] escapePrompts;
+    private bool escapePromptsShown;
+
     private GameObject playerCanvas;
     public GameObject interactionDotPrefab;
+    public GameObject escapePromptPrefab;
     private GameObject interactionPrompt;
     private Text interactText;
     private Image interactProgressBar;
@@ -30,6 +36,7 @@ public class UIInteraction : NetworkBehaviour
     private int[] taskID;
     private bool[] taskComplete;
     private GameObject[] interactionDot;
+
 
     void Update()
     {
@@ -56,7 +63,6 @@ public class UIInteraction : NetworkBehaviour
             player = GetComponent<PlayerController>();
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
             scene = gameObject.AddComponent<SceneSwitcher>() as SceneSwitcher;
-            EndScreen end = gameObject.AddComponent<EndScreen>() as EndScreen;
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
             nearInteractDistance = interact.maxDistance * 12.0f;
@@ -75,6 +81,7 @@ public class UIInteraction : NetworkBehaviour
             taskComplete = new bool[taskCount];
             interactionDot = new GameObject[taskCount];
 
+            // Initialize interation dots and prompts
             for (int i = 0; i < taskCount; i++)
             {
                 // Find chosen tasks and set them in taskID[]
@@ -91,6 +98,17 @@ public class UIInteraction : NetworkBehaviour
             interactText = interactionPrompt.transform.Find("Text").GetComponent<Text>();
             interactProgressBar = interactionPrompt.transform.Find("Text/HoldCircleProgress").GetComponent<Image>();
             statusText = playerCanvas.transform.Find("StatusText").GetComponent<Text>();
+
+            // Escape Prompts
+            escapeObjects = GameObject.FindGameObjectsWithTag("Escape");
+            escapePoints = new Vector3[escapeObjects.Length];
+            escapePrompts = new GameObject[escapeObjects.Length];
+
+            for (int i = 0; i < escapeObjects.Length; i++)
+            {
+                escapePoints[i] = escapeObjects[i].transform.position;
+            }
+
 
             hasInitialized = true;
         }
@@ -161,6 +179,39 @@ public class UIInteraction : NetworkBehaviour
         else
         {
             statusText.text = "TARGET";
+        }
+
+        // Escape Prompts
+        if (player.canEscape && !player.amHitman && !escapePromptsShown)
+        {
+            for (int i = 0; i < escapeObjects.Length; i++)
+            {
+                escapePrompts[i] = Instantiate(escapePromptPrefab);
+                escapePrompts[i].transform.SetParent(playerCanvas.transform);
+                escapePrompts[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                escapePrompts[i].transform.localPosition = new Vector3(0.0f, 64f - (i * 64f), 0);
+            }
+
+            escapePromptsShown = true;
+        }
+
+        if (escapePromptsShown)
+        {
+            for (int i = 0; i < escapeObjects.Length; i++)
+            {
+                Vector3 escapeScreenPoint = Camera.main.WorldToScreenPoint(escapePoints[i]);
+                escapePrompts[i].transform.position = escapeScreenPoint;
+
+                if (escapePrompts[i].transform.position.z <= 0f)
+                {
+                    escapePrompts[i].SetActive(false);
+                }
+                else
+                {
+                    escapePrompts[i].SetActive(true);
+                }
+            }
+
         }
 
     }
