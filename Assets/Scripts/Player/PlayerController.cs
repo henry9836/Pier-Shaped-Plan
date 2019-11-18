@@ -105,7 +105,7 @@ public class PlayerController : NetworkBehaviour
             {
                 hitmanRefer = GameObject.FindGameObjectsWithTag("Player")[i];
                 //Update meshrender depending if is out
-                GameObject.FindGameObjectWithTag("Gun").transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
+                //GameObject.FindGameObjectWithTag("Gun").GetComponent<SkinnedMeshRenderer>().enabled = hitmanRefer.GetComponent<PlayerController>().gunOut;
             }
         }
     }
@@ -191,8 +191,8 @@ public class PlayerController : NetworkBehaviour
             return;
         }
         modelLoaded = false;
-        gunReference = transform.GetChild(0).transform.GetChild(0).gameObject;
-        gunReference.GetComponent<MeshRenderer>().enabled = false;
+        gunReference = transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+        gunReference.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
         gameStarted = false;
         canEscape = false;
@@ -325,14 +325,14 @@ public class PlayerController : NetworkBehaviour
                 //Holding right click
                 if (Input.GetMouseButton(1))
                 {
-                    gunReference.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = true;
+                    //gunReference.GetComponent<SkinnedMeshRenderer>().enabled = true;
                     GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 1);
                     CmdGunOut();
                 }
                 //We are not holding right click
                 else
                 {
-                    gunReference.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().enabled = false;
+                    //gunReference.GetComponent<SkinnedMeshRenderer>().enabled = false;
                     GetComponent<PNESAnimator>().CmdUpdateAnimation(TheGrandExchange.NODEID.PLAYERANIMATORGUN, PNESid, 0);
                     CmdGunHide();
                 }

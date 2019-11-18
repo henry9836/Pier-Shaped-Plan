@@ -148,8 +148,8 @@ public class PewPewGun : NetworkBehaviour
             {
                 if (players[i].GetComponent<PlayerController>().amHitman)
                 {
-                    players[i].transform.GetChild(0).transform.GetChild(0).tag = "Gun";
-                    players[i].transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    players[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).tag = "Gun";
+                    //players[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
                 }
             }
             Gun = GameObject.FindGameObjectWithTag("Gun");

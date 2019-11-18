@@ -86,7 +86,7 @@ MonoBehaviour:
   InteractObject: {fileID: 2600916424791020850, guid: 8af0a299955c2344d9389bbe072c0358,
     type: 3}
   lobbyThreshold: 2
-  aiToSpawn: 10
+  aiToSpawn: 20
   gameover: 0
   hitmanWin: 0
   survivorWin: 0
