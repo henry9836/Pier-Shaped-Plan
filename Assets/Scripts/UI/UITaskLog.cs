@@ -156,7 +156,6 @@ public class UITaskLog : NetworkBehaviour
 
             // Initialize task strings
             taskItemText[i].text = tasks[taskID[i]];
-            //Debug.Log("Task " + i + " wtih ID " + taskID[i] + " is " + tasks[taskID[i]]);
         }
     }
 
@@ -197,7 +196,8 @@ public class UITaskLog : NetworkBehaviour
         }
 
         // Update tasks completed counter
-        tasksCompletedCounter.text = tasksCompleted + "/" + taskCount + " tasks completed";
+        int taskThreshold = Mathf.RoundToInt(0.6f * taskCount);
+        tasksCompletedCounter.text = tasksCompleted + "/" + taskThreshold + " tasks required for escape";
 
         // Change description of task log depending on whether the player is a hitman
         taskDescription.text = player.amHitman ? hitmanDescription : victimDescription;
