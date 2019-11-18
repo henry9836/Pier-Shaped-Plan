@@ -100,7 +100,7 @@ public class BulletPick : NetworkBehaviour
             playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
             decoder = GetComponent<Decoder>();
             interact = GetComponent<Interaction>();
-            nearInteractDistance = interact.maxDistance * 3.0f;
+            nearInteractDistance = interact.maxDistance * 12.0f;
 
             // Find cubes that are encoded with task log data
 
@@ -208,7 +208,7 @@ public class BulletPick : NetworkBehaviour
     {
         //resets timer, adds a bulet, resets holding timer
         dispenser.transform.GetChild(i).GetComponent<bulletDispenser>().currenttimer = dispenser.transform.GetChild(i).GetComponent<bulletDispenser>().inittimer;
-        this.GetComponent<PewPewGun>().Bullets += 1;
+        this.GetComponent<PewPewGun>().AddBullet(1);
         UIcurrenttimer = 0.0f;
     }
 }

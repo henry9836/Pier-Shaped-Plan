@@ -73,6 +73,11 @@ public class LobbyScreen : MonoBehaviour
             screenStateCur = (int)screenState;
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FindObjectOfType<SceneSwitcher>().SceneSwitch("TitleScreen");
+        }
+
     }
 
     public void Connect()
